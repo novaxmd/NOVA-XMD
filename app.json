@@ -8,7 +8,7 @@
     "stack": "container",
   "env": {
     "SESSION_ID": {
-      "description": "Put the session-id here.",
+      "description": "  BMB-XMD~Url0Cb6Y#tGl8kMJNgeXz4sVY0v7_VUE2VVBPco-s4xhn7mkUhDw ",
       "required": true,
       "value": ""
     },  
@@ -28,7 +28,7 @@
     "MODE": {
       "description": "select your bot work type public-private-inbox-group.",
       "required": false,
-      "value": "public"
+      "value": "private"
       
     },
     
@@ -36,7 +36,7 @@
     "ALWAYS_ONLINE": {
       "description": "Make it true if want always online.",
       "required": false,
-      "value": "false"  
+      "value": "true"  
     },    
   
     "AUTO_VOICE": {
@@ -54,7 +54,7 @@
     "AUTO_STICKER": {
       "description": "Make it true if you want automatic sticker.",
       "required": false,
-      "value": "true"
+      "value": "false"
     }, 
 
 
@@ -73,13 +73,13 @@
     "AUTO_STATUS_REPLY": {
       "description": "Make it true for auto reply msg on status seen.",
       "required": true,
-      "value": "false"
+      "value": "true"
     }, 
 
     "AUTO_STATUS_MSG": {
       "description": "Type custom message on status reply",
       "required": true,
-      "value": "*SEEN YOUR STATUS BY B.M.B-XMD 🖤*"
+      "value": "*SEEN YOUR STATUS BY furaha 🖤*"
    
      }, 
     
@@ -92,7 +92,7 @@
     "OWNER_NUMBER": {
       "description": "put the owner number for bot.",
       "required": false,
-      "value": "255767862457"
+      "value": " 255717558940  "
 
     }, 
 
