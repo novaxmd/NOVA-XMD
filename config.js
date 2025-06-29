@@ -5,7 +5,7 @@ function convertToBool(text, fault = 'true') {
     return text === fault ? true : false;
 }
 module.exports = {
-SESSION_ID: process.env.SESSION_ID || "",
+SESSION_ID: process.env.SESSION_ID || "NOVA~iMURlZgJ#y0rg-dqfVS-W-6pMdzhkH_R_AdXtXD5VZWFO0_uJWvs",
 // add your Session Id 
 AUTO_STATUS_SEEN: process.env.AUTO_STATUS_SEEN || "true",
 // make true or false status auto seen
@@ -23,11 +23,11 @@ ANTI_LINK: process.env.ANTI_LINK || "true",
 // make anti link true,false for groups 
 MENTION_REPLY: process.env.MENTION_REPLY || "false",
 // make true if want auto voice reply if someone menetion you 
-MENU_IMAGE_URL: process.env.MENU_IMAGE_URL || "https://files.catbox.moe/p0xeh3.jpg",
+MENU_IMAGE_URL: process.env.MENU_IMAGE_URL || "https://files.catbox.moe/jw9opw.jpg",
 // add custom menu and mention reply image url
 PREFIX: process.env.PREFIX || ".",
 // add your prifix for bot   
-BOT_NAME: process.env.BOT_NAME || "NOVA-XMD",
+BOT_NAME: process.env.BOT_NAME || "সাঁপুঁডেঁ বাঁবাঁ",
 // add bot namw here for menu
 STICKER_NAME: process.env.STICKER_NAME || "NOVA-XMD",
 // type sticker pack name 
