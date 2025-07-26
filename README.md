@@ -37,13 +37,13 @@
 
 ### 🔐 ➌ PAIR SESSION CODE
 
-[![](https://img.shields.io/badge/🔐_PAIR_CODE_SESSION-8A2BE2?style=for-the-badge&logo=codepen)](https://session-bmb-code.onrender.com/)
+[![](https://img.shields.io/badge/🔐_PAIR_CODE_SESSION-8A2BE2?style=for-the-badge&logo=codepen)](https://nova-pair-site.onrender.com)
 
 ---
 
 ### 📸 ➍ QR SESSION ID
 
-[![](https://img.shields.io/badge/📷_SCAN_QR_SESSION-FF00FF?style=for-the-badge&logo=codepen)](https://session-bmb-code.onrender.com/pair)
+[![](https://img.shields.io/badge/📷_SCAN_QR_SESSION-FF00FF?style=for-the-badge&logo=codepen)](https://nova-pair-site.onrender.com)
 
 ---
 
