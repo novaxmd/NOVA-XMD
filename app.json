@@ -118,7 +118,7 @@
     "MENTION_REPLY": {
       "description": "make it true if want mention reply if someone menetion you.",
       "required": false,
-      "value": "false"
+      "value": "true"
     },
 
     "MENU_IMAGE_URL": {
@@ -202,7 +202,7 @@
     "AUTO_BIO": {
       "description": "Make it true if you want bot to auto-update bio/status.",
       "required": false,
-      "value": "false"
+      "value": "true"
     },
 
     "CHATBOT": {
