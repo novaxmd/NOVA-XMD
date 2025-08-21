@@ -19,6 +19,28 @@
   <img src="https://i.postimg.cc/RCbPd59Q/3b11b8b48b3e23810767ffdac63a8c4c.jpg" width="270" style="border-radius: 20px;" />
 </p>
 
+
+<p align="center">
+  <a href="https://github.com/novaxmd/NOVA-XMD"><img title="Release" src="https://img.shields.io/badge/Release-beta%20v3.0-cyan.svg?style=for-the-badge&logo=appveyor" /></a>
+</p>
+
+
+<p align="center">
+  <a href="https://github.com/novaxmd"><img title="Developer" src="https://img.shields.io/badge/Author-NOVA%20XMD-FF7604.svg?style=big-square&logo=github" /></a>
+</p>
+
+<div align="center">
+  
+[![WhatsApp Channel](https://img.shields.io/badge/Join-WhatsApp%20Channel-FF00F8?style=big-square&logo=whatsapp)](https://whatsapp.com/channel/0029VawO6hgF6sn7k3SuVU3z)
+</div>
+
+
+<p align="center">
+<a href="https://github.com/novaxmd/NOVA-XMD"><img title="PUBLIC-BOT" src="https://img.shields.io/static/v1?label=Language&message=English&style=square&color=darkpink"></a> &nbsp;
+  <img src="https://komarev.com/ghpvc/?username=NOVA-XMD&label=VIEWS&style=square&color=blue" />
+</p>
+
+
 ---
 
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Rockstar-ExtraBold&size=50&pause=4800color=RRGGBB&lines=true&vCenter=true&width=815&height=100&lines=NOVA-XMD+DEPLOY+NOW+ENJOY+BOT)](https://git.io/typing-svg) 
