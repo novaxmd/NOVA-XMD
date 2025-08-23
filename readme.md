@@ -19,6 +19,9 @@
   <img src="https://i.postimg.cc/RCbPd59Q/3b11b8b48b3e23810767ffdac63a8c4c.jpg" width="270" style="border-radius: 20px;" />
 </p>
 
+<p align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=25&duration=4000&pause=1000&color=FF0000&center=true&vCenter=true&width=500&lines=DEPLOY+NOW;CHECK+YOUR+SETTINGS+NOW+👇" alt="Animated Typing SVG" />
+</p>
   
 <a href="https://media-website-bmb.vercel.app/">
   <img 
