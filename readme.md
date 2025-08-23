@@ -42,49 +42,19 @@
 
 
 ---
+<img src="https://cdn-icons-png.flaticon.com/512/4712/4712106.png" width="40" height="40" alt="Robot">
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Rockstar-ExtraBold&size=50&pause=4800color=RRGGBB&lines=true&vCenter=true&width=815&height=100&lines=NOVA-XMD+DEPLOY+NOW+ENJOY+BOT)](https://git.io/typing-svg) 
-
-### 🔰 ➊ FOLLOW GITHUB
-
-[![](https://img.shields.io/badge/➕_FOLLOW_NOVA-XMD-orange?style=for-the-badge&logo=github)](https://github.com/novaxmd)
-
----
-
-### 🔃 ➋ FORK REPOSITORY
-
-[![](https://img.shields.io/badge/🔁_FORK_THIS_REPO-FF4500?style=for-the-badge&logo=github)](https://github.com/novaxmd/NOVA-XMD/fork)
-
----
-
-### 🔐 ➌ PAIR SESSION CODE
-
-[![](https://img.shields.io/badge/🔐_PAIR_CODE_SESSION-8A2BE2?style=for-the-badge&logo=codepen)](https://nova-pair-site.onrender.com)
-
----
-
-### 📸 ➍ QR SESSION ID
-
-[![](https://img.shields.io/badge/📷_SCAN_QR_SESSION-FF00FF?style=for-the-badge&logo=codepen)](https://nova-pair-site.onrender.com)
-
----
-
-### 🚀 DEPLOY TO PLATFORM
-
-**Heroku**  
-[![](https://img.shields.io/badge/🚀_DEPLOY_ON_HEROKU-6971FF?style=for-the-badge&logo=heroku&logoColor=white)](https://dashboard.heroku.com/new?template=https://github.com/novaxmd/NOVA-XMD/tree/main)
-
-**Render**  
-[![](https://img.shields.io/badge/🚀_DEPLOY_ON_RENDER-black?style=for-the-badge&logo=render)](https://dashboard.render.com/web/new)
-
-**TalkDrove**  
-[![](https://img.shields.io/badge/📤_TALKDROVE_DEPLOY-FF004D?style=for-the-badge&logo=telegram)](https://talkdrove.com/share-bot/11)
-
-**Koyeb**  
-[![](https://img.shields.io/badge/⚙️_DEPLOY_ON_KOYEB-FF009D?style=for-the-badge&logo=koyeb)](https://app.koyeb.com)
-
-**Railway**  
-[![](https://img.shields.io/badge/🚄_DEPLOY_ON_RAILWAY-orange?style=for-the-badge&logo=railway&logoColor=white)](https://railway.app/new)
-
+<div style="display:flex; gap:10px; margin-top:10px;">
+  <!-- Badge with red label + blue message -->
+  <a href="https://media-website-bmb.vercel.app/">
+    <img 
+      title="CLICKE-HERE-TO-DEPLOY" 
+      src="https://img.shields.io/badge/DEPLOY--NOW-red?style=for-the-badge&logo=robot&logoColor=white&labelColor=red&color=blue&message=Click%20to%20deploy"
+      width="300" 
+      height="40"
+      alt="Deploy with Vercel"
+    />
+  </a>
+</div>
 ---
 
