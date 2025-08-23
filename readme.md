@@ -14,13 +14,18 @@
   <a href="https://github.com/novaxmd/NOVA-XMD/graphs/commit-activity"><img height="28" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge&logo=gitpod&logoColor=white"></a>
 </
 
+---
 
 <p align="center">
   <img src="https://i.postimg.cc/RCbPd59Q/3b11b8b48b3e23810767ffdac63a8c4c.jpg" width="270" style="border-radius: 20px;" />
 </p>
 
+---
+
 <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Black+Ops+One&size=100&pause=1000&color=8A2BE2&center=true&width=1000&height=200&lines=CLICK-HERE-DEPLOY-NOW" alt="Typing SVG" /></a>
   </div>
+
+  ---
   
 <a href="https://media-website-bmb.vercel.app/">
   <img 
@@ -31,3 +36,12 @@
     alt="Deploy with Robot"
   />
 </a>
+
+---
+
+
+<h3 align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=20&duration=3000&color=FFFFFF&background=000000&center=true&vCenter=true&width=600&lines=💎+NOVA+XMD+Edition+by+Novaxmd🪀;⚡+The+Best+Simple+WhatsApp+Bot+Allover+The+Glob" alt="Footer Animation">
+</h3>
+
+---
