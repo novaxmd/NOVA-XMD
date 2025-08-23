@@ -31,30 +31,12 @@
 
 <div align="center">
   
-[![WhatsApp Channel](https://img.shields.io/badge/Join-WhatsApp%20Channel-FF00F8?style=big-square&logo=whatsapp)](https://whatsapp.com/channel/0029VawO6hgF6sn7k3SuVU3z)
-</div>
-
-
-<p align="center">
-<a href="https://github.com/novaxmd/NOVA-XMD"><img title="PUBLIC-BOT" src="https://img.shields.io/static/v1?label=Language&message=English&style=square&color=darkpink"></a> &nbsp;
-  <img src="https://komarev.com/ghpvc/?username=NOVA-XMD&label=VIEWS&style=square&color=blue" />
-</p>
-
-
----
-<img src="https://cdn-icons-png.flaticon.com/512/4712/4712106.png" width="40" height="40" alt="Robot">
-
-<div style="display:flex; gap:10px; margin-top:10px;">
-  <!-- Badge with red label + blue message -->
-  <a href="https://media-website-bmb.vercel.app/">
-    <img 
-      title="CLICKE-HERE-TO-DEPLOY" 
-      src="https://img.shields.io/badge/DEPLOY--NOW-red?style=for-the-badge&logo=robot&logoColor=white&labelColor=red&color=blue&message=Click%20to%20deploy"
-      width="300" 
-      height="40"
-      alt="Deploy with Vercel"
-    />
-  </a>
-</div>
----
-
+<a href="https://media-website-bmb.vercel.app/">
+  <img 
+    title="DEPLOY-NOW" 
+    src="https://img.shields.io/badge/DEPLOY--NOW-Click%20to%20deploy-brightgreen?style=for-the-badge&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABvUlEQVR4Ae2XjWrCQBBF3wQjqzPIpAZOAjtAezM9nLJKnAFHgqfAXsA2GAgFCGGO7c+ZShDk9Qkq2aXxvPYhfl72EkCAJAvKUlT6f3XivCrCyBlFPLMCRAwAIgz4Fy+LC7v0wm7a7kSaQ7vt2cAzPfDKOEjA4x2g7qdoAzYxrkBqCQDxiLbcRz/3uwD8KXJEG8sbBmkQX2gyZyeDLMPQpvlbVwDp6A9/jRLc1CtkbtYBau2bfbHDy6F4C3GYrYAj7AoP3T5wG2MXCwP+YDBb0RwB8wo6TiZtnTu9GoOuYA0v0RAPvo0MTmKHcTS6cXfW2dCfpURhODafUTrAFlXVmETuSU3rjW8rCu0jGQdXEd1f+rf8COJo3dn96G4Cn0Z7jAH4k40Re2zcnksq2qZT64slAH9ki4RQl/HrpJDJ5DQAO1SCBh5hldMAAAAASUVORK5CYII=&logoColor=white"
+    width="300" 
+    height="40.45"
+    alt="Deploy with Robot"
+  />
+</a>
