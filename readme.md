@@ -17,7 +17,7 @@
 ---
 
 <p align="center">
-  <img src="https://i.postimg.cc/RCbPd59Q/3b11b8b48b3e23810767ffdac63a8c4c.jpg" width="270" style="border-radius: 20px;" />
+  <img src="https://files.catbox.moe/kpxkm8.jpg" width="270" style="border-radius: 20px;" />
 </p>
 
 ---
