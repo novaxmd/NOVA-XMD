@@ -3,7 +3,7 @@ services:
     name: NOVA-XMD
     env: node
     plan: free
-    repo: https://github.com/caseyweb/NOVA-XMD
+    repo: https://github.com/novaxmd/NOVA-XMD
     branch: main
     buildCommand: npm install
     startCommand: npm start

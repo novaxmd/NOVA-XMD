@@ -21,7 +21,7 @@ AUTO_STATUS_REACT: process.env.AUTO_STATUS_REACT || "true",
 ANTI_CALL: process.env.ANTI_CALL || "true",
 // anticall on/off
 
-AUTO_STATUS_MSG: process.env.AUTO_STATUS_MSG || "*SEEN YOUR STATUS BY NOVA XMD 🔥*",
+AUTO_STATUS_MSG: process.env.AUTO_STATUS_MSG || "*SEEN YOUR STATUS BY NOVA XMD🔥*",
 // set the auto reply massage on status reply  
 
 ANTI_DELETE: process.env.ANTI_DELETE || "true",

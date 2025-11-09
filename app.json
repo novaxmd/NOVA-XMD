@@ -1,6 +1,6 @@
 {
   "name": "NOVA-XMD",
-  "description": "Whatsapp bot 🤖 by nova xmd tech",
+  "description": "Whatsapp bot 🤖 by nova xmd",
   "logo": "https://files.catbox.moe/4j07ae.jpg",
   "keywords": ["NOVA-XMD"],
   "success_url": "/",
@@ -82,7 +82,7 @@
     "OWNER_NAME": {
       "description": "Type Bot Owner Name.",
       "required": false,
-      "value": "NOVA-TECH"
+      "value": "NOVA-XMD"
     },
 
     "OWNER_NUMBER": {
