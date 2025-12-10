@@ -1,6 +1,6 @@
 {
   "name": "NOVA-XMD",
-  "description": "Whatsapp bot 🤖 by nova xmd",
+  "description": "Whatsapp bot 🤖 by nova xmd tech",
   "logo": "https://files.catbox.moe/4j07ae.jpg",
   "keywords": ["NOVA-XMD"],
   "success_url": "/",
@@ -11,12 +11,6 @@
       "description": "Put the session-id here.",
       "required": true,
       "value": ""
-    },
-
-    "STICKER_NAME": {
-      "description": "type your sticker pack name.",
-      "required": false,
-      "value": "NOVA-XMD"
     },
 
     "PREFIX": {
@@ -49,12 +43,6 @@
       "value": "false"
     },
 
-    "AUTO_STICKER": {
-      "description": "Make it true if you want automatic sticker.",
-      "required": false,
-      "value": "false"
-    },
-
     "AUTO_STATUS_SEEN": {
       "description": "Make it true for automatic status seen.",
       "required": true,
@@ -82,7 +70,7 @@
     "OWNER_NAME": {
       "description": "Type Bot Owner Name.",
       "required": false,
-      "value": "NOVA-XMD"
+      "value": "NOVA-TECH"
     },
 
     "OWNER_NUMBER": {
@@ -97,30 +85,6 @@
       "value": "NOVA-XMD"
     },
 
-    "ANTI_LINK": {
-      "description": "Make it true if you want bot auto remove group link.",
-      "required": true,
-      "value": "true"
-    },
-
-    "ANTI_LINK_KICK": {
-      "description": "Make it true if you want bot auto remove group link.",
-      "required": true,
-      "value": "true"
-    },
-
-    "ANTI_BAD": {
-      "description": "Make it true if you want bot auto delete bad words.",
-      "required": false,
-      "value": "false"
-    },
-
-    "MENTION_REPLY": {
-      "description": "make it true if want mention reply if someone menetion you.",
-      "required": false,
-      "value": "true"
-    },
-
     "MENU_IMAGE_URL": {
       "description": "add url for mention reply and menu if want.",
       "required": false,
@@ -131,12 +95,6 @@
       "description": "add caption for menu and other",
       "required": false,
       "value": "*© ᴘᴏᴡᴇʀᴇᴅ ʙʏ 𝙽𝙾𝚅𝙰-𝚇𝙼𝙳*"
-    },
-
-    "DELETE_LINKS": {
-      "description": "remove links from group automatically without removing member",
-      "required": false,
-      "value": "true"
     },
 
     "AUTO_RECORDING": {
@@ -175,12 +133,6 @@
       "value": "log"
     },
 
-    "ADMIN_EVENTS": {
-      "description": "make it true if want know who promote or demote a member .",
-      "required": false,
-      "value": "false"
-    },
-
     "WELCOME": {
       "description": "make it true if want goodbye and welcome message in groups.",
       "required": false,
@@ -205,7 +157,7 @@
       "value": "true"
     },
 
-    "CHATBOT": {
+    "CHAT_BOT": {
       "description": "Make it true if you want AI chatbot responses enabled.",
       "required": false,
       "value": "false"
@@ -218,4 +170,4 @@
     }
   ],
   "stack": "heroku-24"
-}
+  }
