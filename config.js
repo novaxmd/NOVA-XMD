@@ -21,7 +21,7 @@ AUTO_STATUS_REACT: process.env.AUTO_STATUS_REACT || "true",
 ANTI_CALL: process.env.ANTI_CALL || "true",
 // anticall on/off
 
-AUTO_STATUS_MSG: process.env.AUTO_STATUS_MSG || "*SEEN YOUR STATUS BY NOVA XMD🔥*",
+AUTO_STATUS_MSG: process.env.AUTO_STATUS_MSG || "*SEEN YOUR STATUS BY NOVA XMD 🔥*",
 // set the auto reply massage on status reply  
 
 ANTI_DELETE: process.env.ANTI_DELETE || "true",
@@ -38,9 +38,6 @@ ADMIN_EVENTS: process.env.ADMIN_EVENTS || "false",
 
 ANTI_LINK: process.env.ANTI_LINK || "true",
 // make anti link true,false for groups 
-
-MENTION_REPLY: process.env.MENTION_REPLY || "false",
-// make true if want auto voice reply if someone menetion you 
 
 MENU_IMAGE_URL: process.env.MENU_IMAGE_URL || "https://files.catbox.moe/52dotx.jpg",
 // add custom menu and mention reply image url
@@ -90,9 +87,6 @@ MODE: process.env.MODE || "public",
 AUTO_STICKER: process.env.AUTO_STICKER || "false",
 // make true for automatic stickers 
 
-AUTO_REPLY: process.env.AUTO_REPLY || "false",
-// make true or false automatic text reply 
-
 ALWAYS_ONLINE: process.env.ALWAYS_ONLINE || "false",
 // maks true for always online 
 
@@ -108,15 +102,12 @@ READ_CMD: process.env.READ_CMD || "false",
 DEV: process.env.DEV || "255767862457",
 // replace with your whatsapp number        
 
-ANTI_VV: process.env.ANTI_VV || "true",
-// true for anti once view 
-
 AUTO_RECORDING: process.env.AUTO_RECORDING || "false",
 // make it true for auto recoding 
 
 AUTO_BIO: process.env.AUTO_BIO || "false",
 // make true if you want bot to auto-update bio/status
 
-CHATBOT: process.env.CHATBOT || "false"
+CHAT_BOT: process.env.CHAT_BOT || "false"
 // make true if you want AI chatbot responses enabled
 };
