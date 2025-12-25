@@ -1,7 +1,7 @@
 {
   "name": "NOVA-XMD",
   "description": "Whatsapp bot 🤖 by nova xmd tech",
-  "logo": "https://files.catbox.moe/4j07ae.jpg",
+  "logo": "https://files.catbox.moe/mxb907.jpg",
   "keywords": ["NOVA-XMD"],
   "success_url": "/",
 
@@ -88,7 +88,7 @@
     "MENU_IMAGE_URL": {
       "description": "add url for mention reply and menu if want.",
       "required": false,
-      "value": "https://files.catbox.moe/4j07ae.jpg"
+      "value": "https://files.catbox.moe/mxb907.jpg"
     },
 
     "DESCRIPTION": {
@@ -132,6 +132,32 @@
       "required": false,
       "value": "log"
     },
+    
+    "ANTI_LINK": {
+      "description": "Make it true if you want bot auto remove group link.",
+      "required": true,
+      "value": "true"
+      
+    },
+
+     "ANTI_LINK_KICK": {
+      "description": "Make it true if you want bot auto remove group link.",
+      "required": true,
+      "value": "true"
+      
+    },
+    
+    "ANTI_BAD": {
+      "description": "Make it true if you want bot auto delete bad words.",
+      "required": true,
+      "value": "true"
+    },
+    
+    "DELETE_LINKS": {
+      "description": "remove links from group automatically without removing member",
+      "required": false,
+      "value": "false"
+    },
 
     "WELCOME": {
       "description": "make it true if want goodbye and welcome message in groups.",
@@ -171,3 +197,4 @@
   ],
   "stack": "heroku-24"
   }
+  

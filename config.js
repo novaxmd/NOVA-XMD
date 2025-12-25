@@ -33,13 +33,16 @@ ANTI_DEL_PATH: process.env.ANTI_DEL_PATH || "log",
 WELCOME: process.env.WELCOME || "true",
 // true if want welcome and goodbye msg in groups    
 
-ADMIN_EVENTS: process.env.ADMIN_EVENTS || "false",
+ADMIN_EVENTS: process.env.ADMIN_EVENTS || "true",
 // make true to know who dismiss or promoted a member in group
 
 ANTI_LINK: process.env.ANTI_LINK || "true",
 // make anti link true,false for groups 
 
-MENU_IMAGE_URL: process.env.MENU_IMAGE_URL || "https://files.catbox.moe/52dotx.jpg",
+MENTION_REPLY: process.env.MENTION_REPLY || "false",
+// make true if want auto voice reply if someone menetion you 
+
+MENU_IMAGE_URL: process.env.MENU_IMAGE_URL || "https://files.catbox.moe/mxb907.jpg",
 // add custom menu and mention reply image url
 
 PREFIX: process.env.PREFIX || ".",
@@ -66,7 +69,7 @@ OWNER_NAME: process.env.OWNER_NAME || "NOVA-TECH",
 DESCRIPTION: process.env.DESCRIPTION || "*© POWERED NOVA TECH*",
 // add bot description    
 
-ALIVE_IMG: process.env.ALIVE_IMG || "https://files.catbox.moe/52dotx.jpg",
+ALIVE_IMG: process.env.ALIVE_IMG || "https://files.catbox.moe/mxb907.jpg",
 // add img for alive msg
 
 LIVE_MSG: process.env.LIVE_MSG || "> Powered by *NOVA TECH*⚡",
@@ -78,7 +81,7 @@ READ_MESSAGE: process.env.READ_MESSAGE || "false",
 AUTO_REACT: process.env.AUTO_REACT || "false",
 // make this true or false for auto react on all msgs
 
-ANTI_BAD: process.env.ANTI_BAD || "false",
+ANTI_BAD: process.env.ANTI_BAD || "true",
 // false or true for anti bad words  
 
 MODE: process.env.MODE || "public",
@@ -86,6 +89,9 @@ MODE: process.env.MODE || "public",
 
 AUTO_STICKER: process.env.AUTO_STICKER || "false",
 // make true for automatic stickers 
+
+AUTO_REPLY: process.env.AUTO_REPLY || "false",
+// make true or false automatic text reply 
 
 ALWAYS_ONLINE: process.env.ALWAYS_ONLINE || "false",
 // maks true for always online 
@@ -101,6 +107,9 @@ READ_CMD: process.env.READ_CMD || "false",
 
 DEV: process.env.DEV || "255767862457",
 // replace with your whatsapp number        
+
+ANTI_VV: process.env.ANTI_VV || "true",
+// true for anti once view 
 
 AUTO_RECORDING: process.env.AUTO_RECORDING || "false",
 // make it true for auto recoding 

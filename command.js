@@ -18,4 +18,3 @@ module.exports = {
     Module:cmd,
     commands,
 };
-

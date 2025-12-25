@@ -9,7 +9,7 @@
     "restart": "pm2 restart NOVA-XMD"
   },
   "dependencies": {
-    "@whiskeysockets/baileys": "github:Jeliostarr/DEV-Baileys",
+    "@whiskeysockets/baileys": "npm:gifted-baileys@2.0.0",
     "@adiwajshing/keyed-db": "^0.2.4",
     "@dark-yasiya/yt-dl.js": "1.0.5",
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
@@ -49,6 +49,7 @@
     "api-dylux": "1.8.5",
     "@mrnima/tiktok-downloader": "1.0.0",
     "@mrnima/facebook-downloader": "1.0.0",
-    "mrnima-moviedl": "1.0.0"
+    "mrnima-moviedl": "1.0.0",
+    "gifted-btns": "^1.0.0"
   }
 }
