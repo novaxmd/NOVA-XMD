@@ -63,16 +63,16 @@ CUSTOM_REACT_EMOJIS: process.env.CUSTOM_REACT_EMOJIS || "💝,💖,💗,❤️�
 OWNER_NUMBER: process.env.OWNER_NUMBER || "255767862457",
 // add your bot owner number
 
-OWNER_NAME: process.env.OWNER_NAME || "NOVA-TECH",
+OWNER_NAME: process.env.OWNER_NAME || "𝙽𝙾𝚅𝙰-𝚇𝙼𝙳",
 // add bot owner name
 
-DESCRIPTION: process.env.DESCRIPTION || "*© POWERED NOVA TECH*",
+DESCRIPTION: process.env.DESCRIPTION || "*© powered 𝙽𝙾𝚅𝙰-𝚇𝙼𝙳*",
 // add bot description    
 
 ALIVE_IMG: process.env.ALIVE_IMG || "https://files.catbox.moe/mxb907.jpg",
 // add img for alive msg
 
-LIVE_MSG: process.env.LIVE_MSG || "> Powered by *NOVA TECH*⚡",
+LIVE_MSG: process.env.LIVE_MSG || "> Powered by Nova Xmd ⚡",
 // add alive msg here 
 
 READ_MESSAGE: process.env.READ_MESSAGE || "false",
@@ -119,4 +119,7 @@ AUTO_BIO: process.env.AUTO_BIO || "false",
 
 CHAT_BOT: process.env.CHAT_BOT || "false"
 // make true if you want AI chatbot responses enabled
+
+AUDIO_URL: process.env.AUDIO_URL || "https://files.catbox.moe/r0s5me.mp3",
+// add custom audio and mention reply audio url
 };
