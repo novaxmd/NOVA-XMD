@@ -168,7 +168,7 @@
     "ANTICALL": {
       "description": "Make it true if you want bot to block incoming calls.",
       "required": false,
-      "value": "true"
+      "value": "false"
     },
 
     "READ_MESSAGE": {
