@@ -17,7 +17,7 @@
 ---
 
 <p align="center">
-  <img src="https://files.catbox.moe/mxb907.jpg" width="270" style="border-radius: 20px;" />
+  <img src="https://i.ibb.co/PZF77VjQ/image.jpg" width="270" style="border-radius: 20px;" />
 </p>
 
 ---
