@@ -42,7 +42,7 @@ ANTI_LINK: process.env.ANTI_LINK || "true",
 MENTION_REPLY: process.env.MENTION_REPLY || "false",
 // make true if want auto voice reply if someone menetion you 
 
-MENU_IMAGE_URL: process.env.MENU_IMAGE_URL || "https://files.catbox.moe/mxb907.jpg",
+MENU_IMAGE_URL: process.env.MENU_IMAGE_URL || "https://i.ibb.co/PZF77VjQ/image.jpg",
 // add custom menu and mention reply image url
 
 PREFIX: process.env.PREFIX || ".",
@@ -69,7 +69,7 @@ OWNER_NAME: process.env.OWNER_NAME || "𝙱.𝙼.𝙱-𝚃𝙴𝙲𝙷",
 DESCRIPTION: process.env.DESCRIPTION || "*© powered 𝙽𝙾𝚅𝙰-𝚇𝙼𝙳*",
 // add bot description    
 
-ALIVE_IMG: process.env.ALIVE_IMG || "https://files.catbox.moe/mxb907.jpg",
+ALIVE_IMG: process.env.ALIVE_IMG || "https://i.ibb.co/PZF77VjQ/image.jpg",
 // add img for alive msg
 
 LIVE_MSG: process.env.LIVE_MSG || "> Powered by Nova Xmd",
