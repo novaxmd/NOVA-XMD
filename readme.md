@@ -17,7 +17,7 @@
 ---
 
 <p align="center">
-  <img src="https://i.ibb.co/PZF77VjQ/image.jpg" width="270" style="border-radius: 20px;" />
+  <img src="https://i.ibb.co/Hfm7K7QF/IMG-20260302-WA0004.jpg" width="270" style="border-radius: 20px;" />
 </p>
 
 ---
