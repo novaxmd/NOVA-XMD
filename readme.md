@@ -66,3 +66,31 @@
 </p>
 
 ---
+
+
+
+
+
+
+---
+
+### 👤 collaboration(nova xmd)
+<p align="center">
+  <i>The legends behind this project:</i>
+</p>
+<p align="center">
+<a href="https://github.com/novaxmd/NOVA-XMD/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=novaxmd/NOVA-XMD" />
+</a>
+</p>
+
+<p align="center">
+  <a><img src='https://i.imgur.com/LyHic3i.gif' width="120"/></a>
+  <a><img src='https://i.imgur.com/LyHic3i.gif' width="120"/></a>
+  <a><img src='https://i.imgur.com/LyHic3i.gif' width="120"/></a>
+</p>
+
+<p align="right">
+  <b>Built with Passion by Nova Xmd</b>
+</p>
+
