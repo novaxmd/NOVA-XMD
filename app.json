@@ -79,18 +79,6 @@
       "value": "255767862457"
     },
 
-    "BOT_NAME": {
-      "description": "Type here the bot name.",
-      "required": false,
-      "value": "NOVA-XMD"
-    },
-
-    "MENU_IMAGE_URL": {
-      "description": "add url for mention reply and menu if want.",
-      "required": false,
-      "value": "https://files.catbox.moe/mxb907.jpg"
-    },
-
     "DESCRIPTION": {
       "description": "add caption for menu and other",
       "required": false,
@@ -131,26 +119,6 @@
       "description": "change it to -same- if you want to resend deleted message in same chat othwise inbox",
       "required": false,
       "value": "log"
-    },
-    
-    "ANTI_LINK": {
-      "description": "Make it true if you want bot auto remove group link.",
-      "required": true,
-      "value": "true"
-      
-    },
-
-     "ANTI_LINK_KICK": {
-      "description": "Make it true if you want bot auto remove group link.",
-      "required": true,
-      "value": "true"
-      
-    },
-    
-    "ANTI_BAD": {
-      "description": "Make it true if you want bot auto delete bad words.",
-      "required": true,
-      "value": "true"
     },
     
     "DELETE_LINKS": {
