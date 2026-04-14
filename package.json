@@ -23,7 +23,7 @@
     "axios": "^1.2.5",
     "crypto-digest-sync": "^1.0.0",
     "crypto-js": "latest",
-    "file_size_url": "1.0.4",
+    "file_size_url": "1.0.6",
     "fs-extra": "^11.1.0",
     "fs": "^0.0.1-security",
     "ffmpeg": "^0.0.4",
