@@ -16,7 +16,7 @@
     "@vitalets/google-translate-api": "^9.2.0",
     "@dark-yasiya/scrap": "1.0.1",
     "@xaviabot/fb-downloader": "latest",
-    "pino": "^7.0.5",
+    "pino": "^10.0.0",
     "pm2": "^6.0.5",
     "util": "^0.12.4",
     "express": "latest",
