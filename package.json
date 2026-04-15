@@ -27,7 +27,7 @@
     "fs-extra": "^11.1.0",
     "fs": "^0.0.1-security",
     "ffmpeg": "^0.0.4",
-    "file-type": "^16.5.3",
+    "file-type": "^22.0.0",
     "fluent-ffmpeg": "^2.1.2",
     "form-data": "^4.0.0",
     "google-tts-api": "^2.0.2",
