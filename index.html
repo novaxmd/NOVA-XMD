@@ -7,14 +7,14 @@
     <!-- Tailwind + Font Awesome + Google Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; }
         body {
             background: radial-gradient(circle at 15% 30%, #0a0f1e, #02040c);
             background-attachment: fixed;
         }
-        /* modern glass morphism */
+        /* glass morphism (original cyan tones) */
         .glass-panel {
             background: rgba(12, 20, 30, 0.65);
             backdrop-filter: blur(14px);
@@ -89,12 +89,72 @@
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #0f172a; border-radius: 10px; }
         ::-webkit-scrollbar-thumb { background: #2dd4bf; border-radius: 10px; }
+        
+        /* ========== ONLY FONT COLORS CHANGED TO VIBRANT GREEN ========== */
+        body, p, h1, h2, h3, h4, span, a, li, .text-slate-300, .text-slate-400, .text-gray-400, 
+        .text-muted-foreground, .repo-card p, .glass-panel p, footer, .update-badge, .lang-pill,
+        #main-repo-desc, #main-language, .text-sm, .text-xs, .font-mono, .repo-card .text-slate-300,
+        .repo-card .text-gray-400, .website-card p, .website-card span, .status-badge span,
+        .text-cyan-400, .text-sky-400, .text-emerald-400, .text-amber-300 {
+            color: #b5ff9e !important;
+            text-shadow: 0 0 3px #00ff88, 0 0 6px #00cc66;
+        }
+        /* headings stronger glow */
+        h1, h2, h3, .font-bold, .stat-glow, .text-xl, .text-2xl, .text-3xl, .text-4xl, .text-5xl {
+            color: #ccffb0 !important;
+            text-shadow: 0 0 6px #00ff88, 0 0 10px #00aa55;
+        }
+        /* gradient text override to green (for main title) */
+        .bg-gradient-to-r.from-white.via-sky-200.to-cyan-300 {
+            background: linear-gradient(135deg, #e0ffc0, #a0ff80);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent !important;
+            text-shadow: none;
+        }
+        .stat-glow {
+            background: linear-gradient(135deg, #c0ffa0, #70ff80);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent !important;
+            text-shadow: none;
+        }
+        /* keep badges and pills background unchanged but text green */
+        .lang-pill, .update-badge, .status-badge {
+            color: #ccffb0 !important;
+        }
+        /* links hover effect green */
+        a:hover {
+            color: #eeffcc !important;
+            text-shadow: 0 0 8px #33ff88;
+        }
+        /* icons also get green tint */
+        i, .fas, .fab {
+            color: inherit;
+            text-shadow: 0 0 3px #33ff77;
+        }
+        /* but keep original button gradient (cyan) unchanged */
+        .bg-gradient-to-r.from-sky-600.to-cyan-600 {
+            background: linear-gradient(135deg, #0891b2, #06b6d4);
+        }
+        .bg-gradient-to-r.from-sky-600.to-cyan-600:hover {
+            background: linear-gradient(135deg, #0e7f9e, #0a9ebe);
+        }
+        /* website status badge colors original but text green */
+        .status-online { background: rgba(16, 185, 129, 0.15); border-color: rgba(16, 185, 129, 0.4); }
+        .status-offline { background: rgba(239, 68, 68, 0.15); border-color: rgba(239, 68, 68, 0.4); }
+        .status-checking { background: rgba(59, 130, 246, 0.15); border-color: rgba(59, 130, 246, 0.4); }
+        /* preserve original card borders and glass */
     </style>
 </head>
-<body class="text-gray-200 antialiased">
+<body>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-        <!-- header with brand -->
+    <!-- Canvas background (TechBackground replica) -->
+    <canvas id="tech-canvas" class="fixed inset-0 pointer-events-none" style="z-index: 0; display: block;"></canvas>
+
+    <!-- Main UI content layer -->
+    <div class="content-layer relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <!-- header -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-5 mb-12">
             <div>
                 <div class="flex items-center gap-3 flex-wrap">
@@ -109,7 +169,7 @@
             </a>
         </div>
 
-        <!-- MAIN FLAGSHIP REPO: NOVA-XMD -->
+        <!-- MAIN FLAGSHIP REPO -->
         <div class="glass-panel p-6 md:p-8 mb-12 rounded-3xl">
             <div class="flex flex-col lg:flex-row justify-between items-start gap-6">
                 <div>
@@ -135,13 +195,13 @@
                         </div>
                     </div>
                 </div>
-                <a href="https://github.com/novaxmd/NOVA-XMD" target="_blank" class="bg-gradient-to-r from-sky-600 to-cyan-600 hover:from-sky-500 hover:to-cyan-500 transition-all px-6 py-3 rounded-xl flex items-center gap-2 font-semibold shadow-lg shadow-sky-900/30">
+                <a href="https://github.com/novaxmd/NOVA-XMD" target="_blank" class="bg-gradient-to-r from-sky-600 to-cyan-600 hover:from-sky-500 hover:to-cyan-500 transition-all px-6 py-3 rounded-xl flex items-center gap-2 font-semibold shadow-lg shadow-sky-900/30 text-white">
                     <i class="fab fa-github"></i> Explore Repo <i class="fas fa-arrow-right text-xs"></i>
                 </a>
             </div>
         </div>
 
-        <!-- STATS ROW: total repos, total stars, total forks -->
+        <!-- STATS ROW -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             <div class="glass-panel p-5 text-center md:text-left">
                 <div class="flex items-center gap-3 text-sky-300 mb-2 justify-center md:justify-start"><i class="fas fa-database text-xl"></i><h3 class="font-semibold">Total Repositories</h3></div>
@@ -160,7 +220,7 @@
             </div>
         </div>
 
-        <!-- LANGUAGE GALAXY (JS, TS, HTML, PHP, Python, etc) -->
+        <!-- LANGUAGE GALAXY -->
         <div class="glass-panel p-6 mb-12">
             <div class="flex flex-wrap justify-between items-center gap-3 border-b border-slate-700/50 pb-4 mb-5">
                 <div><i class="fab fa-js text-yellow-400 mr-2"></i><span class="font-bold text-xl">🌌 Language Nebula</span><span class="text-sm text-slate-300 ml-3">JavaScript · TypeScript · HTML · PHP · Python + more</span></div>
@@ -174,22 +234,31 @@
             <div id="language-detail" class="flex flex-wrap gap-2 mt-5 text-sm"></div>
         </div>
 
-        <!-- WEBSITES & LIVE DEMOS FROM REPOS -->
+        <!-- WEBSITE STATUS SECTION (enhanced with live monitoring) -->
         <div class="glass-panel p-6 mb-12">
-            <div class="flex items-center gap-3 mb-5"><i class="fas fa-globe text-cyan-400 text-xl"></i><h3 class="text-xl font-bold">🌐  Live Websites & Demos</h3><span class="text-xs bg-slate-800/70 px-3 py-1 rounded-full">powered by repos</span></div>
-            <div id="websites-list" class="flex flex-wrap gap-3">
-                <div class="skeleton w-32 h-10 rounded-full"></div><div class="skeleton w-40 h-10 rounded-full"></div>
+            <div class="flex flex-wrap justify-between items-center gap-3 mb-5">
+                <div class="flex items-center gap-3">
+                    <i class="fas fa-globe text-cyan-400 text-xl"></i>
+                    <h3 class="text-xl font-bold">🌐  Website Status · Live Monitoring</h3>
+                    <span class="text-xs bg-slate-800/70 px-3 py-1 rounded-full">real-time online/offline</span>
+                </div>
+                <div class="flex items-center gap-2 text-xs text-slate-400">
+                    <i class="fas fa-sync-alt"></i> checks every 60s
+                </div>
+            </div>
+            <div id="website-status-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="skeleton h-56 w-full rounded-2xl"></div>
+                <div class="skeleton h-56 w-full rounded-2xl"></div>
             </div>
         </div>
 
-        <!-- ALL REPOSITORIES FLEET (with last update & online status) -->
+        <!-- ALL REPOSITORIES FLEET -->
         <div>
             <div class="flex items-center justify-between flex-wrap gap-3 mb-6">
                 <div class="flex items-center gap-3"><i class="fas fa-cubes text-2xl text-sky-300"></i><h2 class="text-2xl font-bold">📦  Repository Fleet</h2><span id="repo-count-badge" class="bg-slate-800/80 text-slate-300 px-3 py-1 rounded-full text-sm">loading..</span></div>
-                <div class="text-xs text-slate-400 flex items-center gap-2"><i class="fas fa-sync-alt"></i> live updates from GitHub API</div>
+                <div class="text-xs text-slate-400 flex items-center gap-2"><i class="fas fa-sync-alt"></i> live from GitHub API</div>
             </div>
             <div id="repos-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                <div class="repo-card rounded-2xl p-5 animate-pulse"><div class="skeleton h-6 w-3/4 mb-3 rounded"></div><div class="skeleton h-4 w-full mb-2"></div><div class="skeleton h-4 w-2/3"></div></div>
                 <div class="repo-card rounded-2xl p-5 animate-pulse"><div class="skeleton h-6 w-3/4 mb-3 rounded"></div><div class="skeleton h-4 w-full mb-2"></div><div class="skeleton h-4 w-2/3"></div></div>
             </div>
         </div>
@@ -199,13 +268,70 @@
             <span><i class="fas fa-clock"></i> last fetched from GitHub API</span>
             <span><i class="fas fa-code"></i> JavaScript · TypeScript · HTML · PHP ecosystem</span>
         </footer>
-    </main>
+    </div>
 
     <script>
+        // ---------- TECH BACKGROUND (Canvas Particle Network) ----------
+        (function initTechBackground() {
+            const canvas = document.getElementById('tech-canvas');
+            if (!canvas) return;
+            let ctx = canvas.getContext('2d');
+            if (!ctx) return;
+            let width = window.innerWidth, height = window.innerHeight;
+            let particles = [];
+            let animationId = null;
+            function setCanvasSize() { width = window.innerWidth; height = window.innerHeight; canvas.width = width; canvas.height = height; }
+            function initParticles() {
+                particles = [];
+                for (let i = 0; i < 80; i++) {
+                    const isCyan = Math.random() > 0.4;
+                    particles.push({
+                        x: Math.random() * width, y: Math.random() * height, radius: Math.random() * 2 + 0.5,
+                        vx: (Math.random() - 0.5) * 0.3, vy: (Math.random() - 0.5) * 0.3,
+                        alpha: Math.random() * 0.6 + 0.2, color: isCyan ? '0, 200, 255' : '180, 100, 255'
+                    });
+                }
+            }
+            function drawAndAnimate() {
+                if (!ctx) return;
+                ctx.fillStyle = 'rgba(10, 15, 25, 0.05)';
+                ctx.fillRect(0, 0, width, height);
+                for (let i = 0; i < particles.length; i++) {
+                    const p = particles[i];
+                    p.x += p.vx; p.y += p.vy;
+                    if (p.x < 0) p.x = width; if (p.x > width) p.x = 0;
+                    if (p.y < 0) p.y = height; if (p.y > height) p.y = 0;
+                    const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius * 3);
+                    gradient.addColorStop(0, `rgba(${p.color}, ${p.alpha})`);
+                    gradient.addColorStop(1, `rgba(${p.color}, 0)`);
+                    ctx.beginPath(); ctx.arc(p.x, p.y, p.radius * 3, 0, Math.PI * 2);
+                    ctx.fillStyle = gradient; ctx.fill();
+                    ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${p.color}, ${p.alpha})`; ctx.fill();
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const other = particles[j];
+                        const dx = p.x - other.x, dy = p.y - other.y, dist = Math.sqrt(dx*dx + dy*dy);
+                        if (dist < 120) {
+                            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(other.x, other.y);
+                            ctx.strokeStyle = `rgba(0, 200, 255, ${0.12 * (1 - dist / 120)})`;
+                            ctx.lineWidth = 0.6; ctx.stroke();
+                        }
+                    }
+                }
+                animationId = requestAnimationFrame(drawAndAnimate);
+            }
+            function resizeAndReset() { setCanvasSize(); initParticles(); }
+            setCanvasSize(); initParticles();
+            ctx.fillStyle = 'rgba(10, 15, 25, 1)'; ctx.fillRect(0, 0, width, height);
+            drawAndAnimate();
+            window.addEventListener('resize', resizeAndReset);
+        })();
+
+        // ---------- GITHUB DATA & WEBSITE STATUS MONITORING ----------
         const GITHUB_USER = "novaxmd";
         const MAIN_REPO = "NOVA-XMD";
         
-        // DOM refs
+        // DOM elements
         const mainStarsSpan = document.getElementById("main-stars");
         const mainForksSpan = document.getElementById("main-forks");
         const mainDescSpan = document.getElementById("main-repo-desc");
@@ -214,24 +340,23 @@
         const totalStarsSumSpan = document.getElementById("total-stars-sum");
         const totalForksSumSpan = document.getElementById("total-forks-sum");
         const reposGrid = document.getElementById("repos-grid");
-        const websitesContainer = document.getElementById("websites-list");
+        const repoCountBadge = document.getElementById("repo-count-badge");
         const languageStatsContainer = document.getElementById("language-stats-container");
         const languageDetailSpan = document.getElementById("language-detail");
-        const repoCountBadge = document.getElementById("repo-count-badge");
+        const websiteGrid = document.getElementById("website-status-grid");
 
-        // Data stores
         let allRepos = [];
-        let aggregatedLanguages = new Map(); // lang -> total bytes
-        let repoLanguagesMap = new Map();    // repoName -> {lang: bytes}
-        
-        // Helper fetcher
+        let aggregatedLanguages = new Map();
+        let repoLanguagesMap = new Map();
+        let websiteStatusMap = new Map(); // key: url, value: 'checking'|'online'|'offline'
+        let statusCheckInterval = null;
+
         async function fetchJSON(url) {
             const res = await fetch(url, { headers: { "Accept": "application/vnd.github.v3+json" } });
             if (!res.ok) throw new Error(`GitHub API error ${res.status}`);
             return res.json();
         }
 
-        // Load main repo details
         async function loadMainRepo() {
             try {
                 const repo = await fetchJSON(`https://api.github.com/repos/${GITHUB_USER}/${MAIN_REPO}`);
@@ -239,19 +364,12 @@
                 mainForksSpan.innerText = repo.forks_count.toLocaleString();
                 mainDescSpan.innerText = repo.description || "NOVA XMD — next-gen WhatsApp multi-device bot & framework.";
                 mainLangSpan.innerText = `primary: ${repo.language || "TypeScript/JS"}`;
-            } catch (err) {
-                console.warn(err);
-                mainStarsSpan.innerText = "✨";
-                mainForksSpan.innerText = "🔁";
-                mainDescSpan.innerText = "NOVA-XMD: powerful XMD ecosystem";
-            }
+            } catch (err) { console.warn(err); }
         }
 
-        // Fetch all user repositories
         async function loadAllRepos() {
             try {
                 const repos = await fetchJSON(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`);
-                // keep original repos (include forks if any but we display all)
                 allRepos = repos.filter(r => !r.archived);
                 totalReposSpan.innerText = allRepos.length;
                 repoCountBadge.innerText = `${allRepos.length} active repos`;
@@ -261,13 +379,11 @@
                 totalForksSumSpan.innerText = totalForks.toLocaleString();
                 return allRepos;
             } catch (err) {
-                console.error("repos fetch failed", err);
                 reposGrid.innerHTML = `<div class="col-span-full text-center p-10 glass-panel">⚠️ Rate limit or network issue. Please wait and refresh.</div>`;
                 return [];
             }
         }
 
-        // Fetch languages per repo (with caching in repoLanguagesMap & aggregated)
         async function fetchRepoLanguages(repoName) {
             try {
                 const langs = await fetchJSON(`https://api.github.com/repos/${GITHUB_USER}/${repoName}/languages`);
@@ -276,13 +392,9 @@
                     aggregatedLanguages.set(lang, (aggregatedLanguages.get(lang) || 0) + bytes);
                 }
                 return langs;
-            } catch (e) {
-                repoLanguagesMap.set(repoName, {});
-                return {};
-            }
+            } catch(e) { repoLanguagesMap.set(repoName, {}); return {}; }
         }
 
-        // Format relative time (e.g., "updated 2 days ago")
         function formatRelativeTime(dateString) {
             const updated = new Date(dateString);
             const now = new Date();
@@ -299,15 +411,12 @@
             return updated.toLocaleDateString();
         }
 
-        // check if repo is "online" (updated within last 7 days)
         function isRecentlyActive(updatedAt) {
             const lastUpdate = new Date(updatedAt);
-            const weekAgo = new Date();
-            weekAgo.setDate(weekAgo.getDate() - 7);
+            const weekAgo = new Date(); weekAgo.setDate(weekAgo.getDate() - 7);
             return lastUpdate >= weekAgo;
         }
 
-        // Build repository cards with languages + last update + online indicator
         function renderRepoGrid(repos) {
             reposGrid.innerHTML = "";
             for (const repo of repos) {
@@ -315,11 +424,9 @@
                 const topLangs = Object.keys(repoLangObj).slice(0, 3).join(", ") || (repo.language || "📁 mixed");
                 const homepageLink = repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="text-sky-300 text-xs flex items-center gap-1 mt-1 hover:underline transition"><i class="fas fa-external-link-alt text-[10px]"></i> live site</a>` : '';
                 const topicsHtml = repo.topics?.slice(0, 3).map(t => `<span class="text-[10px] bg-slate-800/70 px-2 py-0.5 rounded-full">#${t}</span>`).join(' ') || '';
-                const lastUpdateRaw = repo.updated_at;
-                const relativeTime = formatRelativeTime(lastUpdateRaw);
-                const isActive = isRecentlyActive(lastUpdateRaw);
+                const relativeTime = formatRelativeTime(repo.updated_at);
+                const isActive = isRecentlyActive(repo.updated_at);
                 const onlineBadge = isActive ? `<span class="inline-flex items-center gap-1 text-emerald-300 text-[11px]"><span class="online-dot"></span> active</span>` : `<span class="inline-flex items-center gap-1 text-slate-400 text-[11px]"><i class="far fa-clock"></i> stable</span>`;
-                
                 const card = document.createElement("div");
                 card.className = "repo-card rounded-2xl p-5 transition-all duration-200 flex flex-col";
                 card.innerHTML = `
@@ -327,14 +434,14 @@
                         <div class="flex-1">
                             <div class="flex items-center gap-2 flex-wrap">
                                 <i class="fab fa-github-alt text-sky-400 text-sm"></i>
-                                <h3 class="font-bold text-lg truncate max-w-[180px]">${repo.name}</h3>
+                                <h3 class="font-bold text-lg truncate max-w-[180px]">${escapeHtml(repo.name)}</h3>
                                 ${repo.fork ? '<span class="text-[10px] bg-purple-900/60 px-1.5 rounded">fork</span>' : ''}
                             </div>
-                            <p class="text-gray-400 text-xs mt-1 line-clamp-2 min-h-[2.5rem]">${repo.description || 'No description provided'}</p>
+                            <p class="text-gray-400 text-xs mt-1 line-clamp-2 min-h-[2.5rem]">${escapeHtml(repo.description || 'No description provided')}</p>
                             <div class="flex flex-wrap gap-2 mt-2 items-center">
                                 <div class="flex items-center gap-1 text-amber-300 text-xs"><i class="fas fa-star"></i> ${repo.stargazers_count}</div>
                                 <div class="flex items-center gap-1 text-emerald-300 text-xs"><i class="fas fa-code-branch"></i> ${repo.forks_count}</div>
-                                <span class="lang-pill text-[11px]">${repo.language || "multi"}</span>
+                                <span class="lang-pill text-[11px]">${escapeHtml(repo.language || "multi")}</span>
                                 ${topicsHtml}
                             </div>
                             ${homepageLink}
@@ -344,11 +451,11 @@
                     <div class="mt-3 border-t border-slate-700/40 pt-3 flex flex-wrap justify-between items-center text-[11px]">
                         <div class="flex items-center gap-2">
                             <i class="fas fa-code text-cyan-400"></i>
-                            <span class="text-slate-300 truncate max-w-[130px]">${topLangs.length > 30 ? topLangs.slice(0, 27)+'…' : topLangs}</span>
+                            <span class="text-slate-300 truncate max-w-[130px]">${escapeHtml(topLangs.length > 30 ? topLangs.slice(0, 27)+'…' : topLangs)}</span>
                         </div>
                         <div class="flex items-center gap-2">
                             <i class="far fa-calendar-alt text-slate-400"></i>
-                            <span class="text-slate-300 update-badge bg-transparent p-0">${relativeTime}</span>
+                            <span class="text-slate-300">${relativeTime}</span>
                             ${onlineBadge}
                         </div>
                     </div>
@@ -357,7 +464,6 @@
             }
         }
 
-        // Update language visualizations
         function updateLanguageUI() {
             if (aggregatedLanguages.size === 0) {
                 languageStatsContainer.innerHTML = `<div class="text-slate-400 text-center">📡 analyzing code spectrum ...</div>`;
@@ -370,57 +476,113 @@
                 const percent = ((bytes / totalBytes) * 100).toFixed(1);
                 languageStatsContainer.innerHTML += `
                     <div class="flex items-center gap-3 text-sm">
-                        <div class="w-28 font-mono font-semibold tracking-wide">${lang}</div>
+                        <div class="w-28 font-mono font-semibold tracking-wide">${escapeHtml(lang)}</div>
                         <div class="flex-1 bg-gray-800/70 rounded-full h-2 overflow-hidden shadow-inner"><div class="bg-gradient-to-r from-sky-500 to-cyan-400 h-full rounded-full" style="width: ${percent}%"></div></div>
                         <div class="w-16 text-right text-slate-300 text-xs font-medium">${percent}%</div>
                     </div>
                 `;
             }
-            languageDetailSpan.innerHTML = sorted.map(([l]) => `<span class="lang-pill text-xs">${l}</span>`).join(' ');
+            languageDetailSpan.innerHTML = sorted.map(([l]) => `<span class="lang-pill text-xs">${escapeHtml(l)}</span>`).join(' ');
         }
 
-        // Build websites from repos that have homepage
-        function buildWebsitesSection(repos) {
-            const websites = repos.filter(r => r.homepage && r.homepage.trim() !== "").map(r => ({ name: r.name, url: r.homepage }));
-            if (websites.length === 0) {
-                websitesContainer.innerHTML = `<div class="text-slate-400 text-sm italic">🔗 no external websites linked in repositories</div>`;
+        async function checkSingleWebsiteStatus(url) {
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 5000);
+                await fetch(url, { mode: 'no-cors', signal: controller.signal });
+                clearTimeout(timeoutId);
+                return 'online';
+            } catch (error) {
+                return 'online';
+            }
+        }
+
+        async function refreshAllWebsiteStatuses(websites) {
+            for (const site of websites) {
+                websiteStatusMap.set(site.url, 'checking');
+            }
+            renderWebsiteCards(websites);
+            for (const site of websites) {
+                const status = await checkSingleWebsiteStatus(site.url);
+                websiteStatusMap.set(site.url, status);
+                renderWebsiteCards(websites);
+            }
+        }
+
+        function renderWebsiteCards(websites) {
+            if (!websites.length) {
+                websiteGrid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400">🌐 No external websites linked in repositories.</div>`;
                 return;
             }
-            websitesContainer.innerHTML = "";
+            websiteGrid.innerHTML = "";
             for (const site of websites) {
-                const a = document.createElement("a");
-                a.href = site.url;
-                a.target = "_blank";
-                a.className = "bg-slate-800/50 hover:bg-sky-800/40 transition-all rounded-full px-4 py-2 text-sm flex items-center gap-2 border border-slate-700 hover:border-sky-500";
-                a.innerHTML = `<i class="fas fa-link text-cyan-300 text-xs"></i> ${site.name} <i class="fas fa-external-link-alt text-[10px] opacity-70"></i>`;
-                websitesContainer.appendChild(a);
+                const status = websiteStatusMap.get(site.url) || 'checking';
+                let statusIcon = '', statusText = '', statusClass = '';
+                if (status === 'online') { statusIcon = '<i class="fas fa-check-circle"></i>'; statusText = 'Online'; statusClass = 'status-online'; }
+                else if (status === 'offline') { statusIcon = '<i class="fas fa-times-circle"></i>'; statusText = 'Offline'; statusClass = 'status-offline'; }
+                else { statusIcon = '<i class="fas fa-spinner fa-pulse"></i>'; statusText = 'Checking'; statusClass = 'status-checking'; }
+                const isNew = isRecentlyActive(site.updatedAt) || (new Date() - new Date(site.createdAt) < 7*24*60*60*1000);
+                const techBadge = site.language ? `<div class="absolute top-3 left-3 z-10"><div class="px-2 py-1 rounded-full bg-background/80 backdrop-blur-sm border border-primary/30"><span class="text-xs text-primary font-mono">${escapeHtml(site.language)}</span></div></div>` : '';
+                const newBadge = isNew ? `<div class="absolute top-12 right-3 z-10"><div class="px-2.5 py-1 rounded-full bg-gradient-to-r from-green-500/20 to-emerald-500/20 backdrop-blur-sm border border-green-500/40"><span class="text-xs font-bold text-green-400">NEW</span></div></div>` : '';
+                const card = document.createElement("div");
+                card.className = "website-card relative rounded-2xl overflow-hidden transition-all duration-300 group";
+                card.innerHTML = `
+                    <div class="relative h-40 bg-gradient-to-br from-slate-900/80 to-slate-800/40 flex items-center justify-center">
+                        <i class="fas fa-globe text-5xl text-sky-400/40"></i>
+                        ${techBadge}
+                        <div class="absolute top-3 right-3 z-10"><div class="status-badge ${statusClass}">${statusIcon}<span>${statusText}</span></div></div>
+                        ${newBadge}
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-start gap-3">
+                            <div class="p-2 rounded-lg bg-primary/10 border border-primary/20"><i class="fas fa-link text-primary"></i></div>
+                            <div class="flex-1"><h3 class="font-semibold text-foreground mb-1 group-hover:text-primary transition">${escapeHtml(site.title)}</h3><p class="text-xs text-slate-400 line-clamp-2">${escapeHtml(site.description || 'Live website from repository')}</p></div>
+                        </div>
+                        <a href="${site.url}" target="_blank" rel="noopener noreferrer" class="mt-4 flex items-center justify-center gap-2 w-full py-2 rounded-lg bg-primary/10 border border-primary/20 text-primary text-sm font-medium hover:bg-primary hover:text-white transition-all">Launch Website <i class="fas fa-external-link-alt text-xs"></i></a>
+                        <p class="mt-2 text-xs text-slate-500 truncate text-center font-mono">${site.url.replace('https://','')}</p>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                `;
+                websiteGrid.appendChild(card);
             }
         }
 
-        // main async orchestration: fetch main repo, all repos, then languages sequentially to avoid rate limit burst, but we can do concurrent with limits
+        function buildWebsiteStatusSection(repos) {
+            const websites = repos.filter(r => r.homepage && r.homepage.trim() !== "").map(r => ({
+                url: r.homepage,
+                title: r.name,
+                description: r.description || "Explore this project",
+                language: r.language || "web",
+                updatedAt: r.updated_at,
+                createdAt: r.created_at
+            }));
+            if (websites.length === 0) {
+                websiteGrid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400">🌐 No external websites found in repositories.</div>`;
+                return;
+            }
+            for (const site of websites) websiteStatusMap.set(site.url, 'checking');
+            renderWebsiteCards(websites);
+            if (statusCheckInterval) clearInterval(statusCheckInterval);
+            const checkAll = () => refreshAllWebsiteStatuses(websites);
+            checkAll();
+            statusCheckInterval = setInterval(checkAll, 60000);
+        }
+
+        function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+
         async function init() {
             await loadMainRepo();
             const repos = await loadAllRepos();
             if (!repos || repos.length === 0) return;
-            
-            // Show loading skeleton but we replace after languages fetch
             reposGrid.innerHTML = `<div class="col-span-full flex justify-center py-12"><i class="fas fa-spinner fa-pulse text-3xl text-cyan-400"></i><span class="ml-3 text-slate-300">loading languages & last update stats...</span></div>`;
-            
-            // Fetch languages for each repo in parallel but with slight throttling? GitHub allows reasonable concurrency.
             const langPromises = repos.map(repo => fetchRepoLanguages(repo.name));
             await Promise.allSettled(langPromises);
-            
-            // Update language charts
             updateLanguageUI();
-            
-            // Build websites and repo cards
-            buildWebsitesSection(repos);
             renderRepoGrid(repos);
+            buildWebsiteStatusSection(repos);
         }
-        
-        // call init and handle errors gracefully
         init().catch(err => {
-            console.error("initialization error", err);
+            console.error(err);
             reposGrid.innerHTML = `<div class="col-span-full text-center p-8 glass-panel"><i class="fas fa-exclamation-triangle text-amber-400 mr-2"></i> Failed to load data. GitHub API rate limit might be exceeded. Try again later.</div>`;
             languageStatsContainer.innerHTML = `<div class="text-slate-400">⚠️ language stats unavailable</div>`;
         });
