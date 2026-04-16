@@ -51,13 +51,6 @@
 
 ---
 
-<p align="center">
-  <img src="https://i.ibb.co/wZ1NWBVY/image.jpg" width="270" style="border-radius: 20px;" />
-</p>
-
-
----
-
 
 
 
