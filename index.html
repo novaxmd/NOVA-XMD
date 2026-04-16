@@ -3,151 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>NOVA XMD · GitHub Universe | Repo Analytics & Collaborators</title>
+    <title>NOVA XMD · Galactic Repo Hub</title>
     <!-- Tailwind + Font Awesome + Google Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <style>
-        * { font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-        body { background: radial-gradient(circle at 10% 20%, rgba(0, 10, 20, 0.98), #03050b); }
-        .glass-card {
-            background: rgba(15, 25, 45, 0.65);
-            backdrop-filter: blur(12px);
+        * { font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif; }
+        body {
+            background: radial-gradient(circle at 15% 30%, #0a0f1e, #02040c);
+            background-attachment: fixed;
+        }
+        /* modern glass morphism */
+        .glass-panel {
+            background: rgba(12, 20, 30, 0.65);
+            backdrop-filter: blur(14px);
             border: 1px solid rgba(56, 189, 248, 0.2);
             border-radius: 2rem;
             transition: all 0.25s ease;
         }
-        .glass-card:hover {
+        .glass-panel:hover {
             border-color: rgba(56, 189, 248, 0.5);
-            box-shadow: 0 20px 35px -12px rgba(0, 180, 255, 0.15);
+            box-shadow: 0 20px 35px -12px rgba(0, 160, 255, 0.2);
         }
         .repo-card {
-            background: rgba(10, 18, 28, 0.8);
+            background: rgba(8, 16, 26, 0.85);
             backdrop-filter: blur(4px);
-            border: 1px solid rgba(71, 85, 105, 0.4);
-            transition: transform 0.2s ease, border-color 0.2s;
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            border-radius: 1.5rem;
+            transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.2s;
         }
         .repo-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-5px);
             border-color: #3b82f6;
+            box-shadow: 0 25px 35px -18px rgba(59,130,246,0.25);
         }
-        .glow-text {
-            text-shadow: 0 0 6px rgba(0, 150, 255, 0.3);
-        }
-        .lang-badge {
-            background: rgba(30, 58, 95, 0.7);
-            backdrop-filter: blur(2px);
-            font-size: 0.7rem;
-            font-weight: 500;
-            border-radius: 40px;
-            padding: 0.2rem 0.7rem;
-            border-left: 2px solid #38bdf8;
-        }
-        .stat-number {
-            font-weight: 800;
-            background: linear-gradient(135deg, #F0F9FF, #bae6fd);
+        .stat-glow {
+            background: linear-gradient(135deg, #E0F2FE, #BAE6FD);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            font-weight: 800;
         }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #2dd4bf; border-radius: 12px; }
-        .collab-avatar {
-            transition: all 0.2s ease;
-            border: 1px solid rgba(56, 189, 248, 0.4);
+        .lang-pill {
+            background: rgba(30, 58, 95, 0.6);
+            backdrop-filter: blur(2px);
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 0.25rem 0.85rem;
+            border-radius: 40px;
+            border-left: 2px solid #38bdf8;
         }
-        .collab-avatar:hover {
-            transform: scale(1.08);
-            border-color: #38bdf8;
-            box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+        .update-badge {
+            font-size: 0.7rem;
+            background: rgba(0,0,0,0.4);
+            border-radius: 30px;
+            padding: 0.2rem 0.7rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #10b981;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 6px #10b981;
+            animation: pulse 1.8s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.5; transform: scale(0.9);}
+            100% { opacity: 1; transform: scale(1.2);}
         }
         .skeleton {
             background: linear-gradient(90deg, #1e293b 25%, #2d3a4e 50%, #1e293b 75%);
             background-size: 200% 100%;
             animation: shimmer 1.2s infinite;
+            border-radius: 12px;
         }
         @keyframes shimmer {
             0% { background-position: 200% 0; }
             100% { background-position: -200% 0; }
         }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #0f172a; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #2dd4bf; border-radius: 10px; }
     </style>
 </head>
 <body class="text-gray-200 antialiased">
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
-        <!-- header section -->
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <!-- header with brand -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-5 mb-12">
             <div>
                 <div class="flex items-center gap-3 flex-wrap">
-                    <i class="fab fa-github-alt text-4xl text-sky-400"></i>
-                    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-white via-sky-200 to-cyan-300 bg-clip-text text-transparent">NOVA XMD<span class="text-cyan-400">.</span>REPOS</h1>
+                    <i class="fab fa-github-alt text-4xl text-sky-400 drop-shadow-md"></i>
+                    <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-white via-sky-200 to-cyan-300 bg-clip-text text-transparent">NOVA XMD<span class="text-cyan-400">.</span>ECOSYSTEM</h1>
                 </div>
-                <p class="text-slate-300 mt-2 max-w-xl text-sm md:text-base">ecosystem analytics · stars, forks, languages & global collaborators</p>
+                <p class="text-slate-300 mt-2 max-w-xl text-sm md:text-base flex items-center gap-2"><i class="fas fa-chart-line text-cyan-400 text-xs"></i> real-time analytics · stars · forks · languages · live updates</p>
             </div>
-            <a href="https://github.com/novaxmd" target="_blank" class="glass-card px-5 py-2 rounded-full flex items-center gap-2 text-sm font-medium hover:bg-sky-900/30 transition">
+            <a href="https://github.com/novaxmd" target="_blank" class="glass-panel px-5 py-2.5 rounded-full flex items-center gap-2 text-sm font-medium hover:bg-sky-900/30 transition-all duration-200">
                 <i class="fab fa-github"></i> @novaxmd
-                <i class="fas fa-external-link-alt text-xs opacity-70"></i>
+                <i class="fas fa-arrow-up-right-from-square text-xs opacity-70"></i>
             </a>
         </div>
 
-        <!-- MAIN REPO HIGHLIGHT (NOVA-XMD) -->
-        <div class="glass-card p-6 md:p-8 mb-12 rounded-3xl">
+        <!-- MAIN FLAGSHIP REPO: NOVA-XMD -->
+        <div class="glass-panel p-6 md:p-8 mb-12 rounded-3xl">
             <div class="flex flex-col lg:flex-row justify-between items-start gap-6">
                 <div>
                     <div class="flex items-center gap-3 flex-wrap">
-                        <h2 class="text-2xl md:text-3xl font-bold"><i class="fab fa-github mr-2 text-sky-300"></i> NOVA-XMD</h2>
-                        <span class="bg-sky-950/60 text-sky-300 text-xs px-3 py-1 rounded-full border border-sky-500/40">⭐ flagship repo</span>
+                        <h2 class="text-2xl md:text-3xl font-bold flex items-center gap-2"><i class="fab fa-github text-sky-300"></i> NOVA-XMD</h2>
+                        <span class="bg-sky-950/50 text-sky-300 text-xs px-3 py-1 rounded-full border border-sky-500/40 shadow-sm">⚡ core engine</span>
                     </div>
-                    <p class="text-slate-300 mt-2 max-w-2xl" id="main-repo-desc">loading repository data...</p>
-                    <div class="flex flex-wrap gap-5 mt-5">
-                        <div class="flex items-center gap-2 bg-black/30 px-4 py-2 rounded-full">
+                    <p class="text-slate-300 mt-2 max-w-2xl text-sm md:text-base" id="main-repo-desc">loading repository intelligence...</p>
+                    <div class="flex flex-wrap gap-4 mt-5">
+                        <div class="flex items-center gap-2 bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full">
                             <i class="fas fa-star text-yellow-400"></i>
-                            <span class="font-bold text-xl" id="main-stars">—</span>
+                            <span class="font-bold text-2xl stat-glow" id="main-stars">—</span>
                             <span class="text-slate-400 text-sm">stars</span>
                         </div>
-                        <div class="flex items-center gap-2 bg-black/30 px-4 py-2 rounded-full">
+                        <div class="flex items-center gap-2 bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full">
                             <i class="fas fa-code-branch text-emerald-400"></i>
-                            <span class="font-bold text-xl" id="main-forks">—</span>
+                            <span class="font-bold text-2xl stat-glow" id="main-forks">—</span>
                             <span class="text-slate-400 text-sm">forks</span>
                         </div>
-                        <div class="flex items-center gap-2 bg-black/30 px-4 py-2 rounded-full">
-                            <i class="fas fa-globe text-cyan-400"></i>
-                            <span class="text-sm" id="main-language">primary lang: —</span>
+                        <div class="flex items-center gap-2 bg-black/30 backdrop-blur-sm px-4 py-2 rounded-full">
+                            <i class="fas fa-code text-cyan-400"></i>
+                            <span class="text-sm font-mono" id="main-language">primary: —</span>
                         </div>
                     </div>
                 </div>
-                <a href="https://github.com/novaxmd/NOVA-XMD" target="_blank" class="bg-sky-600/80 hover:bg-sky-600 transition-all px-6 py-2.5 rounded-xl flex items-center gap-2 font-semibold shadow-lg">
-                    <i class="fab fa-github"></i> View Repository <i class="fas fa-arrow-right text-xs"></i>
+                <a href="https://github.com/novaxmd/NOVA-XMD" target="_blank" class="bg-gradient-to-r from-sky-600 to-cyan-600 hover:from-sky-500 hover:to-cyan-500 transition-all px-6 py-3 rounded-xl flex items-center gap-2 font-semibold shadow-lg shadow-sky-900/30">
+                    <i class="fab fa-github"></i> Explore Repo <i class="fas fa-arrow-right text-xs"></i>
                 </a>
             </div>
         </div>
 
-        <!-- STATS GRID: total repos, total stars, total forks + language breakdown -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
-            <div class="glass-card p-5">
-                <div class="flex items-center gap-3 text-sky-300 mb-2"><i class="fas fa-layer-group text-xl"></i><h3 class="font-semibold">Total Repos</h3></div>
-                <p class="text-4xl font-black stat-number" id="total-repos-count">0</p>
-                <p class="text-xs text-slate-400 mt-1">all public repositories</p>
+        <!-- STATS ROW: total repos, total stars, total forks -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="glass-panel p-5 text-center md:text-left">
+                <div class="flex items-center gap-3 text-sky-300 mb-2 justify-center md:justify-start"><i class="fas fa-database text-xl"></i><h3 class="font-semibold">Total Repositories</h3></div>
+                <p class="text-5xl font-black stat-glow text-center md:text-left" id="total-repos-count">0</p>
+                <p class="text-xs text-slate-400 mt-1 text-center md:text-left">all public repos · active</p>
             </div>
-            <div class="glass-card p-5">
-                <div class="flex items-center gap-3 text-amber-300 mb-2"><i class="fas fa-star text-xl"></i><h3 class="font-semibold">Cumulative Stars</h3></div>
-                <p class="text-4xl font-black stat-number" id="total-stars-sum">0</p>
-                <p class="text-xs text-slate-400">across every repo</p>
+            <div class="glass-panel p-5 text-center md:text-left">
+                <div class="flex items-center gap-3 text-amber-300 mb-2 justify-center md:justify-start"><i class="fas fa-star text-xl"></i><h3 class="font-semibold">Community Stars</h3></div>
+                <p class="text-5xl font-black stat-glow text-center md:text-left" id="total-stars-sum">0</p>
+                <p class="text-xs text-slate-400 mt-1 text-center md:text-left">cumulative across universe</p>
             </div>
-            <div class="glass-card p-5">
-                <div class="flex items-center gap-3 text-emerald-300 mb-2"><i class="fas fa-code-branch text-xl"></i><h3 class="font-semibold">Total Forks</h3></div>
-                <p class="text-4xl font-black stat-number" id="total-forks-sum">0</p>
-                <p class="text-xs text-slate-400">community contributions</p>
+            <div class="glass-panel p-5 text-center md:text-left">
+                <div class="flex items-center gap-3 text-emerald-300 mb-2 justify-center md:justify-start"><i class="fas fa-code-branch text-xl"></i><h3 class="font-semibold">Total Forks</h3></div>
+                <p class="text-5xl font-black stat-glow text-center md:text-left" id="total-forks-sum">0</p>
+                <p class="text-xs text-slate-400 mt-1 text-center md:text-left">forks by the community</p>
             </div>
         </div>
 
-        <!-- LANGUAGE ECOSYSTEM (JS, TS, HTML, PHP, etc) -->
-        <div class="glass-card p-6 mb-12">
-            <div class="flex flex-wrap justify-between items-center gap-3 border-b border-slate-700/70 pb-3 mb-5">
-                <div><i class="fab fa-js text-yellow-400 mr-2"></i><span class="font-bold text-xl">全 Language Universe</span><span class="text-sm text-slate-300 ml-3">JavaScript · TypeScript · HTML · PHP · Python & more</span></div>
-                <i class="fas fa-chart-simple text-cyan-400 text-lg"></i>
+        <!-- LANGUAGE GALAXY (JS, TS, HTML, PHP, Python, etc) -->
+        <div class="glass-panel p-6 mb-12">
+            <div class="flex flex-wrap justify-between items-center gap-3 border-b border-slate-700/50 pb-4 mb-5">
+                <div><i class="fab fa-js text-yellow-400 mr-2"></i><span class="font-bold text-xl">🌌 Language Nebula</span><span class="text-sm text-slate-300 ml-3">JavaScript · TypeScript · HTML · PHP · Python + more</span></div>
+                <i class="fas fa-chart-pie text-cyan-400 text-lg"></i>
             </div>
             <div id="language-stats-container" class="space-y-3">
                 <div class="skeleton h-8 w-full rounded-full"></div>
@@ -157,42 +174,38 @@
             <div id="language-detail" class="flex flex-wrap gap-2 mt-5 text-sm"></div>
         </div>
 
-        <!-- ALL WEBSITES (homepage links from repos) -->
-        <div class="glass-card p-6 mb-12">
-            <div class="flex items-center gap-3 mb-4"><i class="fas fa-link text-cyan-400 text-xl"></i><h3 class="text-xl font-bold">🌐  Websites & Live Demos</h3><span class="text-xs bg-slate-800 px-2 py-0.5 rounded-full">from repo homepages</span></div>
+        <!-- WEBSITES & LIVE DEMOS FROM REPOS -->
+        <div class="glass-panel p-6 mb-12">
+            <div class="flex items-center gap-3 mb-5"><i class="fas fa-globe text-cyan-400 text-xl"></i><h3 class="text-xl font-bold">🌐  Live Websites & Demos</h3><span class="text-xs bg-slate-800/70 px-3 py-1 rounded-full">powered by repos</span></div>
             <div id="websites-list" class="flex flex-wrap gap-3">
                 <div class="skeleton w-32 h-10 rounded-full"></div><div class="skeleton w-40 h-10 rounded-full"></div>
             </div>
         </div>
 
-        <!-- GLOBAL COLLABORATORS (contributors from ALL repos) -->
-        <div class="glass-card p-6 mb-12">
-            <div class="flex items-center gap-3 mb-5"><i class="fas fa-users text-indigo-400 text-2xl"></i><h3 class="text-xl font-bold">🤝  Global Collaborators</h3><span class="text-xs bg-indigo-900/50 px-3 py-1 rounded-full">all contributors across repos</span></div>
-            <div id="collaborators-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4">
-                <div class="skeleton w-16 h-16 rounded-full mx-auto"></div><div class="skeleton w-16 h-16 rounded-full mx-auto"></div>
-            </div>
-            <p id="collab-note" class="text-center text-slate-400 text-sm mt-5"></p>
-        </div>
-
-        <!-- ALL REPOSITORIES (complete list with stats & per-repo collaborators) -->
+        <!-- ALL REPOSITORIES FLEET (with last update & online status) -->
         <div>
-            <div class="flex items-center gap-3 mb-6"><i class="fas fa-cubes text-2xl text-sky-300"></i><h2 class="text-2xl font-bold">📦  Repository Fleet</h2><span id="repo-count-badge" class="bg-slate-800 text-slate-300 px-3 py-1 rounded-full text-sm">loading..</span></div>
+            <div class="flex items-center justify-between flex-wrap gap-3 mb-6">
+                <div class="flex items-center gap-3"><i class="fas fa-cubes text-2xl text-sky-300"></i><h2 class="text-2xl font-bold">📦  Repository Fleet</h2><span id="repo-count-badge" class="bg-slate-800/80 text-slate-300 px-3 py-1 rounded-full text-sm">loading..</span></div>
+                <div class="text-xs text-slate-400 flex items-center gap-2"><i class="fas fa-sync-alt"></i> live updates from GitHub API</div>
+            </div>
             <div id="repos-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                <!-- dynamic cards injected -->
+                <div class="repo-card rounded-2xl p-5 animate-pulse"><div class="skeleton h-6 w-3/4 mb-3 rounded"></div><div class="skeleton h-4 w-full mb-2"></div><div class="skeleton h-4 w-2/3"></div></div>
                 <div class="repo-card rounded-2xl p-5 animate-pulse"><div class="skeleton h-6 w-3/4 mb-3 rounded"></div><div class="skeleton h-4 w-full mb-2"></div><div class="skeleton h-4 w-2/3"></div></div>
             </div>
         </div>
 
-        <footer class="mt-16 text-center text-slate-500 text-xs border-t border-slate-800/70 pt-8">
-            <i class="fab fa-github"></i> NOVA XMD ecosystem · real-time data from GitHub API · stars/forks & collaboration insights
+        <footer class="mt-16 text-center text-slate-500 text-xs border-t border-slate-800/50 pt-8 flex flex-wrap justify-center gap-4">
+            <span><i class="fab fa-github"></i> NOVA XMD · real-time stats</span>
+            <span><i class="fas fa-clock"></i> last fetched from GitHub API</span>
+            <span><i class="fas fa-code"></i> JavaScript · TypeScript · HTML · PHP ecosystem</span>
         </footer>
     </main>
 
     <script>
         const GITHUB_USER = "novaxmd";
-        const MAIN_REPO_NAME = "NOVA-XMD";
+        const MAIN_REPO = "NOVA-XMD";
         
-        // DOM elements
+        // DOM refs
         const mainStarsSpan = document.getElementById("main-stars");
         const mainForksSpan = document.getElementById("main-forks");
         const mainDescSpan = document.getElementById("main-repo-desc");
@@ -202,277 +215,175 @@
         const totalForksSumSpan = document.getElementById("total-forks-sum");
         const reposGrid = document.getElementById("repos-grid");
         const websitesContainer = document.getElementById("websites-list");
-        const collaboratorsGrid = document.getElementById("collaborators-grid");
         const languageStatsContainer = document.getElementById("language-stats-container");
         const languageDetailSpan = document.getElementById("language-detail");
         const repoCountBadge = document.getElementById("repo-count-badge");
 
+        // Data stores
         let allRepos = [];
-        let aggregatedLanguages = new Map(); // language -> bytes
-        let globalContributorsMap = new Map(); // id -> {login, avatar, contributionsSum}
+        let aggregatedLanguages = new Map(); // lang -> total bytes
+        let repoLanguagesMap = new Map();    // repoName -> {lang: bytes}
         
-        // Helper: fetch JSON
+        // Helper fetcher
         async function fetchJSON(url) {
             const res = await fetch(url, { headers: { "Accept": "application/vnd.github.v3+json" } });
-            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            if (!res.ok) throw new Error(`GitHub API error ${res.status}`);
             return res.json();
         }
 
-        // get main repo data (stars, forks)
+        // Load main repo details
         async function loadMainRepo() {
             try {
-                const repo = await fetchJSON(`https://api.github.com/repos/${GITHUB_USER}/${MAIN_REPO_NAME}`);
+                const repo = await fetchJSON(`https://api.github.com/repos/${GITHUB_USER}/${MAIN_REPO}`);
                 mainStarsSpan.innerText = repo.stargazers_count.toLocaleString();
                 mainForksSpan.innerText = repo.forks_count.toLocaleString();
-                mainDescSpan.innerText = repo.description || "Next-gen WhatsApp multi-device bot with advanced features.";
+                mainDescSpan.innerText = repo.description || "NOVA XMD — next-gen WhatsApp multi-device bot & framework.";
                 mainLangSpan.innerText = `primary: ${repo.language || "TypeScript/JS"}`;
             } catch (err) {
-                console.warn("main repo fetch error", err);
+                console.warn(err);
                 mainStarsSpan.innerText = "✨";
                 mainForksSpan.innerText = "🔁";
-                mainDescSpan.innerText = "NOVA-XMD — powerful XMD framework";
+                mainDescSpan.innerText = "NOVA-XMD: powerful XMD ecosystem";
             }
         }
 
-        // load all user repos
+        // Fetch all user repositories
         async function loadAllRepos() {
             try {
                 const repos = await fetchJSON(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100&sort=updated`);
-                allRepos = repos.filter(r => !r.fork); // exclude forks to keep originality
+                // keep original repos (include forks if any but we display all)
+                allRepos = repos.filter(r => !r.archived);
                 totalReposSpan.innerText = allRepos.length;
-                repoCountBadge.innerText = `${allRepos.length} repositories`;
-                // compute total stars/forks
+                repoCountBadge.innerText = `${allRepos.length} active repos`;
                 const totalStars = allRepos.reduce((sum, r) => sum + r.stargazers_count, 0);
                 const totalForks = allRepos.reduce((sum, r) => sum + r.forks_count, 0);
                 totalStarsSumSpan.innerText = totalStars.toLocaleString();
                 totalForksSumSpan.innerText = totalForks.toLocaleString();
                 return allRepos;
             } catch (err) {
-                console.error("failed repos fetch", err);
-                reposGrid.innerHTML = `<div class="col-span-full text-center p-10 glass-card">⚠️ Unable to load repositories. GitHub rate limit? Try again later.</div>`;
+                console.error("repos fetch failed", err);
+                reposGrid.innerHTML = `<div class="col-span-full text-center p-10 glass-panel">⚠️ Rate limit or network issue. Please wait and refresh.</div>`;
                 return [];
             }
         }
 
-        // fetch languages for a single repo and accumulate
+        // Fetch languages per repo (with caching in repoLanguagesMap & aggregated)
         async function fetchRepoLanguages(repoName) {
             try {
                 const langs = await fetchJSON(`https://api.github.com/repos/${GITHUB_USER}/${repoName}/languages`);
+                repoLanguagesMap.set(repoName, langs);
                 for (const [lang, bytes] of Object.entries(langs)) {
                     aggregatedLanguages.set(lang, (aggregatedLanguages.get(lang) || 0) + bytes);
                 }
                 return langs;
-            } catch(e) { return {}; }
+            } catch (e) {
+                repoLanguagesMap.set(repoName, {});
+                return {};
+            }
         }
 
-        // fetch contributors (top 5) for a repo -> for global collab & per repo display
-        async function fetchRepoContributors(repoName) {
-            try {
-                const contributors = await fetchJSON(`https://api.github.com/repos/${GITHUB_USER}/${repoName}/contributors?per_page=5`);
-                if (!Array.isArray(contributors)) return [];
-                for (const c of contributors) {
-                    if (c.login && c.id) {
-                        const existing = globalContributorsMap.get(c.id);
-                        if (existing) {
-                            existing.contributionsSum += c.contributions;
-                        } else {
-                            globalContributorsMap.set(c.id, {
-                                login: c.login,
-                                avatar_url: c.avatar_url,
-                                html_url: c.html_url,
-                                contributionsSum: c.contributions
-                            });
-                        }
-                    }
-                }
-                return contributors.map(c => ({ login: c.login, avatar: c.avatar_url, html: c.html_url, contributions: c.contributions }));
-            } catch(e) { return []; }
+        // Format relative time (e.g., "updated 2 days ago")
+        function formatRelativeTime(dateString) {
+            const updated = new Date(dateString);
+            const now = new Date();
+            const diffSeconds = Math.floor((now - updated) / 1000);
+            if (diffSeconds < 60) return `just now`;
+            const diffMins = Math.floor(diffSeconds / 60);
+            if (diffMins < 60) return `${diffMins} min ago`;
+            const diffHours = Math.floor(diffMins / 60);
+            if (diffHours < 24) return `${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
+            const diffDays = Math.floor(diffHours / 24);
+            if (diffDays < 7) return `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
+            const diffWeeks = Math.floor(diffDays / 7);
+            if (diffWeeks < 4) return `${diffWeeks} week${diffWeeks > 1 ? 's' : ''} ago`;
+            return updated.toLocaleDateString();
         }
 
-        // Build repos grid with full details: languages, contributors, homepage, stars/forks
-        async function renderReposWithDetails(repos) {
-            reposGrid.innerHTML = `<div class="col-span-full flex justify-center py-10"><i class="fas fa-spinner fa-pulse text-3xl text-cyan-400"></i><span class="ml-3">Loading detailed languages & collaborators...</span></div>`;
-            // We'll fetch languages & contributors in parallel for all repos
-            const langPromises = repos.map(repo => fetchRepoLanguages(repo.name));
-            const contribPromises = repos.map(repo => fetchRepoContributors(repo.name));
-            await Promise.allSettled([...langPromises, ...contribPromises]);
-            // after language aggregation -> update language stats UI
-            updateLanguageUI();
-            // after global contributors -> update collaborators section
-            updateGlobalCollaboratorsUI();
-            // Build repo cards
-            buildRepoCards(repos);
-            // also extract websites from repos
-            buildWebsitesSection(repos);
+        // check if repo is "online" (updated within last 7 days)
+        function isRecentlyActive(updatedAt) {
+            const lastUpdate = new Date(updatedAt);
+            const weekAgo = new Date();
+            weekAgo.setDate(weekAgo.getDate() - 7);
+            return lastUpdate >= weekAgo;
         }
 
-        function buildRepoCards(repos) {
+        // Build repository cards with languages + last update + online indicator
+        function renderRepoGrid(repos) {
             reposGrid.innerHTML = "";
             for (const repo of repos) {
+                const repoLangObj = repoLanguagesMap.get(repo.name) || {};
+                const topLangs = Object.keys(repoLangObj).slice(0, 3).join(", ") || (repo.language || "📁 mixed");
+                const homepageLink = repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="text-sky-300 text-xs flex items-center gap-1 mt-1 hover:underline transition"><i class="fas fa-external-link-alt text-[10px]"></i> live site</a>` : '';
+                const topicsHtml = repo.topics?.slice(0, 3).map(t => `<span class="text-[10px] bg-slate-800/70 px-2 py-0.5 rounded-full">#${t}</span>`).join(' ') || '';
+                const lastUpdateRaw = repo.updated_at;
+                const relativeTime = formatRelativeTime(lastUpdateRaw);
+                const isActive = isRecentlyActive(lastUpdateRaw);
+                const onlineBadge = isActive ? `<span class="inline-flex items-center gap-1 text-emerald-300 text-[11px]"><span class="online-dot"></span> active</span>` : `<span class="inline-flex items-center gap-1 text-slate-400 text-[11px]"><i class="far fa-clock"></i> stable</span>`;
+                
                 const card = document.createElement("div");
                 card.className = "repo-card rounded-2xl p-5 transition-all duration-200 flex flex-col";
-                const homepageLink = repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="text-sky-300 text-xs flex items-center gap-1 mt-1 hover:underline"><i class="fas fa-external-link-alt"></i> website</a>` : '';
-                const topicsHtml = repo.topics?.slice(0, 3).map(t => `<span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded-full">#${t}</span>`).join(' ') || '';
-                // we will fetch per-repo languages from aggregated? but we can show top languages by re-fetching from memory? easier to show from repo.language + some. we can show language preview from primary
-                const primaryLang = repo.language || 'Multi';
                 card.innerHTML = `
                     <div class="flex justify-between items-start">
                         <div class="flex-1">
                             <div class="flex items-center gap-2 flex-wrap">
                                 <i class="fab fa-github-alt text-sky-400 text-sm"></i>
-                                <h3 class="font-bold text-lg truncate">${repo.name}</h3>
+                                <h3 class="font-bold text-lg truncate max-w-[180px]">${repo.name}</h3>
                                 ${repo.fork ? '<span class="text-[10px] bg-purple-900/60 px-1.5 rounded">fork</span>' : ''}
                             </div>
-                            <p class="text-gray-400 text-xs mt-1 line-clamp-2">${repo.description || 'No description provided'}</p>
+                            <p class="text-gray-400 text-xs mt-1 line-clamp-2 min-h-[2.5rem]">${repo.description || 'No description provided'}</p>
                             <div class="flex flex-wrap gap-2 mt-2 items-center">
                                 <div class="flex items-center gap-1 text-amber-300 text-xs"><i class="fas fa-star"></i> ${repo.stargazers_count}</div>
                                 <div class="flex items-center gap-1 text-emerald-300 text-xs"><i class="fas fa-code-branch"></i> ${repo.forks_count}</div>
-                                <span class="lang-badge text-[11px]">${primaryLang}</span>
+                                <span class="lang-pill text-[11px]">${repo.language || "multi"}</span>
                                 ${topicsHtml}
                             </div>
                             ${homepageLink}
                         </div>
                         <a href="${repo.html_url}" target="_blank" class="text-slate-400 hover:text-sky-300 ml-2"><i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <div class="mt-3 border-t border-slate-700/40 pt-2 text-[11px] flex flex-wrap justify-between items-center">
-                        <div class="flex items-center gap-1 text-slate-400"><i class="fas fa-code"></i> <span id="langs-${repo.name.replace(/[^a-z0-9]/gi, '')}">fetching...</span></div>
-                        <div class="flex items-center gap-1 text-slate-400" id="contrib-${repo.name.replace(/[^a-z0-9]/gi, '')}"><i class="fas fa-users"></i> collaborators</div>
-                    </div>
-                `;
-                reposGrid.appendChild(card);
-                // fetch again but we already have languages from map but per repo we need languages quickly: we can refetch from API? but we stored in aggregated but per repo we can do second fetch? Actually we have fetchRepoLanguages already stored? but not per repo store. To display per repo languages we can call again but to avoid duplicate, we fetch again but from cached? Better to store per repo languages in a separate map during initial pass.
-                // we'll refetch per repo languages lightweight from memory if we store earlier: but to keep code simpler, I'll re-fetch languages per repo using function but since API calls are already done, we can create a local map to avoid new calls.
-            }
-            // additional: after cards render, fill per repo languages and contributors from previous fetched data? Actually we didn't store per repo lang list, let's fetch once more but using a local stored map.
-            // To optimize and avoid rate limit, we already have fetched languages in aggregatedLanguages but need per repo breakdown -> we will fetch languages again but only if we didn't store. Safer: store languages per repo during previous langPromises loop.
-            // Adjust: In renderReposWithDetails we already fetched languages (langPromises). we need to store them. I'll adjust: create a map repoLanguagesMap = new Map()
-        }
-
-        // We'll restructure slightly to store per repo languages
-        let repoLanguagesMap = new Map();
-        let repoContributorsMap = new Map();
-
-        async function enhancedFetchDetails(repos) {
-            // reset maps
-            repoLanguagesMap.clear();
-            repoContributorsMap.clear();
-            aggregatedLanguages.clear();
-            globalContributorsMap.clear();
-            
-            for (const repo of repos) {
-                try {
-                    const langs = await fetchJSON(`https://api.github.com/repos/${GITHUB_USER}/${repo.name}/languages`);
-                    repoLanguagesMap.set(repo.name, langs);
-                    for (const [lang, bytes] of Object.entries(langs)) {
-                        aggregatedLanguages.set(lang, (aggregatedLanguages.get(lang) || 0) + bytes);
-                    }
-                } catch(e) { repoLanguagesMap.set(repo.name, {}); }
-                
-                try {
-                    const contributors = await fetchJSON(`https://api.github.com/repos/${GITHUB_USER}/${repo.name}/contributors?per_page=6`);
-                    if (Array.isArray(contributors)) {
-                        repoContributorsMap.set(repo.name, contributors.slice(0, 4));
-                        for (const c of contributors) {
-                            if (c?.login && c?.id) {
-                                const existing = globalContributorsMap.get(c.id);
-                                if (existing) existing.contributionsSum += c.contributions;
-                                else globalContributorsMap.set(c.id, { login: c.login, avatar_url: c.avatar_url, html_url: c.html_url, contributionsSum: c.contributions });
-                            }
-                        }
-                    } else repoContributorsMap.set(repo.name, []);
-                } catch(e) { repoContributorsMap.set(repo.name, []); }
-            }
-            updateLanguageUI();
-            updateGlobalCollaboratorsUI();
-            renderFullRepoCards(repos);
-            buildWebsitesSection(repos);
-        }
-
-        function renderFullRepoCards(repos) {
-            reposGrid.innerHTML = "";
-            for (const repo of repos) {
-                const langsObj = repoLanguagesMap.get(repo.name) || {};
-                const topLangs = Object.keys(langsObj).slice(0, 3).join(", ") || (repo.language || "N/A");
-                const contributorsList = repoContributorsMap.get(repo.name) || [];
-                const collabPreview = contributorsList.slice(0, 3).map(c => c.login).join(", ") || (contributorsList.length ? "..." : "no data");
-                const homepageLink = repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="text-sky-300 text-xs flex items-center gap-1 mt-1 hover:underline"><i class="fas fa-globe"></i> ${repo.homepage.replace(/^https?:\/\//, '').slice(0, 30)}</a>` : '';
-                const topicsHtml = repo.topics?.slice(0, 3).map(t => `<span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded-full">${t}</span>`).join(' ') || '';
-                
-                const card = document.createElement("div");
-                card.className = "repo-card rounded-2xl p-5 transition-all duration-200 flex flex-col";
-                card.innerHTML = `
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <div class="flex items-center gap-2 flex-wrap">
-                                <i class="fab fa-github-alt text-sky-400 text-sm"></i>
-                                <h3 class="font-bold text-lg truncate">${repo.name}</h3>
-                            </div>
-                            <p class="text-gray-400 text-xs mt-1 line-clamp-2">${repo.description || '📁 No description'}</p>
-                            <div class="flex flex-wrap gap-2 mt-2 items-center">
-                                <div class="flex items-center gap-1 text-amber-300 text-xs"><i class="fas fa-star"></i> ${repo.stargazers_count}</div>
-                                <div class="flex items-center gap-1 text-emerald-300 text-xs"><i class="fas fa-code-branch"></i> ${repo.forks_count}</div>
-                                <span class="lang-badge text-[11px]">${repo.language || "multi"}</span>
-                                ${topicsHtml}
-                            </div>
-                            ${homepageLink}
+                    <div class="mt-3 border-t border-slate-700/40 pt-3 flex flex-wrap justify-between items-center text-[11px]">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-code text-cyan-400"></i>
+                            <span class="text-slate-300 truncate max-w-[130px]">${topLangs.length > 30 ? topLangs.slice(0, 27)+'…' : topLangs}</span>
                         </div>
-                        <a href="${repo.html_url}" target="_blank" class="text-slate-400 hover:text-sky-300 ml-2"><i class="fas fa-external-link-alt"></i></a>
-                    </div>
-                    <div class="mt-3 border-t border-slate-700/40 pt-2 text-[11px] flex flex-wrap justify-between">
-                        <span class="flex items-center gap-1"><i class="fas fa-code text-cyan-400"></i> <span class="text-slate-300">${topLangs.length > 25 ? topLangs.slice(0, 25)+'…' : topLangs}</span></span>
-                        <span class="flex items-center gap-1"><i class="fas fa-user-friends text-indigo-300"></i> <span class="text-slate-300">${collabPreview}</span></span>
+                        <div class="flex items-center gap-2">
+                            <i class="far fa-calendar-alt text-slate-400"></i>
+                            <span class="text-slate-300 update-badge bg-transparent p-0">${relativeTime}</span>
+                            ${onlineBadge}
+                        </div>
                     </div>
                 `;
                 reposGrid.appendChild(card);
             }
         }
 
+        // Update language visualizations
         function updateLanguageUI() {
             if (aggregatedLanguages.size === 0) {
-                languageStatsContainer.innerHTML = `<div class="text-slate-400">📡 No language data yet (try refreshing)</div>`;
+                languageStatsContainer.innerHTML = `<div class="text-slate-400 text-center">📡 analyzing code spectrum ...</div>`;
                 return;
             }
             const totalBytes = Array.from(aggregatedLanguages.values()).reduce((a,b) => a+b, 0);
-            let sorted = Array.from(aggregatedLanguages.entries()).sort((a,b) => b[1]-a[1]).slice(0, 8);
+            const sorted = Array.from(aggregatedLanguages.entries()).sort((a,b) => b[1]-a[1]).slice(0, 8);
             languageStatsContainer.innerHTML = "";
             for (const [lang, bytes] of sorted) {
                 const percent = ((bytes / totalBytes) * 100).toFixed(1);
-                const barWidth = percent;
                 languageStatsContainer.innerHTML += `
                     <div class="flex items-center gap-3 text-sm">
-                        <div class="w-28 font-mono font-semibold">${lang}</div>
-                        <div class="flex-1 bg-gray-800 rounded-full h-2 overflow-hidden"><div class="bg-gradient-to-r from-sky-500 to-cyan-400 h-full rounded-full" style="width: ${barWidth}%"></div></div>
-                        <div class="w-16 text-right text-slate-300 text-xs">${percent}%</div>
+                        <div class="w-28 font-mono font-semibold tracking-wide">${lang}</div>
+                        <div class="flex-1 bg-gray-800/70 rounded-full h-2 overflow-hidden shadow-inner"><div class="bg-gradient-to-r from-sky-500 to-cyan-400 h-full rounded-full" style="width: ${percent}%"></div></div>
+                        <div class="w-16 text-right text-slate-300 text-xs font-medium">${percent}%</div>
                     </div>
                 `;
             }
-            languageDetailSpan.innerHTML = sorted.map(([l]) => `<span class="lang-badge text-xs">${l}</span>`).join(' ');
+            languageDetailSpan.innerHTML = sorted.map(([l]) => `<span class="lang-pill text-xs">${l}</span>`).join(' ');
         }
 
-        function updateGlobalCollaboratorsUI() {
-            if (globalContributorsMap.size === 0) {
-                collaboratorsGrid.innerHTML = `<div class="col-span-full text-center text-slate-400">✨ No external contributors found or private collaborators.</div>`;
-                document.getElementById("collab-note").innerText = "Collaborators appear as contributors from all repos.";
-                return;
-            }
-            const sorted = Array.from(globalContributorsMap.values()).sort((a,b)=>b.contributionsSum - a.contributionsSum).slice(0, 24);
-            collaboratorsGrid.innerHTML = "";
-            for (const collab of sorted) {
-                const div = document.createElement("div");
-                div.className = "text-center group";
-                div.innerHTML = `<a href="${collab.html_url}" target="_blank" class="flex flex-col items-center gap-1">
-                    <img src="${collab.avatar_url}" class="w-12 h-12 rounded-full collab-avatar shadow-md" alt="${collab.login}">
-                    <span class="text-[11px] font-medium truncate max-w-[80px]">${collab.login}</span>
-                </a>`;
-                collaboratorsGrid.appendChild(div);
-            }
-            document.getElementById("collab-note").innerHTML = `✨ ${globalContributorsMap.size} unique developers collaborated across repos 🤝`;
-        }
-
+        // Build websites from repos that have homepage
         function buildWebsitesSection(repos) {
             const websites = repos.filter(r => r.homepage && r.homepage.trim() !== "").map(r => ({ name: r.name, url: r.homepage }));
             if (websites.length === 0) {
-                websitesContainer.innerHTML = `<div class="text-slate-400 text-sm">No external websites linked in repositories.</div>`;
+                websitesContainer.innerHTML = `<div class="text-slate-400 text-sm italic">🔗 no external websites linked in repositories</div>`;
                 return;
             }
             websitesContainer.innerHTML = "";
@@ -480,22 +391,39 @@
                 const a = document.createElement("a");
                 a.href = site.url;
                 a.target = "_blank";
-                a.className = "bg-slate-800/60 hover:bg-sky-800/40 transition rounded-full px-4 py-2 text-sm flex items-center gap-2 border border-slate-700";
-                a.innerHTML = `<i class="fas fa-link text-cyan-300"></i> ${site.name} <i class="fas fa-external-link-alt text-[10px] opacity-60"></i>`;
+                a.className = "bg-slate-800/50 hover:bg-sky-800/40 transition-all rounded-full px-4 py-2 text-sm flex items-center gap-2 border border-slate-700 hover:border-sky-500";
+                a.innerHTML = `<i class="fas fa-link text-cyan-300 text-xs"></i> ${site.name} <i class="fas fa-external-link-alt text-[10px] opacity-70"></i>`;
                 websitesContainer.appendChild(a);
             }
         }
 
+        // main async orchestration: fetch main repo, all repos, then languages sequentially to avoid rate limit burst, but we can do concurrent with limits
         async function init() {
             await loadMainRepo();
             const repos = await loadAllRepos();
-            if (repos && repos.length) {
-                await enhancedFetchDetails(repos);
-            } else {
-                reposGrid.innerHTML = `<div class="col-span-full text-center p-8 glass-card">⚠️ No repositories found for ${GITHUB_USER}</div>`;
-            }
+            if (!repos || repos.length === 0) return;
+            
+            // Show loading skeleton but we replace after languages fetch
+            reposGrid.innerHTML = `<div class="col-span-full flex justify-center py-12"><i class="fas fa-spinner fa-pulse text-3xl text-cyan-400"></i><span class="ml-3 text-slate-300">loading languages & last update stats...</span></div>`;
+            
+            // Fetch languages for each repo in parallel but with slight throttling? GitHub allows reasonable concurrency.
+            const langPromises = repos.map(repo => fetchRepoLanguages(repo.name));
+            await Promise.allSettled(langPromises);
+            
+            // Update language charts
+            updateLanguageUI();
+            
+            // Build websites and repo cards
+            buildWebsitesSection(repos);
+            renderRepoGrid(repos);
         }
-        init();
+        
+        // call init and handle errors gracefully
+        init().catch(err => {
+            console.error("initialization error", err);
+            reposGrid.innerHTML = `<div class="col-span-full text-center p-8 glass-panel"><i class="fas fa-exclamation-triangle text-amber-400 mr-2"></i> Failed to load data. GitHub API rate limit might be exceeded. Try again later.</div>`;
+            languageStatsContainer.innerHTML = `<div class="text-slate-400">⚠️ language stats unavailable</div>`;
+        });
     </script>
 </body>
 </html>
