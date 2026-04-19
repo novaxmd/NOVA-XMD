@@ -33,7 +33,7 @@
     "google-tts-api": "^2.0.2",
     "path": "^0.12.7",
     "node-fetch": "^2.6.1",
-    "btch-downloader": "^2.2.9",
+    "btch-downloader": "^6.0.0",
     "megajs": "^1.1.0",
     "pdfkit": "^0.14.0",
     "wa_set_pkg": "1.0.5",
