@@ -32,7 +32,7 @@
     "form-data": "^4.0.0",
     "google-tts-api": "^2.0.2",
     "path": "^0.12.7",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.0.0",
     "btch-downloader": "^2.2.9",
     "megajs": "^1.1.0",
     "pdfkit": "^0.14.0",
