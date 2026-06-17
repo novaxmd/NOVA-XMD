@@ -18,7 +18,7 @@ AUTO_STATUS_REPLY: process.env.AUTO_STATUS_REPLY || "false",
 AUTO_STATUS_REACT: process.env.AUTO_STATUS_REACT || "true",
 // make true or false for auto react on status
 
-ANTI_CALL: process.env.ANTI_CALL || "true",
+ANTI_CALL: process.env.ANTI_CALL || "false",
 // anticall on/off
 
 AUTO_STATUS_MSG: process.env.AUTO_STATUS_MSG || "*SEEN YOUR STATUS BY NOVA XMD 🔥*",
@@ -51,22 +51,16 @@ PREFIX: process.env.PREFIX || ".",
 BOT_NAME: process.env.BOT_NAME || "NOVA-XMD",
 // add bot namw here for menu
 
-STICKER_NAME: process.env.STICKER_NAME || "NOVA-XMD",
-// type sticker pack name 
-
 CUSTOM_REACT: process.env.CUSTOM_REACT || "false",
 // make this true for custum emoji react    
-
-CUSTOM_REACT_EMOJIS: process.env.CUSTOM_REACT_EMOJIS || "💝,💖,💗,❤️‍🩹,❤️,🧡,💛,💚,💙,💜,🤎,🖤,🤍",
-// chose custom react emojis by yourself
 
 OWNER_NUMBER: process.env.OWNER_NUMBER || "255767862457",
 // add your bot owner number
 
-OWNER_NAME: process.env.OWNER_NAME || "𝙱.𝙼.𝙱-𝚃𝙴𝙲𝙷",
+OWNER_NAME: process.env.OWNER_NAME || "𝙽𝙾𝚅𝙰-𝚇𝙼𝙳",
 // add bot owner name
 
-DESCRIPTION: process.env.DESCRIPTION || "*© powered 𝙽𝙾𝚅𝙰-𝚇𝙼𝙳*",
+DESCRIPTION: process.env.DESCRIPTION || "*© POWERED NOVA TECH*",
 // add bot description    
 
 ALIVE_IMG: process.env.ALIVE_IMG || "https://i.ibb.co/Hfm7K7QF/IMG-20260302-WA0004.jpg",
@@ -114,9 +108,7 @@ ANTI_VV: process.env.ANTI_VV || "true",
 AUTO_RECORDING: process.env.AUTO_RECORDING || "false",
 // make it true for auto recoding 
 
-AUTO_BIO: process.env.AUTO_BIO || "false",
-// make true if you want bot to auto-update bio/status
-
-CHAT_BOT: process.env.CHAT_BOT || "false"
+CHAT_BOT: process.env.CHAT_BOT || "false",
 // make true if you want AI chatbot responses enabled
 };
+    
