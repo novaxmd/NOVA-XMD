@@ -1,7 +1,7 @@
 {
   "name": "NOVA-XMD",
   "description": "Whatsapp bot 🤖 by nova xmd tech",
-  "logo": "https://i.ibb.co/PZF77VjQ/image.jpg",
+  "logo": "https://files.catbox.moe/mxb907.jpg",
   "keywords": ["NOVA-XMD"],
   "success_url": "/",
 
@@ -55,34 +55,16 @@
       "value": "true"
     },
 
-    "AUTO_STATUS_REPLY": {
-      "description": "Make it true for auto reply msg on status seen.",
-      "required": true,
-      "value": "false"
-    },
-
-    "AUTO_STATUS_MSG": {
-      "description": "Type custom message on status reply",
-      "required": true,
-      "value": "*SEEN YOUR STATUS BY NOVA XMD*"
-    },
-
     "OWNER_NAME": {
       "description": "Type Bot Owner Name.",
       "required": false,
-      "value": "NOVA-TECH"
+      "value": "Bmb Tech"
     },
 
     "OWNER_NUMBER": {
       "description": "put the owner number for bot.",
       "required": false,
       "value": "255767862457"
-    },
-
-    "DESCRIPTION": {
-      "description": "add caption for menu and other",
-      "required": false,
-      "value": "*© ᴘᴏᴡᴇʀᴇᴅ ʙʏ 𝙽𝙾𝚅𝙰-𝚇𝙼𝙳*"
     },
 
     "AUTO_RECORDING": {
@@ -103,28 +85,10 @@
       "value": "false"
     },
 
-    "CUSTOM_REACT": {
-      "description": "Make it true if you want custom reactions.",
-      "required": false,
-      "value": "false"
-    },
-
-    "CUSTOM_REACT_EMOJIS": {
-      "description": "put here custom react react emojis.",
-      "required": false,
-      "value": "💝,💖,💗,❤️‍🩹,❤️,🧡,💛,💚,💙,💜,🤎,🖤,🤍"
-    },
-
     "ANTI_DEL_PATH": {
       "description": "change it to -same- if you want to resend deleted message in same chat othwise inbox",
       "required": false,
       "value": "log"
-    },
-    
-    "DELETE_LINKS": {
-      "description": "remove links from group automatically without removing member",
-      "required": false,
-      "value": "false"
     },
 
     "WELCOME": {
@@ -136,19 +100,13 @@
     "ANTICALL": {
       "description": "Make it true if you want bot to block incoming calls.",
       "required": false,
-      "value": "false"
+      "value": "true"
     },
 
     "READ_MESSAGE": {
       "description": "Make it true if you want bot read your all sms just now.",
       "required": false,
       "value": "false"
-    },
-
-    "AUTO_BIO": {
-      "description": "Make it true if you want bot to auto-update bio/status.",
-      "required": false,
-      "value": "true"
     },
 
     "CHAT_BOT": {
