@@ -25,7 +25,7 @@
     <strong>Follow Novaxmd</strong>
     <br>
     <a href="https://github.com/novaxmd" target="_blank">
-        <img alt="support dev" src="https://img.shields.io/badge/downlod-100000?style=for-the-badge&logo=scan&logoColor=white&labelColor=darkorange&color=darkorange"/>
+        <img alt="support dev" src="https://img.shields.io/badge/Support-100000?style=for-the-badge&logo=scan&logoColor=white&labelColor=darkorange&color=darkorange"/>
     </a>
 </p>
 
