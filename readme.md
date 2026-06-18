@@ -20,6 +20,16 @@
   <img src="https://url.bmbxmd.workers.dev/1N0H3G.jpg" width="270" style="border-radius: 20px;" />
 </p>
 
+
+<p align="center">
+    <strong>Follow Novaxmd</strong>
+    <br>
+    <a href="https://github.com/novaxmd" target="_blank">
+        <img alt="support dev" src="https://img.shields.io/badge/downlod-100000?style=for-the-badge&logo=scan&logoColor=white&labelColor=darkorange&color=darkorange"/>
+    </a>
+</p>
+
+
 ---
 
 <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Black+Ops+One&size=100&pause=1000&color=8A2BE2&center=true&width=1000&height=200&lines=CLICK-HERE-DEPLOY-NOW" alt="Typing SVG" /></a>
