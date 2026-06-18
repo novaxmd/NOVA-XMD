@@ -47,7 +47,7 @@
 ---
 
 
-# Site 👉 **[Here](https://novaxmd.github.io/NOVA-XMD/)**
+# Site 👉 **[Here](https://media-website-bmb.vercel.app/)**
 
 ---
 
