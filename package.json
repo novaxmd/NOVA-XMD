@@ -50,6 +50,6 @@
     "@mrnima/tiktok-downloader": "1.0.0",
     "@mrnima/facebook-downloader": "1.0.0",
     "mrnima-moviedl": "1.0.0",
-    "gifted-btns": "^1.0.1"
+    "gifted-btns": "^1.0.0"
   }
 }
