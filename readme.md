@@ -2,11 +2,6 @@
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:000000,50:003300,100:00ff00&height=200&section=header&text=NOVA&fontSize=62&fontColor=00ff00&animation=fadeIn&fontAlignY=38&desc=Full-Stack%20Engineer%20%7C%20SaaS%20Builder%20%7C%20Open%20Source%20%7C%20Tanzania%20🇹🇿&descAlignY=58&descSize=15&descColor=9ca3af&fontFamily=monospace" />
 </p>
 
-
-<p align="center">
-  <h1 align="center" style="font-family: 'Orbitron', sans-serif; text-shadow: 0 0 10px #00ffff, 0 0 20px #0088ff;">𝗡𝗢𝗩𝗔-𝗫𝗠𝗗</h1>
-</p>
-
 <p align="center">
   <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=600&size=25&duration=4000&pause=1000&color=00F7FF&center=true&vCenter=true&width=500&lines=ULTIMATE+WHATSAPP+BOT;MULTI-DEVICE+SUPPORT;POWERED+BY+BAILEYS;FAST++SECURE++RELIABLE" alt="Animated Typing SVG" />
 </p>
