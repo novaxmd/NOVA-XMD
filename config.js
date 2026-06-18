@@ -111,4 +111,3 @@ AUTO_RECORDING: process.env.AUTO_RECORDING || "false",
 CHAT_BOT: process.env.CHAT_BOT || "false",
 // make true if you want AI chatbot responses enabled
 };
-    
