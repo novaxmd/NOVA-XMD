@@ -82,7 +82,3 @@
   <a><img src='https://i.imgur.com/LyHic3i.gif' width="120"/></a>
   <a><img src='https://i.imgur.com/LyHic3i.gif' width="120"/></a>
 </p>
-
-<p align="right">
-  <b>Built with Passion by Nova Xmd</b>
-</p>
