@@ -54,7 +54,7 @@ BOT_NAME: process.env.BOT_NAME || "NOVA-XMD",
 CUSTOM_REACT: process.env.CUSTOM_REACT || "false",
 // make this true for custum emoji react    
 
-OWNER_NUMBER: process.env.OWNER_NUMBER || "255767862457",
+OWNER_NUMBER: process.env.OWNER_NUMBER || "255.....",
 // add your bot owner number
 
 OWNER_NAME: process.env.OWNER_NAME || "𝙽𝙾𝚅𝙰-𝚇𝙼𝙳",
