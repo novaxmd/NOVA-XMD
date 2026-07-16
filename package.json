@@ -30,7 +30,7 @@
     "luxon": "^3.5.0",
     "javascript-obfuscator": "latest",
     "moment-timezone": "^0.5.46",
-    "node-fetch": "^2.7.0",
+    "node-fetch": "^3.0.0",
     "node-webpmux": "^3.1.7",
     "performance-now": "^2.1.0",
     "pino": "^8.19.0",
