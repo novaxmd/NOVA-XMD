@@ -1,126 +1,61 @@
 {
   "name": "NOVA-XMD",
-  "description": "Whatsapp bot 🤖 by nova xmd tech",
-  "logo": "https://url.bmbxmd.workers.dev/1N0H3G.jpg",
-  "keywords": ["NOVA-XMD"],
+  "description": "⚡ A lightning-fast WhatsApp bot with multi-device support, built on Node.js & Baileys.",
+  "website": "https://github.com/novaxmd/NOVA-XMD#readme",
+  "repository": "https://github.com/novaxmd/NOVA-XMD.git",
+  "logo": "bmb.png",
   "success_url": "/",
-
-  "stack": "container",
+  "keywords": [
+    "whatsapp-bot",
+    "baileys",
+    "nodejs",
+    "heroku",
+    "whatsapp bot",
+    "wa bot",
+    "nova-xmd"
+  ],
+  "scripts": {
+    "postdeploy": "echo 'NOVA-XMD has been successfully deployed✅'"
+  },
+  "build": {
+    "languages": [
+      "nodejs"
+    ]
+  },
   "env": {
-    "SESSION_ID": {
-      "description": "Put the session-id here.",
+    "SESSION": {
+      "description": "🔑 Required – Your WhatsApp session ID (generated after linking the bot).",
+      "required": true
+    },
+    "DEVICE": {
+      "description": "Device mode: android (default) or ios. Android uses interactive buttons; iOS uses text-only responses(for a reason). Accepted values: android, ios, default.",
       "required": true,
-      "value": ""
+      "value": "default"
     },
-
-    "PREFIX": {
-      "description": "paste your bot prefix note! Don't apply null prefix.",
-      "required": false,
-      "value": "."
+    "HEROKU_APP_NAME": {
+      "description": "Optional – The Heroku app name you've used (needed for updating the bot).",
+      "required": false
     },
-
-    "MODE": {
-      "description": "select your bot work type public-private-inbox-group.",
-      "required": false,
-      "value": "public"
-    },
-
-    "ANTI_DELETE": {
-      "description": "set true for show deleted messages.",
-      "required": false,
-      "value": "true"
-    },
-
-    "ALWAYS_ONLINE": {
-      "description": "Make it true if want always online.",
-      "required": false,
-      "value": "false"
-    },
-
-    "AUTO_REPLY": {
-      "description": "Make it true if you want automatic reply.",
-      "required": false,
-      "value": "false"
-    },
-
-    "AUTO_STATUS_SEEN": {
-      "description": "Make it true for automatic status seen.",
-      "required": true,
-      "value": "true"
-    },
-
-    "AUTO_STATUS_REACT": {
-      "description": "make it true for automatic status reaction or like.",
-      "required": true,
-      "value": "true"
-    },
-
-    "OWNER_NAME": {
-      "description": "Type Bot Owner Name.",
-      "required": false,
-      "value": "Bmb Tech"
-    },
-
-    "OWNER_NUMBER": {
-      "description": "put the owner number for bot.",
-      "required": false,
-      "value": "255767862457"
-    },
-
-    "AUTO_RECORDING": {
-      "description": "Make it true if you want auto recoding.",
-      "required": false,
-      "value": "false"
-    },
-
-    "AUTO_TYPING": {
-      "description": "Make it true if you want auto typing.",
-      "required": false,
-      "value": "true"
-    },
-
-    "AUTO_REACT": {
-      "description": "Make it true if you want react on every message.",
-      "required": false,
-      "value": "false"
-    },
-
-    "ANTI_DEL_PATH": {
-      "description": "change it to -same- if you want to resend deleted message in same chat othwise inbox",
-      "required": false,
-      "value": "log"
-    },
-
-    "WELCOME": {
-      "description": "make it true if want goodbye and welcome message in groups.",
-      "required": false,
-      "value": "true"
-    },
-
-    "ANTICALL": {
-      "description": "Make it true if you want bot to block incoming calls.",
-      "required": false,
-      "value": "true"
-    },
-
-    "READ_MESSAGE": {
-      "description": "Make it true if you want bot read your all sms just now.",
-      "required": false,
-      "value": "false"
-    },
-
-    "CHAT_BOT": {
-      "description": "Make it true if you want AI chatbot responses enabled.",
-      "required": false,
-      "value": "false"
+    "HEROKU_API_KEY": {
+      "description": "Optional – Your Heroku API key (only needed for updating the bot).",
+      "required": false
     }
   },
-
-  "buildpacks": [
+  "addons": [
     {
-      "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
+      "plan": "heroku-postgresql",
+      "as": "DATABASE"
     }
   ],
-  "stack": "heroku-24"
-  }
-  
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-activestorage-preview"
+    }
+  ]
+}
