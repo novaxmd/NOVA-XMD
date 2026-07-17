@@ -47,6 +47,12 @@
       "as": "DATABASE"
     }
   ],
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "standard-2x"
+    }
+  },
   "buildpacks": [
     {
       "url": "https://github.com/heroku/heroku-buildpack-apt"
