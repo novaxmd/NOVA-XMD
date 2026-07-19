@@ -1,5 +1,5 @@
 {
-  "name": "toxic-md",
+  "name": "nova-xmd",
   "version": "1.1.0",
   "description": "A lightning-fast WhatsApp bot with multi-device support, built on Node.js & Baileys.",
   "main": "index.js",
@@ -15,7 +15,7 @@
     "@ffmpeg-installer/ffmpeg": "latest",
     "@hapi/boom": "^10.0.1",
     "@vitalets/google-translate-api": "^9.2.0",
-    "@whiskeysockets/baileys": "https://github.com/xhclintohn/Baileys/tarball/beta-test",
+    "@whiskeysockets/baileys": "github:xhclintohn/Baileys#beta-test",
     "acrcloud": "^1.2.0",
     "awesome-phonenumber": "^6.2.0",
     "axios": "latest",
