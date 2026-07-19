@@ -3,7 +3,7 @@
   "description": "⚡ A lightning-fast WhatsApp bot with multi-device support, built on Node.js & Baileys.",
   "website": "https://github.com/novaxmd/Nova-XMD#readme",
   "repository": "https://github.com/novaxmd/Nova-XMD.git",
-  "logo": "bmb.bmbxmd.jpg",
+  "logo": "bmbxmd.jpg",
   "success_url": "/",
   "keywords": [
     "whatsapp-bot",
