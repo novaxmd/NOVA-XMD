@@ -15,7 +15,7 @@
     "nova-xmd"
   ],
   "scripts": {
-    "postdeploy": "echo 'Nova-XMD has been successfully deployed✅'"
+    "postdeploy": "echo 'NOVA-XMD has been successfully deployed✅'"
   },
   "build": {
     "languages": [
@@ -24,7 +24,7 @@
   },
   "env": {
     "SESSION": {
-      "description": "🔑 Required – Your WhatsApp session ID (generated after linking the bot).",
+      "description": "🔐 Required – Your WhatsApp session ID (generated after linking the bot).",
       "required": true
     },
     "DEVICE": {
