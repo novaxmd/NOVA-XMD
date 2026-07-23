@@ -85,7 +85,7 @@ function getFilenameFromUrl(url, ext) {
 
 export default {
     name: 'fetch',
-    aliases: ['get', 'web', 'curl'],
+    aliases: ['get', 'web', 'clinks'],
     description: 'Fetches a URL and sends the result as the correct media type',
     run: async (context) => {
         const { client, m, prefix } = context;
