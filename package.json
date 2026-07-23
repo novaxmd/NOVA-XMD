@@ -1,5 +1,5 @@
 {
-  "name": "nova-xmd",
+  "name": "NOVA-XMD",
   "version": "1.1.0",
   "description": "A lightning-fast WhatsApp bot with multi-device support, built on Node.js & Baileys.",
   "main": "index.js",
@@ -46,7 +46,6 @@
   },
   "optionalDependencies": {
     "bufferutil": "^4.0.8",
-    "better-sqlite3": "^12.8.0",
     "canvas": "^2.11.2",
     "canvacord": "^5.4.10"
   }
