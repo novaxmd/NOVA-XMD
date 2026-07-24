@@ -41,7 +41,7 @@
     "wikipedia": "^2.1.2",
     "yt-search": "^2.10.4",
     "pg": "^8.13.3",
-    "adm-zip": "^0.5.16",
+    "adm-zip": "^0.6.0",
     "@napi-rs/canvas": "^0.1.67"
   },
   "optionalDependencies": {
