@@ -22,7 +22,7 @@
     "chalk": "^4.1.2",
     "compile-run": "latest",
     "express": "^4.21.0",
-    "file-type": "^16.5.4",
+    "file-type": "^21.3.1",
     "form-data": "latest",
     "google-tts-api": "^2.0.2",
     "human-readable": "^0.2.1",
