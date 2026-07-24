@@ -36,7 +36,7 @@
     "performance-now": "^2.1.0",
     "pino": "^8.19.0",
     "qrcode": "^1.5.4",
-    "sharp": "^0.33.5",
+    "sharp": "^0.35.0",
     "wa-sticker-formatter": "^4.4.4",
     "wikipedia": "^2.1.2",
     "yt-search": "^2.10.4",
