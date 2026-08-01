@@ -17,7 +17,7 @@
 ---
 
 <p align="center">
-  <img src="https://url.bmbxmd.workers.dev/1N0H3G.jpg" width="270" style="border-radius: 20px;" />
+  <img src="https://url.bmbxmd.workers.dev/novaxmd.png" width="270" style="border-radius: 20px;" />
 </p>
 
 
