@@ -181,9 +181,12 @@ export default async (context) => {
         const { client, m, settings, botNumber } = context;
         if (!m || !m.key || !m.message) return;
         if (m.key.fromMe) return;
-        const _resolvedKeys = (_keyMod.GROQ_API_KEYS?.length > 0)
-            ? _keyMod.GROQ_API_KEYS
-            : [_keyMod.GROQ_API_KEY, process.env.GROQ_API_KEY].filter(k => k && k.length > 10);
+        const _envKeys = (process.env.GROQ_API_KEYS ? process.env.GROQ_API_KEYS.split(',') : [])
+            .concat(process.env.GROQ_API_KEY ? [process.env.GROQ_API_KEY] : [])
+            .filter(k => k && k.trim().length > 10).map(k => k.trim());
+        const _resolvedKeys = _envKeys.length > 0
+            ? _envKeys
+            : (_keyMod.GROQ_API_KEYS?.length > 0 ? _keyMod.GROQ_API_KEYS : [_keyMod.GROQ_API_KEY].filter(k => k && k.length > 10));
         if (_resolvedKeys.length === 0) {
             return;
         }
