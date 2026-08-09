@@ -11,7 +11,7 @@ const execAsync = promisify(exec);
 const fmt = (msg) => `📌 *UPDATE*\n━━━━━━━━━━━━━━━━\n${msg}\n━━━━━━━━━━━━━━━━\n© bmb tech`;
 const REPO = (process.env.GITHUB_REPO || 'novaxmd/NOVA-XMD').replace(/^https?:\/\/github\.com\//, '').replace(/\.git$/, '');
 const SKIP = new Set(['.git','node_modules','.env','config.env','session.json','creds.json','auth','Session','session']);
-const doRestart = (root) => { setTimeout(() => exec('pm2 restart toxic-v2 || pm2 restart all', { cwd: root }, () => process.exit(0)), 1500); };
+const doRestart = (root) => { setTimeout(() => exec('pm2 restart bmb-tech || pm2 restart all', { cwd: root }, () => process.exit(0)), 1500); };
 
 async function performGitUpdate(client, m, opts, root) {
     await sendInteractive(client, m, fmt('Git repo — pulling latest code...'));
@@ -43,8 +43,8 @@ async function performZipUpdate(client, m, opts, root) {
     let AdmZip;
     try { AdmZip = (await import('adm-zip')).default; } catch { return sendInteractive(client, m, fmt('adm-zip missing. Run npm install.')); }
     await sendInteractive(client, m, fmt('No git — downloading latest from GitHub...'));
-    const zipPath = path.join(root, '.toxic_update.zip');
-    const exRoot  = path.join(root, '.toxic_update');
+    const zipPath = path.join(root, '.bmb_update.zip');
+    const exRoot  = path.join(root, '.bmb_update');
     const res = await axios.get('https://github.com/' + REPO + '/archive/refs/heads/main.zip', {
         responseType: 'arraybuffer', timeout: 120000, maxContentLength: Infinity, maxBodyLength: Infinity,
         headers: { 'User-Agent': 'NOVA-XMD' }
