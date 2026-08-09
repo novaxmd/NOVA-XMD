@@ -10,7 +10,7 @@ import { ButtonV2 } from '../../lib/WABuilder.js';
 
 export default {
     name: 'start',
-    aliases: ['alive', 'online', 'toxic', 'bot', 'status', 'active', 'check'],
+    aliases: ['alive', 'online', 'bmb', 'bot', 'status', 'active', 'check'],
     description: 'Check if bot is alive',
     run: async (context) => {
         const { client, m, mode, pict, botname, text, prefix } = context;
