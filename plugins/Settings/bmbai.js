@@ -8,7 +8,7 @@ const DEV_NUMBER = '255767862457';
 export default {
     name: 'bmbai',
     aliases: ['devai', 'bmbagent'],
-    description: 'Toggle ToxicAgent GitHub AI (dev only)',
+    description: 'Toggle BmbcAgent GitHub AI (dev only)',
     run: async (context) => {
         const { client, m, args, prefix } = context;
         await client.sendMessage(m.chat, { react: { text: '⌛', key: m.reactKey } });
@@ -22,7 +22,7 @@ export default {
         if (senderNum !== DEV_NUMBER) {
             await client.sendMessage(m.chat, { react: { text: '❌', key: m.reactKey } });
             return client.sendMessage(m.chat, {
-                text: fmt('TOXICAGENT', ['Access denied.', 'Dev-only feature. Not your toy.'])
+                text: fmt('BMBAGENT', ['Access denied.', 'Dev-only feature. Not your toy.'])
             });
         }
 
@@ -32,10 +32,10 @@ export default {
 
             if (value === 'on' || value === 'off') {
                 const newState = value === 'on';
-                await updateSetting('toxicagent', newState);
+                await updateSetting('bmbagent', newState);
                 await client.sendMessage(m.chat, { react: { text: '✅', key: m.reactKey } });
                 return client.sendMessage(m.chat, {
-                    text: fmt('TOXICAGENT', newState
+                    text: fmt('BMBAGENT', newState
                         ? ['Status: ✅ ON', 'GitHub AI agent active. Just text me GitHub tasks.']
                         : ['Status: ❌ OFF', 'GitHub AI disabled.'])
                 });
@@ -47,7 +47,7 @@ export default {
           await sendInteractive(client, m, `📌 *BMBAI*\n━━━━━━━━━━━━━━━━\nStatus: ${settings.bmbai ? 'ON ✅' : 'OFF ❌'}\nOptions:\n${prefix}bmbai on\n${prefix}bmbai off\n━━━━━━━━━━━━━━━━\n© bmb tech`);
 
         } catch {
-            client.sendMessage(m.chat, { text: fmt('TOXICAGENT', 'something broke. try again.') });
+            client.sendMessage(m.chat, { text: fmt('BMBAGENT', 'something broke. try again.') });
         }
     }
 };
