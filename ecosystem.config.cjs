@@ -1,6 +1,6 @@
 module.exports = {
   apps: [{
-    name: 'toxic-v2',
+    name: 'Bmb-Tech',
     script: 'index.js',
     interpreter: 'node',
     node_args: '--experimental-specifier-resolution=node',
