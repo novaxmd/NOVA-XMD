@@ -3,7 +3,7 @@ import { sendInteractive } from '../../lib/sendInteractive.js';
 
 export default {
     name: 'translate',
-    aliases: ['tr', 'trans'],
+    aliases: ['trt', 'trans'],
     description: 'Translates text to different languages',
     run: async (context) => {
         const { client, m, prefix } = context;
