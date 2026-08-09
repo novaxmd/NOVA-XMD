@@ -62,7 +62,7 @@
 ---
 
 <p align="center">
-  <img src="https://url.bmbxmd.workers.dev/XTEQG3.jpg" width="270" style="border-radius: 20px;" />
+  <img src="https://url.bmbxmd.workers.dev/logo.jpg" width="270" style="border-radius: 20px;" />
 </p>
 
 ---
