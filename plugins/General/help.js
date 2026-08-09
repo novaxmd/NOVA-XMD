@@ -101,7 +101,7 @@ export default {
             antiforeign: { usage: `${effectivePrefix}antiforeign <on|off>`, desc: 'Remove non-local phone numbers from the group.' },
             autoai: { usage: `${effectivePrefix}autoai <on|off>`, desc: 'Enable AI auto-reply in DMs and when mentioned in groups. AI can also execute bot commands intelligently.' },
             chatbotpm: { usage: `${effectivePrefix}chatbotpm <on|off>`, desc: 'Enable AI chatbot in private messages (same as autoai).' },
-            toxicai: { usage: `${effectivePrefix}toxicai <on|off>`, desc: 'Enable ToxicAgent (GitHub AI assistant) for the developer.' },
+            bmbai: { usage: `${effectivePrefix}bmbai <on|off>`, desc: 'Enable ToxicAgent (GitHub AI assistant) for the developer.' },
             gcpresence: { usage: `${effectivePrefix}gcpresence <on|off>`, desc: 'Set typing/recording presence in groups.' },
             events: { usage: `${effectivePrefix}events <on|off>`, desc: 'Toggle group join/leave event messages.' },
             stickerwm: { usage: `${effectivePrefix}stickerwm <packname>`, desc: 'Set custom sticker watermark/packname.' },

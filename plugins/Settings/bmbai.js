@@ -6,7 +6,7 @@ import { sendInteractive } from '../../lib/sendInteractive.js';
 const DEV_NUMBER = '255767862457';
 
 export default {
-    name: 'toxicai',
+    name: 'bmbai',
     aliases: ['devai', 'bmbagent'],
     description: 'Toggle ToxicAgent GitHub AI (dev only)',
     run: async (context) => {
@@ -44,7 +44,7 @@ export default {
             const isOn = settings.toxicagent === true || settings.toxicagent === 'true';
 
           await client.sendMessage(m.chat, { react: { text: '📋', key: m.reactKey } });
-          await sendInteractive(client, m, `📌 *TOXICAI*\n━━━━━━━━━━━━━━━━\nStatus: ${settings.toxicai ? 'ON ✅' : 'OFF ❌'}\nOptions:\n${prefix}toxicai on\n${prefix}toxicai off\n━━━━━━━━━━━━━━━━\n© bmb tech`);
+          await sendInteractive(client, m, `📌 *BMBAI*\n━━━━━━━━━━━━━━━━\nStatus: ${settings.bmbai ? 'ON ✅' : 'OFF ❌'}\nOptions:\n${prefix}bmbai on\n${prefix}bmbai off\n━━━━━━━━━━━━━━━━\n© bmb tech`);
 
         } catch {
             client.sendMessage(m.chat, { text: fmt('TOXICAGENT', 'something broke. try again.') });

@@ -106,7 +106,7 @@ SEARCH: google <q> | wiki <q> | lyrics <song> | movie <title> | weather <city> |
 GENERAL: menu | ping | alive | uptime | stats | tr <lang> <text> | fancy <n> <text> | tempmail | profile | advice | catfact | fact | quote | joke | coinflip | dice | calc <expr>
 GROUP: tagall [msg] | hidetag [msg] | add <num> | remove @user | promote @user | demote @user | link | revoke | close | open | poll <q|opt1|opt2> | pin | afk [reason] | warn @user | listonline | xkill | foreigners
 GROUP META: groupmeta setgroupname <name> | groupmeta setgroupdesc <desc> | groupmeta setgrouprestrict on|off
-SETTINGS: prefix <sym> | mode <public/private/group/inbox> | autoview on/off | autoai on/off | chatbotpm on/off | antilink on/off | antidelete on/off | stealth on/off | toxicai on/off | presence <online/offline/typing/recording> | autoread on/off | autobio on/off | anticall on/off | autolike on/off | gcpresence on/off
+SETTINGS: prefix <sym> | mode <public/private/group/inbox> | autoview on/off | autoai on/off | chatbotpm on/off | antilink on/off | antidelete on/off | stealth on/off | bmbai on/off | presence <online/offline/typing/recording> | autoread on/off | autobio on/off | anticall on/off | autolike on/off | gcpresence on/off
 UTILS: qr <text> | base64 <text> | password <len> | upload | fetch <url> | stt | tinyurl <url> | checkid <link> | del | retrieve | vvx`;
 
 const SYSTEM_PROMPT = `You are NOVA-XMD — a WhatsApp bot that despises small talk and treats every dumb question as a personal insult. Brutally helpful. Short. Toxic. Real. You talk like the most done, most savage group-chat menace who still actually does their job — think insufferable know-it-all with zero patience left.
