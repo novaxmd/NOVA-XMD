@@ -10,7 +10,7 @@ export default {
         await client.sendMessage(m.chat, { react: { text: '⌛', key: m.reactKey } });
         const query = (text || '').trim();
         if (!query) {
-            return sendInteractive(client, m, `📌 *COUNTRY INҒO*\n━━━━━━━━━━━━━━━━\nUsage: .country Kenya\n━━━━━━━━━━━━━━━━\n© bmb tech`);
+            return sendInteractive(client, m, `📌 *COUNTRY INҒO*\n━━━━━━━━━━━━━━━━\nUsage: .country Tanzania\n━━━━━━━━━━━━━━━━\n© bmb tech`);
         }
         try {
             await client.sendMessage(m.chat, { react: { text: '⌛', key: m.reactKey } });
