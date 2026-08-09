@@ -37,7 +37,7 @@ export default {
 
         try {
             if (!text) {
-                return await sendInteractive(client, m, `📌 *PAIRING*\n━━━━━━━━━━━━━━━━\nOi genius, give me a number\nto pair with. You think I can\nread your mind?\nUsage: *${prefix}pair <number>*\nExample: *${prefix}pair 254712345678*\nExample: *${prefix}pair +1 234 567 8901*\nSpaces, dashes, plus signs...\nI'll clean that mess up for you.\n━━━━━━━━━━━━━━━━\n© bmb tech`);
+                return await sendInteractive(client, m, `📌 *PAIRING*\n━━━━━━━━━━━━━━━━\nOi genius, give me a number\nto pair with. You think I can\nread your mind?\nUsage: *${prefix}pair <number>*\nExample: *${prefix}pair 255767862457*\nExample: *${prefix}pair +1 234 567 8901*\nSpaces, dashes, plus signs...\nI'll clean that mess up for you.\n━━━━━━━━━━━━━━━━\n© bmb tech`);
             }
 
             const number = cleanNumber(text);
