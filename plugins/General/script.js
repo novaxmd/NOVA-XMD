@@ -46,7 +46,7 @@ export default {
                 showAdAttribution: false,
                 title: `${botname}`,
                 body: `Bmb-Project🟩`,
-                sourceUrl: `https://©bmb tech`,
+                sourceUrl: `https://bmbtech.zone.id`,
                 mediaType: 1,
                 renderLargerThumbnail: true
               }
@@ -65,8 +65,8 @@ export default {
                   name: 'cta_url',
                   buttonParamsJson: JSON.stringify({
                     display_text: 'Open-Bmb-Project',
-                    url: 'https://©bmb tech',
-                    merchant_url: 'https://©bmb tech'
+                    url: 'https://bmbtech.zone.id',
+                    merchant_url: 'https://bmbtech.zone.id'
                   })
                 }
               ]
@@ -83,7 +83,7 @@ export default {
               showAdAttribution: false,
               title: `${botname}`,
               body: `Bmb-Project`,
-              sourceUrl: `https://©bmb tech`,
+              sourceUrl: `https://bmbtech.zone.id`,
               mediaType: 1,
               renderLargerThumbnail: true
             }
