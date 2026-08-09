@@ -95,7 +95,7 @@ export default {
     await client.sendMessage(m.chat, { react: { text: '❌', key: m.reactKey } }).catch(() => {});
             console.error('tesq error:', err?.message);
             await client.sendMessage(m.chat, { react: { text: '⌛', key: m.reactKey } });
-            await sendInteractive(client, m, `🤖 *TOXIC AI*\n━━━━━━━━━━━━━━━━\n${msgText}\n━━━━━━━━━━━━━━━━\n© bmb tech`);
+            await sendInteractive(client, m, `🤖 *BMB AI*\n━━━━━━━━━━━━━━━━\n${msgText}\n━━━━━━━━━━━━━━━━\n© bmb tech`);
         }
     }
 };
