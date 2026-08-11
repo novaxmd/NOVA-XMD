@@ -1,6 +1,9 @@
+import { generateWAMessageFromContent, proto } from '@whiskeysockets/baileys';
 import { botname } from '../../config/settings.js';
 import { sendInteractive } from '../../lib/sendInteractive.js';
 import { detectHostingPlatform } from '../../lib/hostPlatform.js';
+
+const REPO_URL = 'https://github.com/novaxmd/NOVA-XMD';
 
 const getGreeting = () => {
     const hour = new Date().getHours();
@@ -52,7 +55,46 @@ export default {
 
             const text = `📌 *PING*\n━━━━━━━━━━━━━━━━\n${greeting}, ${displayName}\nPrefix : ${prefix || '.'}\n𝐋𝐚𝐭𝐞𝐧𝐜𝐲 : ${responseSpeed}ms\n𝐒𝐞𝐫𝐯𝐞𝐫 𝐓𝐢𝐦𝐞 : ${new Date().toLocaleString()}\n𝐔𝐩𝐭𝐢𝐦𝐞 : ${formatUptime(process.uptime())}\n𝐌𝐞𝐦𝐨𝐫𝐲 : ${usedMB}/${totalMB} MB\n𝐍𝐨𝐝𝐞𝐉𝐒 : ${process.version}\n𝐏𝐥𝐚𝐭𝐟𝐨𝐫𝐦 : ${platform}\n━━━━━━━━━━━━━━━━\n© bmb tech`;
 
-            await sendInteractive(client, m, text);
+            try {
+                const msg = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    interactiveMessage: {
+                        body: { text },
+                        footer: { text: `© ${bName}` },
+                        nativeFlowMessage: {
+                            buttons: [
+                                {
+                                    name: 'quick_reply',
+                                    buttonParamsJson: JSON.stringify({
+                                        display_text: '📋 Menu',
+                                        id: `${prefix || '.'}menu`
+                                    })
+                                },
+                                {
+                                    name: 'quick_reply',
+                                    buttonParamsJson: JSON.stringify({
+                                        display_text: '👤 Owner',
+                                        id: `${prefix || '.'}owner`
+                                    })
+                                },
+                                {
+                                    name: 'cta_url',
+                                    buttonParamsJson: JSON.stringify({
+                                        display_text: '🔗 Repo',
+                                        url: REPO_URL,
+                                        merchant_url: REPO_URL
+                                    })
+                                }
+                            ],
+                            messageParamsJson: ''
+                        }
+                    }
+                }), { userJid: client.user.id });
+
+                await client.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
+            } catch {
+                await sendInteractive(client, m, text);
+            }
+
             await client.sendMessage(m.chat, { react: { text: '✅', key: m.reactKey } });
         } catch (error) {
             await m.reply(`📌 *PING*\n━━━━━━━━━━━━━━━━\nSomething broke. Shocker.\n${error.message}\n━━━━━━━━━━━━━━━━\n© bmb tech`);
