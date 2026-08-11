@@ -63,25 +63,31 @@ export default {
                         nativeFlowMessage: {
                             buttons: [
                                 {
-                                    name: 'quick_reply',
+                                    name: 'single_select',
                                     buttonParamsJson: JSON.stringify({
-                                        display_text: '📋 Menu',
-                                        id: `${prefix || '.'}menu`
-                                    })
-                                },
-                                {
-                                    name: 'quick_reply',
-                                    buttonParamsJson: JSON.stringify({
-                                        display_text: '👤 Owner',
-                                        id: `${prefix || '.'}owner`
-                                    })
-                                },
-                                {
-                                    name: 'cta_url',
-                                    buttonParamsJson: JSON.stringify({
-                                        display_text: '🔗 Repo',
-                                        url: REPO_URL,
-                                        merchant_url: REPO_URL
+                                        title: 'Tap for options',
+                                        sections: [
+                                            {
+                                                title: 'Quick Actions',
+                                                rows: [
+                                                    {
+                                                        title: 'Menu',
+                                                        description: 'View all commands',
+                                                        id: `${prefix || '.'}menu`
+                                                    },
+                                                    {
+                                                        title: 'Owner',
+                                                        description: 'Contact the bot owner',
+                                                        id: `${prefix || '.'}owner`
+                                                    },
+                                                    {
+                                                        title: 'Repo',
+                                                        description: 'View the GitHub repository',
+                                                        id: `${prefix || '.'}repo`
+                                                    }
+                                                ]
+                                            }
+                                        ]
                                     })
                                 }
                             ],
