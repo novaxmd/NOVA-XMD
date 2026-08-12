@@ -1,9 +1,8 @@
-import { generateWAMessageFromContent, proto } from '@whiskeysockets/baileys';
 import { botname } from '../../config/settings.js';
 import { sendInteractive } from '../../lib/sendInteractive.js';
 import { detectHostingPlatform } from '../../lib/hostPlatform.js';
-
-const REPO_URL = 'https://github.com/novaxmd/NOVA-XMD';
+import { getDeviceMode } from '../../lib/deviceMode.js';
+import { ButtonV2 } from '../../lib/WABuilder.js';
 
 const getGreeting = () => {
     const hour = new Date().getHours();
@@ -55,53 +54,27 @@ export default {
 
             const text = `📌 *PING*\n━━━━━━━━━━━━━━━━\n${greeting}, ${displayName}\nPrefix : ${prefix || '.'}\n𝐋𝐚𝐭𝐞𝐧𝐜𝐲 : ${responseSpeed}ms\n𝐒𝐞𝐫𝐯𝐞𝐫 𝐓𝐢𝐦𝐞 : ${new Date().toLocaleString()}\n𝐔𝐩𝐭𝐢𝐦𝐞 : ${formatUptime(process.uptime())}\n𝐌𝐞𝐦𝐨𝐫𝐲 : ${usedMB}/${totalMB} MB\n𝐍𝐨𝐝𝐞𝐉𝐒 : ${process.version}\n𝐏𝐥𝐚𝐭𝐟𝐨𝐫𝐦 : ${platform}\n━━━━━━━━━━━━━━━━\n© bmb tech`;
 
-            try {
-                const msg = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    interactiveMessage: {
-                        body: { text },
-                        footer: { text: `© ${bName}` },
-                        nativeFlowMessage: {
-                            buttons: [
-                                {
-                                    name: 'single_select',
-                                    buttonParamsJson: JSON.stringify({
-                                        title: 'Tap for options',
-                                        sections: [
-                                            {
-                                                title: 'Quick Actions',
-                                                rows: [
-                                                    {
-                                                        title: 'Menu',
-                                                        description: 'View all commands',
-                                                        id: `${prefix || '.'}menu`
-                                                    },
-                                                    {
-                                                        title: 'Owner',
-                                                        description: 'Contact the bot owner',
-                                                        id: `${prefix || '.'}owner`
-                                                    },
-                                                    {
-                                                        title: 'Repo',
-                                                        description: 'View the GitHub repository',
-                                                        id: `${prefix || '.'}repo`
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    })
-                                }
-                            ],
-                            messageParamsJson: ''
-                        }
-                    }
-                }), { userJid: client.user.id });
+            const device = await getDeviceMode();
 
-                await client.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
-            } catch {
+            if (device === 'ios') {
                 await sendInteractive(client, m, text);
+                await client.sendMessage(m.chat, { react: { text: '✅', key: m.reactKey } });
+                return;
             }
 
-            await client.sendMessage(m.chat, { react: { text: '✅', key: m.reactKey } });
+            try {
+                const btnV2 = new ButtonV2(client);
+                btnV2.setBody(text)
+                    .setFooter(`© ${bName}`)
+                    .addButton('📋 Menu', `${prefix || '.'}menu`)
+                    .addButton('👤 Owner', `${prefix || '.'}owner`)
+                    .addButton('🔗 Repo', `${prefix || '.'}repo`);
+                await btnV2.send(m.chat, { userJid: client.user?.id || '', mentions: [m.sender] });
+                await client.sendMessage(m.chat, { react: { text: '✅', key: m.reactKey } });
+            } catch {
+                await sendInteractive(client, m, text);
+                await client.sendMessage(m.chat, { react: { text: '✅', key: m.reactKey } });
+            }
         } catch (error) {
             await m.reply(`📌 *PING*\n━━━━━━━━━━━━━━━━\nSomething broke. Shocker.\n${error.message}\n━━━━━━━━━━━━━━━━\n© bmb tech`);
         }
