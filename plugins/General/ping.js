@@ -64,7 +64,8 @@ export default {
 
             try {
                 const btnV2 = new ButtonV2(client);
-                btnV2.setBody(text)
+                btnV2.setMedia({ headerType: 1 })
+                    .setBody(text)
                     .setFooter(`© ${bName}`)
                     .addButton('📋 Menu', `${prefix || '.'}menu`)
                     .addButton('👤 Owner', `${prefix || '.'}owner`)
