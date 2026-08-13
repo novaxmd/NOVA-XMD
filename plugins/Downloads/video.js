@@ -25,8 +25,8 @@ export default async (context) => {
             return sendInteractive(client, m, `🎬 *VIDEO*\n━━━━━━━━━━━━━━━━\nNothing found for "${text}". Your taste doesn't exist.\n━━━━━━━━━━━━━━━━\n© bmb tech`);
         }
 
-        const encodedUrl = encodeURIComponent(video.url);
-        const apiUrl = `https://api.deline.web.id/downloader/youtube?url=${encodedUrl}`;
+        // NEW API — video (apiziaul, replaces the dead deline.web.id one)
+        const apiUrl = `https://apiziaul.vercel.app/api/downloader/ytmp4?url=${encodeURIComponent(video.url)}`;
         const response = await fetch(apiUrl, {
             headers: {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
@@ -35,25 +35,16 @@ export default async (context) => {
         });
         const data = await response.json();
 
-        if (!data.status || !data.result || !data.result.medias || !data.result.medias.length) {
+        if (!data.status || !data.result || !data.result.downloadUrl) {
             throw new Error('API returned no valid video data.');
         }
 
         const result = data.result;
-        const title = result.title || "Untitled";
-        const thumbnailUrl = result.thumbnail;
+        const title = result.title || result.filename || video.title || "Untitled";
+        const thumbnailUrl = result.thumbnail || video.thumbnail;
+        const videoUrl = result.downloadUrl;
 
-        const chosen =
-            result.medias.find(mformat => mformat.type === 'video' && mformat.label?.includes('720')) ||
-            result.medias.find(mformat => mformat.type === 'video') ||
-            result.medias[0];
-
-        const videoUrl = chosen.url || chosen.downloadUrl || chosen.link || chosen.download;
-        if (!videoUrl) {
-            throw new Error('No usable video URL found. Keys: ' + Object.keys(chosen).join(', '));
-        }
-
-        // Download the actual video bytes with proper headers first
+        // Download the actual video bytes with proper headers
         const videoResponse = await fetch(videoUrl, {
             headers: {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
