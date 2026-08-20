@@ -4,10 +4,7 @@ import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-import { generateWAMessageFromContent, proto } from '@whiskeysockets/baileys';
-import { getDeviceMode } from '../../lib/deviceMode.js';
 import { sendInteractive } from '../../lib/sendInteractive.js';
-import { ButtonV2 } from '@whiskeysockets/baileys';
 import { getGreeting } from '../../lib/language.js';
 
 const getTimeGreeting = () => {
@@ -20,12 +17,38 @@ const getTimeGreeting = () => {
     }
 };
 
+const toFancyFont = (text, isUpperCase = false) => {
+    const fonts = {
+        'A': '𝘼', 'B': '𝘽', 'C': '𝘾', 'D': '𝙿', 'E': '𝙀', 'F': '𝙁', 'G': '𝙂', 'H': '𝙃', 'I': '𝙄', 'J': '𝙅', 'K': '𝙆', 'L': '𝙇', 'M': '𝙈',
+        'N': '𝙉', 'O': '𝙊', 'P': '𝙋', 'Q': '𝙌', 'R': '𝙍', 'S': '𝙎', 'T': '𝙏', 'U': '𝙐', 'V': '𝙑', 'W': '𝙒', 'X': '𝙓', 'Y': '𝙔', 'Z': '𝙕',
+        'a': '𝙖', 'b': '𝙗', 'c': '𝙘', 'd': '𝙙', 'e': '𝙚', 'f': '𝙛', 'g': '𝙜', 'h': '𝙝', 'i': '𝙞', 'j': '𝙟', 'k': '𝙠', 'l': '𝙡', 'm': '𝙢',
+        'n': '𝙣', 'o': '𝙤', 'p': '𝙥', 'q': '𝙦', 'r': '𝙧', 's': '𝙨', 't': '𝙩', 'u': '𝙪', 'v': '𝙫', 'w': '𝙬', 'x': '𝙭', 'y': '𝙮', 'z': '𝙯'
+    };
+    return (isUpperCase ? text.toUpperCase() : text.toLowerCase())
+        .split('')
+        .map(char => fonts[char] || char)
+        .join('');
+};
+
+function formatUptime(seconds) {
+    const d = Math.floor(seconds / 86400);
+    const h = Math.floor((seconds % 86400) / 3600);
+    const mnt = Math.floor((seconds % 3600) / 60);
+    const s = Math.floor(seconds % 60);
+    return [d && `${d}d`, h && `${h}h`, mnt && `${mnt}m`, s && `${s}s`].filter(Boolean).join(' ') || '0s';
+}
+
+const TOP = '╭──═════════════★';
+const MID = '╠──═════════════★';
+const BOT = '╰──═════════════★';
+const BOTHEART = '╰──═════════════♡';
+
 export default {
     name: 'menu',
     aliases: ['commands', 'list', 'cmds', 'm', 'cmd', 'commandlist', 'allcmds'],
     description: 'Displays the NOVA-XMD command menu',
     run: async (context) => {
-        const { client, m, mode, pict, botname, prefix } = context;
+        const { client, m, mode, pict, totalCommands, prefix } = context;
 
         await client.sendMessage(m.chat, { react: { text: '🤖', key: m.key } });
 
@@ -35,189 +58,107 @@ export default {
 
         if (cleanText !== '' && !['menu', 'commands', 'list', 'cmds', 'm', 'help', 'cmd', 'commandlist', 'allcmds'].includes(firstWord)) {
             const commandName = cleanText.split(' ')[0];
-            return sendInteractive(client, m, `╭─❏ 「 Eʀʀᴏʀ」\n│ Yo ${m.pushName}, what's with the\n│ extra bullshit after "${commandName}"?\n│ Just type *${prefix}menu* properly, moron.\n╰───────────────\n> ©bmb-tech`);
+            return sendInteractive(client, m, `❌ *ERROR*\n━━━━━━━━━━━━━━━━\nYo ${m.pushName}, what's with the\nextra bullshit after "${commandName}"?\nJust type *${prefix}menu* properly, moron.\n━━━━━━━━━━━━━━━━\n© bmb tech`);
         }
 
         const greeting = getTimeGreeting();
-        const menuText =
-            `╭─❏ 「 Mᴇɴᴜ」\n` +
-            `│ \n` +
-            `│ ${greeting}, @${m.sender.split('@')[0].split(':')[0]}\n` +
-            `│ \n` +
-            `│ Bot: NOVA-XMD\n` +
-            `│ Prefix: ${prefix}\n` +
-            `│ Mode: ${mode}\n` +
-            `│ \n` +
-            `│ Select a category below.\n` +
-            `╰───────────────`;
+        const uptimeStr = formatUptime(process.uptime());
+        const dateStr = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
+        const ramMB = (process.memoryUsage().rss / 1024 / 1024).toFixed(2);
 
-        const sections = [
-            {
-                title: '⌜ 𝘾𝙤𝙧𝙚 𝘾𝙤𝙢𝙢𝙖𝙣𝙙𝙨 ⌟',
-                highlight_label: '©丨几匚',
-                rows: [
-                    { title: '𝐅𝐮𝐥𝐥𝐌𝐞𝐧𝐮', description: 'Display all commands', id: `${prefix}fullmenu` },
-                    { title: '𝐃𝐞𝐯', description: 'Send developer contact', id: `${prefix}dev` },
-                    { title: '𝐑𝐞𝐩𝐨𝐫𝐭', description: 'Report a bug to dev', id: `${prefix}report` },
-                ] },
-            {
-                title: '𝙄𝙣𝙛𝙤 𝘽𝙤𝙩',
-                highlight_label: '©丨几匚',
-                rows: [
-                    { title: '𝐏𝐢𝐧𝐠', description: 'Check bot speed', id: `${prefix}ping` },
-                    { title: '𝐒𝐞𝐭𝐭𝐢𝐧𝐠𝐬', description: 'Show bot settings', id: `${prefix}settings` },
-                    { title: '𝐌𝐨𝐝𝐞', description: 'Toggle bot mode', id: `${prefix}mode` },
-                    { title: '𝐔𝐩𝐭𝐢𝐦𝐞', description: 'Check how long bot has been running', id: `${prefix}uptime` },
-                ] },
-            {
-                title: '𝘾𝙖𝙩𝙚𝙜𝙤𝙧𝙮 𝙈𝙚𝙣𝙪𝙨',
-                highlight_label: '©丨几匚',
-                rows: [
-                    { title: '𝐆𝐞𝐧𝐞𝐫𝐚𝐥𝐌𝐞𝐧𝐮', description: 'General commands', id: `${prefix}generalmenu` },
-                    { title: '𝐒𝐞𝐭𝐭𝐢𝐧𝐠𝐬𝐌𝐞𝐧𝐮', description: 'Bot settings commands', id: `${prefix}settingsmenu` },
-                    { title: '𝐎𝐰𝐧𝐞𝐫𝐌𝐞𝐧𝐮', description: 'Owner only commands', id: `${prefix}ownermenu` },
-                    { title: '𝐆𝐫𝐨𝐮𝐩𝐌𝐞𝐧𝐮', description: 'Group management', id: `${prefix}groupmenu` },
-                    { title: '𝐀𝐈𝐌𝐞𝐧𝐮', description: 'AI & chat commands', id: `${prefix}aimenu` },
-                    { title: '𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐌𝐞𝐧𝐮', description: 'Media downloaders', id: `${prefix}downloadmenu` },
-                    { title: '𝐄𝐝𝐢𝐭𝐢𝐧𝐠𝐌𝐞𝐧𝐮', description: 'Media editing tools', id: `${prefix}editingmenu` },
-                    { title: '𝐄𝐟𝐟𝐞𝐜𝐭𝐬𝐌𝐞𝐧𝐮', description: 'Text effect commands', id: `${prefix}effectsmenu` },
-                    { title: '𝐔𝐭𝐢𝐥𝐬𝐌𝐞𝐧𝐮', description: 'Utility commands', id: `${prefix}utilsmenu` },
-                    { title: '𝐏𝐫𝐢𝐯𝐚𝐜𝐲𝐌𝐞𝐧𝐮', description: 'Privacy commands', id: `${prefix}privacymenu` },
-                ] },
+        const categories = [
+            { name: 'General', display: 'GENERAL', emoji: '📜' },
+            { name: 'Settings', display: 'SETTINGS', emoji: '🛠️' },
+            { name: 'Owner', display: 'OWNER', emoji: '👑' },
+            { name: 'Heroku', display: 'HEROKU', emoji: '☁️' },
+            { name: 'Privacy', display: 'PRIVACY', emoji: '🔒' },
+            { name: 'Groups', display: 'GROUP', emoji: '👥' },
+            { name: 'AI', display: 'AI', emoji: '🧠' },
+            { name: 'Downloads', display: 'DOWNLOAD', emoji: '💼' },
+            { name: 'Editing', display: 'EDITING', emoji: '✂️' },
+            { name: 'Effects', display: 'EFFECTS', emoji: '🎨' },
+            { name: 'Anime', display: 'ANIME', emoji: '🎌' },
+            { name: 'NSFW', display: '+18', emoji: '🔞' },
+            { name: 'Utils', display: 'UTILS', emoji: '🔧' },
+            { name: 'Reactions', display: 'REACTIONS', emoji: '🎭' }
         ];
 
-        const device = await getDeviceMode();
+        let menuText =
+            `${TOP}\n` +
+            `║ 💥 *NOVA XMD BOT* 💥\n` +
+            `${MID}\n` +
+            `║\n` +
+            `║ 👤 *USER:* ${m.pushName || 'there'}\n` +
+            `║ 🚀 *PLUGINS:* ${totalCommands || ''}\n` +
+            `║ ⏳ *UPTIME:* ${uptimeStr}\n` +
+            `║ 📅 *DATE:* ${dateStr}\n` +
+            `║ 📊 *RAM:* ${ramMB}MB\n` +
+            `║ 🌐 *MODE:* ${mode}\n` +
+            `║\n` +
+            `${BOT}\n\n`;
 
-        if (device === 'ios') {
-            const iosMenuText =
-                `╭─❏ 「 Mᴇɴᴜ」\n` +
-                `│ \n` +
-                `│ ${greeting}, @${m.sender.split('@')[0].split(':')[0]}\n` +
-                `│ \n` +
-                `│ Bot: NOVA-XMD\n` +
-                `│ Prefix: ${prefix}\n` +
-                `│ Mode: ${mode}\n` +
-                `│ \n` +
-                `│ ⌜ 𝘾𝙤𝙧𝙚 𝘾𝙤𝙢𝙢𝙖𝙣𝙙𝙨 ⌟\n` +
-                `│ ${prefix}fullmenu — Display all commands\n` +
-                `│ ${prefix}dev — Send developer contact\n` +
-                `│ ${prefix}report — Report a bug to dev\n` +
-                `│ \n` +
-                `│ 𝙄𝙣𝙛𝙤 𝘽𝙤𝙩\n` +
-                `│ ${prefix}ping — Check bot speed\n` +
-                `│ ${prefix}settings — Show bot settings\n` +
-                `│ ${prefix}mode — Toggle bot mode\n` +
-                `│ ${prefix}uptime — Check bot uptime\n` +
-                `│ \n` +
-                `│ 𝘾𝙖𝙩𝙚𝙜𝙤𝙧𝙮 𝙈𝙚𝙣𝙪𝙨\n` +
-                `│ ${prefix}generalmenu — General commands\n` +
-                `│ ${prefix}settingsmenu — Bot settings commands\n` +
-                `│ ${prefix}ownermenu — Owner only commands\n` +
-                `│ ${prefix}groupmenu — Group management\n` +
-                `│ ${prefix}aimenu — AI & chat commands\n` +
-                `│ ${prefix}downloadmenu — Media downloaders\n` +
-                `│ ${prefix}editingmenu — Media editing tools\n` +
-                `│ ${prefix}effectsmenu — Text effect commands\n` +
-                `│ ${prefix}utilsmenu — Utility commands\n` +
-                `│ ${prefix}privacymenu — Privacy commands\n` +
-                `╰───────────────\n` +
-                `> ©bmb-tech`;
-            await client.sendMessage(m.chat, {
-                text: iosMenuText, mentions: [m.sender]
-            });
-            return;
-        }
-
-        try {
-            const btnV2 = new ButtonV2(client);
-            btnV2.setBody(menuText)
-                .setFooter('> ©bmb-tech')
-                .setThumbnail(pict)
-                .addButton('𝐅𝐮𝐥𝐥𝐌𝐞𝐧𝐮', `${prefix}fullmenu`)
-                .addButton('𝐒𝐞𝐭𝐭𝐢𝐧𝐠𝐬', `${prefix}settings`)
-                .addButton('𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫', `${prefix}dev`);
-            await btnV2.send(m.chat, { userJid: client.user.id, mentions: [m.sender] });
-        } catch {
+        for (let ci = 0; ci < categories.length; ci++) {
+            const category = categories[ci];
+            let commandFiles;
             try {
-                const msg = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
-                    interactiveMessage: {
-                        body: { text: menuText },
-                        footer: { text: '> ©bmb-tech' },
-                        header: { hasMediaAttachment: false },
-                        contextInfo: {
-                            mentionedJid: [m.sender],
-                            externalAdReply: {
-                                title: `${botname}`,
-                                body: `Yo, ${m.pushName}! Ready to fuck shit up?`,
-                                mediaType: 1,
-                                thumbnail: pict,
-                                mediaUrl: '',
-                                sourceUrl: 'https://github.com/novaxmd/NOVA-XMD',
-                                showAdAttribution: false,
-                                renderLargerThumbnail: true }
-                        },
-                        nativeFlowMessage: {
-                            messageVersion: 1,
-                            buttons: [
-                                {
-                                    name: 'cta_url',
-                                    buttonParamsJson: JSON.stringify({
-                                        display_text: 'GitHub Repo',
-                                        url: 'https://github.com/novaxmd/NOVA-XMD',
-                                        merchant_url: 'https://github.com/novaxmd/NOVA-XMD'
-                                    })
-                                },
-                                {
-                                    name: 'single_select',
-                                    buttonParamsJson: JSON.stringify({
-                                        title: 'Browse Commands',
-                                        sections: sections
-                                    })
-                                }
-                            ]
-                        }
-                    }
-                }), { userJid: client.user.id });
-                if (!msg?.key?.id) throw new Error('null key');
-                await client.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
-            } catch {
-                await client.sendMessage(m.chat, {
-                    image: pict,
-                    caption: menuText + '\n> ©bmb-tech',
-                    mentions: [m.sender],
-                    contextInfo: {
-                        externalAdReply: {
-                            title: `${botname}`,
-                            body: `Yo, ${m.pushName}! Ready to fuck shit up?`,
-                            mediaType: 1,
-                            thumbnail: pict,
-                            mediaUrl: '',
-                            sourceUrl: 'https://github.com/NOVA-XMD/NOVA-XMD',
-                            showAdAttribution: false,
-                            renderLargerThumbnail: true }
-                    }
-                });
-                await client.sendMessage(m.chat, {
-                    listMessage: {
-                        title: '𝐕𝐈𝐄𝐖 𝐎𝐏𝐓𝐈𝐎𝐍𝐒',
-                        description: 'Select a category to view its commands.',
-                        buttonText: 'Browse Commands',
-                        listType: 1,
-                        sections: sections.map(s => ({
-                            title: s.title,
-                            rows: s.rows.map(r => ({ title: r.title, description: r.description, rowId: r.id }))
-                        })),
-                        footer: '' } });
+                commandFiles = fs.readdirSync(`./plugins/${category.name}`).filter(file => file.endsWith('.js') && file !== 'links.js');
+            } catch (e) { continue; }
+
+            if (commandFiles.length === 0 && category.name !== 'NSFW') continue;
+
+            const names = [];
+
+            if (category.name === 'NSFW') {
+                names.push('xvideo');
             }
+
+            for (const file of commandFiles) {
+                let displayName = file.replace('.js', '');
+                try {
+                    const { pathToFileURL } = await import('url');
+                    const modUrl = pathToFileURL(path.join(process.cwd(), 'plugins', category.name, file)).href;
+                    const modRaw = await import(modUrl);
+                    const mod = modRaw.default !== undefined ? modRaw.default : modRaw;
+                    if (Array.isArray(mod)) {
+                        for (const cmd of mod) {
+                            if (cmd && cmd.name) names.push(cmd.name);
+                        }
+                        continue;
+                    }
+                    if (mod && typeof mod === 'object' && mod.name && typeof mod.name === 'string') {
+                        displayName = mod.name;
+                    }
+                } catch (e) {}
+                names.push(displayName);
+            }
+
+            const isLast = ci === categories.length - 1;
+            menuText += `${TOP}\n`;
+            menuText += `║ ${category.emoji} *${category.display}*\n`;
+            menuText += `${MID}\n`;
+            menuText += `║\n`;
+            for (const n of names) {
+                menuText += `║ ☆ ${prefix}${n}\n`;
+            }
+            menuText += `║\n`;
+            menuText += `${isLast ? BOTHEART : BOT}\n\n`;
         }
 
-        const xhClintonPaths = [
-            path.join(__dirname, 'bmbtech'),
-            path.join(process.cwd(), 'bmbtech'),
-            path.join(__dirname, '..', 'bmbtech')
+        menuText += `© bmb tech`;
+
+        await client.sendMessage(m.chat, {
+            image: pict,
+            caption: menuText,
+            mentions: [m.sender]
+        });
+
+        const bmbtechPaths = [
+            path.join(__dirname, 'bmb_tech'),
+            path.join(process.cwd(), 'bmb_tech'),
+            path.join(__dirname, '..', 'bmb_tech')
         ];
         let audioFolder = null;
-        for (const folderPath of xhClintonPaths) {
+        for (const folderPath of bmbtechPaths) {
             if (fs.existsSync(folderPath)) { audioFolder = folderPath; break; }
         }
         if (!audioFolder) return;
@@ -228,8 +169,9 @@ export default {
         await new Promise(resolve => setTimeout(resolve, 500));
         try {
             const audioBuffer = fs.readFileSync(randomFile);
-            await client.sendMessage(m.chat, { audio: audioBuffer, ptt: true, mimetype: 'audio/mpeg', fileName: 'toxic-menu.m4a' });
+            await client.sendMessage(m.chat, { audio: audioBuffer, ptt: true, mimetype: 'audio/mpeg', fileName: 'nova-menu.m4a' });
         } catch {
-            await client.sendMessage(m.chat, { audio: { url: randomFile }, ptt: true, mimetype: 'audio/mpeg', fileName: 'toxic-menu.m4a' });
+            await client.sendMessage(m.chat, { audio: { url: randomFile }, ptt: true, mimetype: 'audio/mpeg', fileName: 'nova-menu.m4a' });
         }
-    } };
+    }
+};
