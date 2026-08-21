@@ -108,32 +108,19 @@ export default {
 
             try {
 
-                const ctaMsg = generateWAMessageFromContent(m.chat, {
-                    viewOnceMessage: {
-                        message: {
-                            interactiveMessage: proto.Message.InteractiveMessage.create({
-                                body: proto.Message.InteractiveMessage.Body.create({
-                                    text: `🔗 *PAIRING CODE*\n═══════════════\n📱 Number : ${number}\n🔑 Code   : *${formattedCode}*\n\n📋 Tap the button below to copy,\nthen paste it in WhatsApp ➜\nLinked Devices.\n\n⏱️ Expires fast — move it.\n═══════════════\n© bmb tech`
-                                }),
-                                footer: proto.Message.InteractiveMessage.Footer.create({
-                                    text: 'NOVA-XMD Pairing System'
-                                }),
-                                nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-                                    buttons: [
-                                        {
-                                            name: 'cta_copy',
-                                            buttonParamsJson: JSON.stringify({
-                                                display_text: '📋 Copy Pairing Code',
-                                                id: 'copy_code',
-                                                copy_code: formattedCode
-                                            })
-                                        }
-                                    ]
-                                })
-                            })
+                const ctaMsg = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    interactiveMessage: {
+                        body: { text: `🔗 *PAIRING CODE*\n═══════════════\n📱 Number : ${number}\n🔑 Code   : *${formattedCode}*\n\n📋 Tap the button below to copy,\nthen paste it in WhatsApp ➜\nLinked Devices.\n\n⏱️ Expires fast — move it.\n═══════════════\n© bmb tech` },
+                        footer: { text: 'NOVA-XMD Pairing System' },
+                        nativeFlowMessage: {
+                            buttons: [{
+                                name: 'cta_copy',
+                                buttonParamsJson: JSON.stringify({ display_text: '📋 Copy Pairing Code', copy_code: formattedCode })
+                            }],
+                            messageParamsJson: ''
                         }
                     }
-                });
+                }), { userJid: client.user.id });
 
                 await client.sendMessage(m.chat, { react: { text: '✅', key: m.reactKey } });
 
