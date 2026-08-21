@@ -271,7 +271,7 @@ async function getSettings() {
     const defaults = {
         prefix: '.', mode: 'public', botname: 'NOVA-XMD', startmessage: true,
         chatbotpm: false, autoview: true, autoread: false, antidelete: false, stealth: false,
-        autoai: false, bmbtechagent: false, anticall: false, antiviewonce: false
+        autoai: false, toxicagent: false, anticall: false, antiviewonce: false, autolike: true
     };
     const s = { ...defaults };
     for (const r of rows) {
