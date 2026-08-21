@@ -1,4 +1,3 @@
-import { generateWAMessageFromContent } from '@whiskeysockets/baileys';
 import { sendInteractive } from '../../lib/sendInteractive.js';
 const fancyStyles = {
   0: {"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9","a":"ค","b":"๖","c":"¢","d":"໓","e":"ē","f":"f","g":"ງ","h":"h","i":"i","j":"ว","k":"k","l":"l","m":"๓","n":"ຖ","o":"໐","p":"p","q":"๑","r":"r","s":"Ş","t":"t","u":"น","v":"ง","w":"ຟ","x":"x","y":"ฯ","z":"ຊ","A":"ค","B":"๖","C":"¢","D":"໓","E":"ē","F":"f","G":"ງ","H":"h","I":"i","J":"ว","K":"k","L":"l","M":"๓","N":"ຖ","O":"໐","P":"p","Q":"๑","R":"r","S":"Ş","T":"t","U":"น","V":"ง","W":"ຟ","X":"x","Y":"ฯ","Z":"ຊ" },
@@ -94,28 +93,19 @@ export default {
       const styledText = applyStyle(inputText, styleNum - 1);
       if (!styledText) throw new Error('Style application failed');
 
-      const msg = generateWAMessageFromContent(
-        m.chat,
-        {
-          interactiveMessage: {
-            body: { text: styledText },
-            footer: { text: '©BMB TECH' },
-            nativeFlowMessage: {
-              messageVersion: 1,
-              buttons: [{
-                name: 'cta_copy',
-                buttonParamsJson: JSON.stringify({ display_text: 'Copy Text', copy_code: styledText })
-              }]
-            }
-          }
-        }
-      );
       await client.sendMessage(m.chat, { react: { text: '✅', key: m.reactKey } });
 
-      await client.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
+      // Send as plain text instead of an interactive "copy" button.
+      // WhatsApp's nativeFlowMessage/cta_copy buttons are unreliable on many
+      // accounts and Baileys forks right now, which was causing this command
+      // to always throw and fall into the catch block below.
+      await client.sendMessage(m.chat, {
+        text: `🎨 *FANCY TEXT*\n━━━━━━━━━━━━━━━━\n${styledText}\n━━━━━━━━━━━━━━━━\n© bmb tech`
+      });
 
     } catch (error) {
-    await client.sendMessage(m.chat, { react: { text: '', key: m.reactKey } }).catch(() => {});
+      console.error('[fancy.js] Failed to apply/send fancy style:', error);
+      await client.sendMessage(m.chat, { react: { text: '', key: m.reactKey } }).catch(() => {});
       await sendInteractive(client, m, `❌ *ERROR*\n━━━━━━━━━━━━━━━━\nFailed to apply fancy style.\nTry again or use a different number.\n━━━━━━━━━━━━━━━━\n© bmb tech`);
     }
   }
