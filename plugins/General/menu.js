@@ -19,7 +19,7 @@ const getTimeGreeting = () => {
 
 const toFancyFont = (text, isUpperCase = false) => {
     const fonts = {
-        'A': '𝘼', 'B': '𝘽', 'C': '𝘾', 'D': '𝙿', 'E': '𝙀', 'F': '𝙁', 'G': '𝙂', 'H': '𝙃', 'I': '𝙄', 'J': '𝙅', 'K': '𝙆', 'L': '𝙇', 'M': '𝙈',
+        'A': '𝘼', 'B': '𝘽', 'C': '𝘾', 'D': '𝘿', 'E': '𝙀', 'F': '𝙁', 'G': '𝙂', 'H': '𝙃', 'I': '𝙄', 'J': '𝙅', 'K': '𝙆', 'L': '𝙇', 'M': '𝙈',
         'N': '𝙉', 'O': '𝙊', 'P': '𝙋', 'Q': '𝙌', 'R': '𝙍', 'S': '𝙎', 'T': '𝙏', 'U': '𝙐', 'V': '𝙑', 'W': '𝙒', 'X': '𝙓', 'Y': '𝙔', 'Z': '𝙕',
         'a': '𝙖', 'b': '𝙗', 'c': '𝙘', 'd': '𝙙', 'e': '𝙚', 'f': '𝙛', 'g': '𝙜', 'h': '𝙝', 'i': '𝙞', 'j': '𝙟', 'k': '𝙠', 'l': '𝙡', 'm': '𝙢',
         'n': '𝙣', 'o': '𝙤', 'p': '𝙥', 'q': '𝙦', 'r': '𝙧', 's': '𝙨', 't': '𝙩', 'u': '𝙪', 'v': '𝙫', 'w': '𝙬', 'x': '𝙭', 'y': '𝙮', 'z': '𝙯'
@@ -38,10 +38,11 @@ function formatUptime(seconds) {
     return [d && `${d}d`, h && `${h}h`, mnt && `${mnt}m`, s && `${s}s`].filter(Boolean).join(' ') || '0s';
 }
 
-const TOP = '╭──═════════════★';
-const MID = '╠──═════════════★';
-const BOT = '╰──═════════════★';
-const BOTHEART = '╰──═════════════♡';
+// Rounded-corner box style, distinct from the old ═/║ heavy-line look.
+const TOP = '╭─────────────⊹';
+const MID = '├─────────────⊹';
+const BOT = '╰─────────────⊹';
+const BOTHEART = '╰─────────────♡';
 
 export default {
     name: 'menu',
@@ -58,7 +59,7 @@ export default {
 
         if (cleanText !== '' && !['menu', 'commands', 'list', 'cmds', 'm', 'help', 'cmd', 'commandlist', 'allcmds'].includes(firstWord)) {
             const commandName = cleanText.split(' ')[0];
-            return sendInteractive(client, m, `❌ *ERROR*\n━━━━━━━━━━━━━━━━\nYo ${m.pushName}, what's with the\nextra bullshit after "${commandName}"?\nJust type *${prefix}menu* properly, moron.\n━━━━━━━━━━━━━━━━\n© bmb tech`);
+            return sendInteractive(client, m, `❌ *ERROR*\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\nYo ${m.pushName}, what's with the\nextra bullshit after "${commandName}"?\nJust type *${prefix}menu* properly, moron.\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n© bmb fancy`);
         }
 
         const greeting = getTimeGreeting();
@@ -85,16 +86,15 @@ export default {
 
         let menuText =
             `${TOP}\n` +
-            `║ 💥 *NOVA XMD BOT* 💥\n` +
+            `│ ✦ ${toFancyFont('NOVA XMD BOT', true)} ✦\n` +
             `${MID}\n` +
-            `║\n` +
-            `║ 👤 *USER:* ${m.pushName || 'there'}\n` +
-            `║ 🚀 *PLUGINS:* ${totalCommands || ''}\n` +
-            `║ ⏳ *UPTIME:* ${uptimeStr}\n` +
-            `║ 📅 *DATE:* ${dateStr}\n` +
-            `║ 📊 *RAM:* ${ramMB}MB\n` +
-            `║ 🌐 *MODE:* ${mode}\n` +
-            `║\n` +
+            `│  👋 ${greeting}, *${m.pushName || 'there'}*\n` +
+            `│\n` +
+            `│  🚀 Plugins  : ${totalCommands || ''}\n` +
+            `│  ⏳ Uptime   : ${uptimeStr}\n` +
+            `│  📅 Date     : ${dateStr}\n` +
+            `│  📊 RAM      : ${ramMB}MB\n` +
+            `│  🌐 Mode     : ${mode}\n` +
             `${BOT}\n\n`;
 
         for (let ci = 0; ci < categories.length; ci++) {
@@ -134,17 +134,15 @@ export default {
 
             const isLast = ci === categories.length - 1;
             menuText += `${TOP}\n`;
-            menuText += `║ ${category.emoji} *${category.display}*\n`;
+            menuText += `│ ${category.emoji} ${toFancyFont(category.display, true)}\n`;
             menuText += `${MID}\n`;
-            menuText += `║\n`;
             for (const n of names) {
-                menuText += `║ ☆ ${prefix}${n}\n`;
+                menuText += `│  ➤ ${prefix}${n}\n`;
             }
-            menuText += `║\n`;
             menuText += `${isLast ? BOTHEART : BOT}\n\n`;
         }
 
-        menuText += `© bmb tech`;
+        menuText += `© bmb fancy`;
 
         await client.sendMessage(m.chat, {
             image: pict,
