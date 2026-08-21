@@ -1,3 +1,4 @@
+import { generateWAMessageFromContent, proto } from '@whiskeysockets/baileys';
 import { sendInteractive } from '../../lib/sendInteractive.js';
 const fancyStyles = {
   0: {"0":"0","1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9","a":"ค","b":"๖","c":"¢","d":"໓","e":"ē","f":"f","g":"ງ","h":"h","i":"i","j":"ว","k":"k","l":"l","m":"๓","n":"ຖ","o":"໐","p":"p","q":"๑","r":"r","s":"Ş","t":"t","u":"น","v":"ง","w":"ຟ","x":"x","y":"ฯ","z":"ຊ","A":"ค","B":"๖","C":"¢","D":"໓","E":"ē","F":"f","G":"ງ","H":"h","I":"i","J":"ว","K":"k","L":"l","M":"๓","N":"ຖ","O":"໐","P":"p","Q":"๑","R":"r","S":"Ş","T":"t","U":"น","V":"ง","W":"ຟ","X":"x","Y":"ฯ","Z":"ຊ" },
@@ -93,18 +94,37 @@ export default {
       const styledText = applyStyle(inputText, styleNum - 1);
       if (!styledText) throw new Error('Style application failed');
 
+      const resultText = `🎨 *FANCY TEXT*\n━━━━━━━━━━\n${styledText}\n━━━━━━━━━━\n© bmb fancy`;
+
       await client.sendMessage(m.chat, { react: { text: '✅', key: m.reactKey } });
 
-      // Send as plain text instead of an interactive "copy" button.
-      // WhatsApp's nativeFlowMessage/cta_copy buttons are unreliable on many
-      // accounts and Baileys forks right now, which was causing this command
-      // to always throw and fall into the catch block below.
-      await client.sendMessage(m.chat, {
-        text: `🎨 *FANCY TEXT*\n━━━━━━━━━━━━━━━━\n${styledText}\n━━━━━━━━━━━━━━━━\n© bmb tech`
-      });
+      // Try to send with a "Copy Text" button (same pattern as upload.js).
+      // If the button message fails for any reason (unsupported client,
+      // WA rejecting nativeFlowMessage, etc.), fall back to plain text
+      // instead of throwing an error to the user.
+      try {
+        const msg = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+          interactiveMessage: {
+            body: { text: resultText },
+            footer: { text: '©BMB TECH' },
+            nativeFlowMessage: {
+              buttons: [{
+                name: 'cta_copy',
+                buttonParamsJson: JSON.stringify({ display_text: '📋 Copy Text', copy_code: styledText })
+              }],
+              messageParamsJson: ''
+            }
+          }
+        }), { userJid: client.user.id });
+
+        await client.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
+      } catch (btnError) {
+        console.error('[fancy.js] Copy button failed, falling back to plain text:', btnError);
+        await client.sendMessage(m.chat, { text: resultText });
+      }
 
     } catch (error) {
-      console.error('[fancy.js] Failed to apply/send fancy style:', error);
+      console.error('[fancy.js] Failed to apply fancy style:', error);
       await client.sendMessage(m.chat, { react: { text: '', key: m.reactKey } }).catch(() => {});
       await sendInteractive(client, m, `❌ *ERROR*\n━━━━━━━━━━━━━━━━\nFailed to apply fancy style.\nTry again or use a different number.\n━━━━━━━━━━━━━━━━\n© bmb tech`);
     }
