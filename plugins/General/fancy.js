@@ -67,13 +67,13 @@ export default {
         await client.sendMessage(m.chat, { react: { text: '⌛', key: m.reactKey } });
 
     if (!text) {
-      const example = 'NOVA';
-      let preview = `🎨 *FANCY TEXT*\n━━━━━━━━━━━━━━━━\nUsage: ${prefix}fancy <number> <text>\nExample: ${prefix}fancy 1 NOVA-XMD\n\nAvailable styles (1-${totalStyles}):\n`;
+      const example = 'Bmb Tech';
+      let preview = `🎨 *FANCY TEXT*\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\nUsage: ${prefix}fancy <number> <text>\nExample: ${prefix}fancy 1 Nova Xmd\n\nAvailable styles (1-${totalStyles}):\n`;
       for (let i = 0; i < totalStyles; i++) {
         const styled = applyStyle(example, i);
         if (styled) preview += `${i + 1}. ${styled}\n`;
       }
-      preview += `━━━━━━━━━━━━━━━━\n© bmb tech`;
+      preview += `▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n© bmb fancy`;
       await client.sendMessage(m.chat, { react: { text: '⌛', key: m.reactKey } });
       return client.sendMessage(m.chat, { text: preview });
     }
@@ -82,19 +82,19 @@ export default {
     const styleNum = parseInt(args[0]);
 
     if (isNaN(styleNum) || styleNum < 1 || styleNum > totalStyles) {
-      return sendInteractive(client, m, `❌ *ERROR*\n━━━━━━━━━━━━━━━━\nInvalid style number!\nUse 1-${totalStyles}\nExample: ${prefix}fancy 1 NOVA-XMD\n━━━━━━━━━━━━━━━━\n© bmb tech`);
+      return sendInteractive(client, m, `❌ *ERROR*\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\nInvalid style number!\nUse 1-${totalStyles}\nExample: ${prefix}fancy 1 NOVA-XMD\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n© bmb fancy`);
     }
 
     const inputText = args.slice(1).join(' ');
     if (!inputText) {
-      return sendInteractive(client, m, `❌ *ERROR*\n━━━━━━━━━━━━━━━━\nNo text provided!\n${prefix}fancy ${styleNum} Your Text Here\n━━━━━━━━━━━━━━━━\n© bmb tech`);
+      return sendInteractive(client, m, `❌ *ERROR*\n▭▭▭▭▭▭▭▭▭▭▭\nNo text provided!\n${prefix}fancy ${styleNum} Your Text Here\n▭▭▭▭▭▭▭▭▭▭\n© bmb fancy`);
     }
 
     try {
       const styledText = applyStyle(inputText, styleNum - 1);
       if (!styledText) throw new Error('Style application failed');
 
-      const resultText = `🎨 *FANCY TEXT*\n━━━━━━━━━━\n${styledText}\n━━━━━━━━━━\n© bmb fancy`;
+      const resultText = `🎨 *FANCY TEXT*\n▭▭▭▭▭▭▭▭▭▭\n${styledText}\n▭▭▭▭▭▭▭▭▭\n© bmb fancy`;
 
       await client.sendMessage(m.chat, { react: { text: '✅', key: m.reactKey } });
 
@@ -106,7 +106,7 @@ export default {
         const msg = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
           interactiveMessage: {
             body: { text: resultText },
-            footer: { text: '©BMB TECH' },
+            footer: { text: '' },
             nativeFlowMessage: {
               buttons: [{
                 name: 'cta_copy',
@@ -126,7 +126,7 @@ export default {
     } catch (error) {
       console.error('[fancy.js] Failed to apply fancy style:', error);
       await client.sendMessage(m.chat, { react: { text: '', key: m.reactKey } }).catch(() => {});
-      await sendInteractive(client, m, `❌ *ERROR*\n━━━━━━━━━━━━━━━━\nFailed to apply fancy style.\nTry again or use a different number.\n━━━━━━━━━━━━━━━━\n© bmb tech`);
+      await sendInteractive(client, m, `❌ *ERROR*\n▭▭▭▭▭▭▭\nFailed to apply fancy style.\nTry again or use a different number.\n▭▭▭▭▭▭▭\n© bmb fancy`);
     }
   }
 };
