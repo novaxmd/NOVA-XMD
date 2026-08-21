@@ -94,7 +94,7 @@ export default {
       const styledText = applyStyle(inputText, styleNum - 1);
       if (!styledText) throw new Error('Style application failed');
 
-      const resultText = `🎨 *FANCY TEXT*\n▭▭▭▭▭▭▭▭▭▭\n${styledText}\n▭▭▭▭▭▭▭▭▭\n© bmb fancy`;
+      const resultText = `🎨 *FANCY TEXT*\n▭▭▭▭▭▭▭▭▭\n${styledText}\n▭▭▭▭▭▭▭▭▭\n© bmb fancy`;
 
       await client.sendMessage(m.chat, { react: { text: '✅', key: m.reactKey } });
 
