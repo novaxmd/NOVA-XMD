@@ -40,7 +40,7 @@ export default {
                 const h = Math.floor((seconds % 86400) / 3600);
                 const min = Math.floor((seconds % 3600) / 60);
                 const s = Math.floor(seconds % 60);
-                return [d && `\( {d}d`, h && ` \){h}h`, min && `\( {min}m`, s && ` \){s}s`].filter(Boolean).join(' ') || '0s';
+                return [d && `${d}d`, h && `${h}h`, min && `${min}m`, s && `${s}s`].filter(Boolean).join(' ') || '0s';
             };
 
             const mem = process.memoryUsage();
@@ -50,29 +50,12 @@ export default {
             const greeting = getGreeting();
             const platform = await detectHostingPlatform(getPlatform());
 
-            const text = `📌 *PING*
-◈━━━━━━━━━━━━━━━━━━◈
-\( {greeting}, * \){displayName}*
-
-⚡ Latency    : ${responseSpeed} ms
-🕒 Server     : ${new Date().toLocaleString()}
-⏳ Uptime     : ${formatUptime(process.uptime())}
-💾 Memory     : \( {usedMB}/ \){totalMB} MB
-🟢 Node.js    : ${process.version}
-🖥️ Platform   : ${platform}
-🔧 Prefix     : ${prefix || '.'}
-◈━━━━━━━━━━━━━━━━━━◈
-© ${bName} • bmb tech`;
+            const text = `📌 *PING*\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n👋 ${greeting}, ${displayName}\n\n🔧 Prefix        : ${prefix || '.'}\n⚡ 𝐋𝐚𝐭𝐞𝐧𝐜𝐲       : ${responseSpeed}ms\n🕒 𝐒𝐞𝐫𝐯𝐞𝐫 𝐓𝐢𝐦𝐞   : ${new Date().toLocaleString()}\n⏳ 𝐔𝐩𝐭𝐢𝐦𝐞        : ${formatUptime(process.uptime())}\n💾 𝐌𝐞𝐦𝐨𝐫𝐲        : ${usedMB}/${totalMB} MB\n🟢 𝐍𝐨𝐝𝐞𝐉𝐒        : ${process.version}\n🖥️ 𝐏𝐥𝐚𝐭𝐟𝐨𝐫𝐦      : ${platform}\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n© bmb fancy`;
 
             await sendInteractive(client, m, text);
             await client.sendMessage(m.chat, { react: { text: '✅', key: m.reactKey } });
         } catch (error) {
-            await m.reply(`📌 *PING*
-◈━━━━━━━━━━━━━━━━━━◈
-Something broke. Shocker.
-${error.message}
-◈━━━━━━━━━━━━━━━━━━◈
-© bmb tech`);
+            await m.reply(`📌 *PING*\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n⚠️ Something broke. Shocker.\n${error.message}\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n© bmb fancy`);
         }
     }
 };
