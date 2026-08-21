@@ -68,6 +68,13 @@ export default async (client, m) => {
         } catch (e) {
         }
 
+        if (mode === 'delete') {
+            await client.sendMessage(m.chat, {
+                text: fmt(`🗑️ @${username}'s status mention deleted.\nNo warn, no kick — just gone. 🙂`),
+                mentions: [sender] });
+            return;
+        }
+
         if (mode === 'kick') {
             try {
                 await client.groupParticipantsUpdate(m.chat, [sender], 'remove');
