@@ -50,12 +50,12 @@ export default {
             const greeting = getGreeting();
             const platform = await detectHostingPlatform(getPlatform());
 
-            const text = `📌 *PING*\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n👋 ${greeting}, ${displayName}\n\n🔧 Prefix        : ${prefix || '.'}\n⚡ 𝐋𝐚𝐭𝐞𝐧𝐜𝐲       : ${responseSpeed}ms\n🕒 𝐒𝐞𝐫𝐯𝐞𝐫 𝐓𝐢𝐦𝐞   : ${new Date().toLocaleString()}\n⏳ 𝐔𝐩𝐭𝐢𝐦𝐞        : ${formatUptime(process.uptime())}\n💾 𝐌𝐞𝐦𝐨𝐫𝐲        : ${usedMB}/${totalMB} MB\n🟢 𝐍𝐨𝐝𝐞𝐉𝐒        : ${process.version}\n🖥️ 𝐏𝐥𝐚𝐭𝐟𝐨𝐫𝐦      : ${platform}\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n© bmb fancy`;
+            const text = `📌 *PING*\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n👋 ${greeting}, ${displayName}\n\n🔧 Prefix        : ${prefix || '.'}\n⚡ 𝐋𝐚𝐭𝐞𝐧𝐜𝐲       : ${responseSpeed}ms\n🕒 𝐒𝐞𝐫𝐯𝐞𝐫 𝐓𝐢𝐦𝐞   : ${new Date().toLocaleString()}\n⏳ 𝐔𝐩𝐭𝐢𝐦𝐞        : ${formatUptime(process.uptime())}\n💾 𝐌𝐞𝐦𝐨𝐫𝐲        : ${usedMB}/${totalMB} MB\n🟢 𝐍𝐨𝐝𝐞𝐉𝐒        : ${process.version}\n🖥️ 𝐏𝐥𝐚𝐭𝐟𝐨𝐫𝐦      : ${platform}\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n© bmb tech`;
 
             await sendInteractive(client, m, text);
             await client.sendMessage(m.chat, { react: { text: '✅', key: m.reactKey } });
         } catch (error) {
-            await m.reply(`📌 *PING*\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n⚠️ Something broke. Shocker.\n${error.message}\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n© bmb fancy`);
+            await m.reply(`📌 *PING*\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n⚠️ Something broke. Shocker.\n${error.message}\n▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭▭\n© bmb tech`);
         }
     }
 };
