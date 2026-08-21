@@ -38,18 +38,18 @@ export default {
 
         try {
             if (!text) {
-                return await sendInteractive(client, m, `🔗 *PAIRING*\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n🤨 Oi genius, give me a number\nto pair with. You think I can\nread your mind?\n\n📱 Usage  : *${prefix}pair <number>*\n📄 Sample : *${prefix}pair 254712345678*\n📄 Sample : *${prefix}pair +1 234 567 8901*\n\n💡 Spaces, dashes, plus signs...\nI'll clean that mess up for you.\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n© bmb tech`);
+                return await sendInteractive(client, m, `🔗 *PAIRING*\n═══════════════\n🤨 Oi genius, give me a number\nto pair with. You think I can\nread your mind?\n\n📱 Usage  : *${prefix}pair <number>*\n📄 Sample : *${prefix}pair 254712345678*\n📄 Sample : *${prefix}pair +1 234 567 8901*\n\n💡 Spaces, dashes, plus signs...\nI'll clean that mess up for you.\n═══════════════\n© bmb tech`);
             }
 
             const number = cleanNumber(text);
 
             if (number.length < 6 || number.length > 15) {
-                return await sendInteractive(client, m, `🔗 *INVALID NUMBER*\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n❌ That number is garbage.\n📱 Cleaned : ${number}\n\n⚠️ Need 6-15 digits with country code.\nTry again with a real number.\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n© bmb tech`);
+                return await sendInteractive(client, m, `🔗 *INVALID NUMBER*\n═══════════════\n❌ That number is garbage.\n📱 Cleaned : ${number}\n\n⚠️ Need 6-15 digits with country code.\nTry again with a real number.\n═══════════════\n© bmb tech`);
             }
 
             await client.sendMessage(m.chat, { react: { text: '⌛', key: m.reactKey } });
 
-            await sendInteractive(client, m, `🔗 *PAIRING*\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n📱 Number  : ${number}\n⏳ Generating code, hold on...\n\n🚫 Don't spam the command, idiot.\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n© bmb tech`);
+            await sendInteractive(client, m, `🔗 *PAIRING*\n═══════════════\n📱 Number  : ${number}\n⏳ Generating code, hold on...\n\n🚫 Don't spam the command, idiot.\n═══════════════\n© bmb tech`);
 
             const sessionId = makeid(8);
             let tempPath;
@@ -113,7 +113,7 @@ export default {
                         message: {
                             interactiveMessage: proto.Message.InteractiveMessage.create({
                                 body: proto.Message.InteractiveMessage.Body.create({
-                                    text: `🔗 *PAIRING CODE*\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n📱 Number : ${number}\n🔑 Code   : *${formattedCode}*\n\n📋 Tap the button below to copy,\nthen paste it in WhatsApp ➜\nLinked Devices.\n\n⏱️ Expires fast — move it.\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n© bmb tech`
+                                    text: `🔗 *PAIRING CODE*\n═══════════════\n📱 Number : ${number}\n🔑 Code   : *${formattedCode}*\n\n📋 Tap the button below to copy,\nthen paste it in WhatsApp ➜\nLinked Devices.\n\n⏱️ Expires fast — move it.\n═══════════════\n© bmb tech`
                                 }),
                                 footer: proto.Message.InteractiveMessage.Footer.create({
                                     text: 'NOVA-XMD Pairing System'
@@ -143,7 +143,7 @@ export default {
             } catch (btnErr) {
                 console.error('[pair.js] Copy button failed, falling back to plain text:', btnErr);
                 await client.sendMessage(m.chat, { react: { text: '', key: m.reactKey } }).catch(() => {});
-                await sendInteractive(client, m, `🔗 *PAIRING CODE*\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n📱 Number : ${number}\n🔑 Code   : *${formattedCode}*\n\n📋 Copy the code above and paste\nit in WhatsApp ➜ Linked Devices.\n\n⏱️ Expires fast — move it.\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n© bmb tech`);
+                await sendInteractive(client, m, `🔗 *PAIRING CODE*\n═══════════════\n📱 Number : ${number}\n🔑 Code   : *${formattedCode}*\n\n📋 Copy the code above and paste\nit in WhatsApp ➜ Linked Devices.\n\n⏱️ Expires fast — move it.\n═══════════════\n© bmb tech`);
             }
 
             setTimeout(async () => {
@@ -158,7 +158,7 @@ export default {
         } catch (error) {
             console.error("Error in pair command:", error);
             await client.sendMessage(m.chat, { react: { text: '', key: m.reactKey } });
-            await sendInteractive(client, m, `🔗 *PAIRING FAILED*\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n❌ Couldn't generate the code.\n${error.message || 'Unknown error'}\n\n⚠️ Make sure the number is valid\nand actually on WhatsApp.\nThen try again, if you can\nmanage that.\n▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n© bmb tech`);
+            await sendInteractive(client, m, `🔗 *PAIRING FAILED*\n═══════════════\n❌ Couldn't generate the code.\n${error.message || 'Unknown error'}\n\n⚠️ Make sure the number is valid\nand actually on WhatsApp.\nThen try again, if you can\nmanage that.\n═══════════════\n© bmb tech`);
         }
     }
 };
