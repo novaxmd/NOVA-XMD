@@ -15,8 +15,6 @@ const _pNum = (p) => {
 
 const isDevJid = (jid) => _num(jid) === DEV_NUMBER;
 
-const fmt = (msg) => `🛡️ *ANTILINK*\n━━━━━━━━━━━━━━━━\n${msg}\n━━━━━━━━━━━━━━━━\n© bmb tech`;
-
 function extractDomains(text) {
     const domains = [];
     const urlRegex = /(https?:\/\/[^\s]+|www\.[^\s]+|[a-z0-9.-]+\.[a-z]{2,6}(\/[^\s]*)?)/gi;
@@ -104,13 +102,13 @@ export default async (client, m) => {
         });
 
         const username = senderNum || sender.split('@')[0];
-        const reason = isChannelForward ? '📡 Channel forward' : '🔗 Link detected';
+        const reason = isChannelForward ? '📡 channel forward detected' : '🔗 link detected';
 
         if (isAdmin) return;
 
         if (!isBotAdmin) {
             await client.sendMessage(m.chat, {
-                text: fmt(`@${username} sent a link.\nMake me admin so I can actually do something about it. 😤`),
+                text: `link detected\n@${username} make me admin to enforce this.`,
                 mentions: [sender] });
             return;
         }
@@ -127,11 +125,18 @@ export default async (client, m) => {
         } catch (e) {
         }
 
+        if (antilinkMode === 'delete') {
+            await client.sendMessage(m.chat, {
+                text: `${reason}, message deleted\n@${username} avoid sending links.`,
+                mentions: [sender] });
+            return;
+        }
+
         if (antilinkMode === 'kick') {
             try {
                 await client.groupParticipantsUpdate(m.chat, [sender], 'remove');
                 await client.sendMessage(m.chat, {
-                    text: fmt(`🚨 @${username} KICKED!\n│ Reason: ${reason}\n│ Kick mode — zero tolerance. 😈`),
+                    text: `${reason}, message deleted\n@${username} kicked for sending a link.`,
                     mentions: [sender]
                 });
             } catch (e) {
@@ -147,14 +152,14 @@ export default async (client, m) => {
             await resetWarn(m.chat, username);
             try { await client.groupParticipantsUpdate(m.chat, [sender], 'remove'); } catch {}
             await client.sendMessage(m.chat, {
-                text: fmt(`🚨 @${username} KICKED!\n│ Reason: ${reason}\n│ Warns: ${newCount}/${MAX_WARNS}\n│ That's it. Get out. 😈\n│ Warn count wiped clean.`),
+                text: `${reason}, message deleted\n@${username} kicked, warn limit ${newCount}/${MAX_WARNS} reached.`,
                 mentions: [sender]
             });
             return;
         }
 
         await client.sendMessage(m.chat, {
-            text: fmt(`⚠️ @${username}, warned!\n│ Reason: ${reason}\n│ Message deleted.\n│ Warns: ${newCount}/${MAX_WARNS}\n│ ${remaining} more and you're GONE. 😈`),
+            text: `${reason}, message deleted\n@${username} avoid sending links. Warn ${newCount}/${MAX_WARNS}.`,
             mentions: [sender]
         });
     } catch (err) {
