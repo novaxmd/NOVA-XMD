@@ -1,8 +1,6 @@
 import { getGroupSettings, addWarn, resetWarn, getWarnLimit } from '../database/config.js';
 import { resolveTargetJid } from '../lib/lidResolver.js';
 
-const fmt = (msg) => `🛡️ *ANTISTATUSMENTION*\n━━━━━━━━━━━━━━━━\n${msg}\n━━━━━━━━━━━━━━━━\n© bmb tech`;
-
 const _num = (jid) => (jid || '').split('@')[0].split(':')[0].replace(/\D/g, '');
 
 const _pNum = (p) => {
@@ -46,14 +44,14 @@ export default async (client, m) => {
 
         if (isAdmin) {
             await client.sendMessage(m.chat, {
-                text: fmt(`Admin @${username} dropped a status mention.\nAdmins get a pass — but keep it minimal. 😒`),
+                text: `status mention detected\n@${username} you're admin, this one stays.`,
                 mentions: [sender] });
             return;
         }
 
         if (!isBotAdmin) {
             await client.sendMessage(m.chat, {
-                text: fmt(`@${username} sent a status mention.\nMake me admin so I can actually do something about it. 😤`),
+                text: `status mention detected\n@${username} make me admin to enforce this.`,
                 mentions: [sender] });
             return;
         }
@@ -70,7 +68,7 @@ export default async (client, m) => {
 
         if (mode === 'delete') {
             await client.sendMessage(m.chat, {
-                text: fmt(`🗑️ @${username}'s status mention deleted.\nNo warn, no kick — just gone. 🙂`),
+                text: `status mention detected, message deleted\n@${username} avoid mentioning status.`,
                 mentions: [sender] });
             return;
         }
@@ -79,11 +77,11 @@ export default async (client, m) => {
             try {
                 await client.groupParticipantsUpdate(m.chat, [sender], 'remove');
                 await client.sendMessage(m.chat, {
-                    text: fmt(`🚫 @${username} KICKED for status mention.\nMessage deleted. Rules aren't optional. 😈`),
+                    text: `status mention detected, message deleted\n@${username} kicked for status mention.`,
                     mentions: [sender] });
             } catch (e) {
                 await client.sendMessage(m.chat, {
-                    text: fmt(`Tried to kick @${username} for status mention but failed.\nCheck my permissions. 😠`),
+                    text: `status mention detected, message deleted\n@${username} tried to kick but failed, check my permissions.`,
                     mentions: [sender] });
             }
             return;
@@ -97,13 +95,13 @@ export default async (client, m) => {
             await resetWarn(m.chat, username);
             try { await client.groupParticipantsUpdate(m.chat, [sender], 'remove'); } catch {}
             await client.sendMessage(m.chat, {
-                text: fmt(`🚨 @${username} KICKED!\n│ Reason: Status mention spam\n│ Warns: ${newCount}/${MAX_WARNS}\n│ That's your limit. Get out. 😈`),
+                text: `status mention detected, message deleted\n@${username} kicked, warn limit ${newCount}/${MAX_WARNS} reached.`,
                 mentions: [sender] });
             return;
         }
 
         await client.sendMessage(m.chat, {
-            text: fmt(`⚠️ @${username}, warned for status mention!\n│ Message deleted.\n│ Warns: ${newCount}/${MAX_WARNS}\n│ ${remaining} more and you're GONE. 😈`),
+            text: `status mention detected, message deleted\n@${username} avoid mentioning status. Warn ${newCount}/${MAX_WARNS}.`,
             mentions: [sender] });
     } catch (err) {
         console.error('[ANTISTATUSMENTION] Error:', err.message);
